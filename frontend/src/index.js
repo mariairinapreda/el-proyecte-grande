@@ -3,19 +3,28 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import footer from "./components/footer";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from "react-router-dom";
 import navigation from "./components/navigation";
+import footer from "./components/footer";
+import landingPage from "./componentPages/LandingPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let foot= footer;
-let nav = navigation;
+
 root.render(
-  <React.StrictMode>
-      {nav}
-    <App />
-      {foot}
-  </React.StrictMode>
+  // <React.StrictMode>
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={landingPage}/>
+              <Route path="/add-case" element={footer}/>
+          </Routes>
+      </BrowserRouter>
+
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

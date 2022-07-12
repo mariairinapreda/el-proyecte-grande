@@ -1,4 +1,5 @@
 import "../scss/main.css"
+import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 let user = {
@@ -15,13 +16,13 @@ function getNavigation() {
 					user.username != null
 						?
 					<div className="logo">
-						<a href="/login">Logare</a>
-						<a href="/register">Inregistrare</a>
+						<Link to="/login">Logare</Link>
+						<Link to="/register">Inregistrare</Link>
 					</div>
 						:
 					<div className="logo">
-						<a href="#">Login</a>
-						<a href="/logout">Deconectare</a>
+						<Link to="/">Login</Link>
+						<Link to="/logout">Deconectare</Link>
 					</div>
 				}
 				<input type="radio" name="slider" id="menu-btn"/>
@@ -29,25 +30,26 @@ function getNavigation() {
 						<ul className="nav-links">
 							<label htmlFor="close-btn" className="btn close-btn"><i
 								className="fas fa-times"></i></label>
-							<li><a href="/">Home</a></li>
+							<li><Link to="/">Home</Link></li>
 							<li>
-								<a href="#" className="desktop-item">Adauga produse</a>
+								<Link to="/" className="desktop-item">Adauga produse</Link>
 								<input type="checkbox" id="showDrop"/>
 									<label htmlFor="showDrop" className="mobile-item">Adauga produs</label>
 									<ul className="drop-menu">
-										<li><a href="/add-case">Carcasa</a></li>
-										<li><a href="/add-cooler">Cooler</a></li>
-										<li><a href="/add-desktop">Desktop</a></li>
-										<li><a href="/add-graphics-card">Placa video</a></li>
-										<li><a href="/add-motherboard">Placa de baza</a></li>
-										<li><a href="/add-power-supply">Sursa</a></li>
-										<li><a href="/add-processor">Procesor</a></li>
-										<li><a href="/add-ram">Memorie</a></li>
-										<li><a href="/add-vent">Ventilator</a></li>
+										<li><Link to="/add-case">Link button</Link></li>
+										<li><Link to="/add-case">Carcasa</Link></li>
+										<li><Link to="/add-cooler">Cooler</Link></li>
+										<li><Link to="/add-desktop">Desktop</Link></li>
+										<li><Link to="/add-graphics-card">Placa video</Link></li>
+										<li><Link to="/add-motherboard">Placa de baza</Link></li>
+										<li><Link to="/add-power-supply">Sursa</Link></li>
+										<li><Link to="/add-processor">Procesor</Link></li>
+										<li><Link to="/add-ram">Memorie</Link></li>
+										<li><Link to="/add-vent">Ventilator</Link></li>
 									</ul>
 							</li>
 							<li>
-								<a href="#" className="desktop-item">Categorii</a>
+								<Link to="/" className="desktop-item">Categorii</Link>
 								<input type="checkbox" id="showMega"/>
 									<label htmlFor="showMega" className="mobile-item">Categorii</label>
 									<div className="mega-box">
@@ -58,44 +60,44 @@ function getNavigation() {
 											<div className="row">
 												<header>Componente</header>
 												<ul className="mega-links">
-													<li><a href="/placi-video">Placi video</a></li>
-													<li><a href="/procesoare">Procesoare</a></li>
-													<li><a href="/placi-de-baza">Placi de baza</a></li>
-													<li><a href="/memorii">Memorii</a></li>
-													<li><a href="/hard-disk-uri">Hard Disk-uri</a></li>
-													<li><a href="/ssd-uri">SSD</a></li>
-													<li><a href="/surse">Surse</a></li>
-													<li><a href="/carcase">Carcase</a></li>
-													<li><a href="/coolere">Coolere</a></li>
-													<li><a href="/ventilatoare">Ventilatoare</a></li>
+													<li><Link to="/placi-video">Placi video</Link></li>
+													<li><Link to="/procesoare">Procesoare</Link></li>
+													<li><Link to="/placi-de-baza">Placi de baza</Link></li>
+													<li><Link to="/memorii">Memorii</Link></li>
+													<li><Link to="/hard-disk-uri">Hard Disk-uri</Link></li>
+													<li><Link to="/ssd-uri">SSD</Link></li>
+													<li><Link to="/surse">Surse</Link></li>
+													<li><Link to="/carcase">Carcase</Link></li>
+													<li><Link to="/coolere">Coolere</Link></li>
+													<li><Link to="/ventilatoare">Ventilatoare</Link></li>
 												</ul>
 											</div>
 											<div className="row">
 												<header>Laptop</header>
 												<ul className="mega-links">
-													<li><a href="/laptop-uri">Notebook</a></li>
-													<li><a href="/laptop-uri">Ultrabook</a></li>
-													<li><a href="/laptop-uri">Laptop Business</a></li>
-													<li><a href="/laptop-uri">Laptop Gaming</a></li>
+													<li><Link to="/laptop-uri">Notebook</Link></li>
+													<li><Link to="/laptop-uri">Ultrabook</Link></li>
+													<li><Link to="/laptop-uri">Laptop Business</Link></li>
+													<li><Link to="/laptop-uri">Laptop Gaming</Link></li>
 												</ul>
 											</div>
 											<div className="row">
 												<header>Sisteme Gaming & Office</header>
 												<ul className="mega-links">
-													<li><a href="/desktop-uri">PC Gaming Low-Level</a></li>
-													<li><a href="/desktop-uri">PC Gaming Middle-Level</a></li>
-													<li><a href="/desktop-uri">PC Gaming High-Level</a></li>
-													<li><a href="/desktop-uri">PC Office</a></li>
+													<li><Link to="/desktop-uri">PC Gaming Low-Level</Link></li>
+													<li><Link to="/desktop-uri">PC Gaming Middle-Level</Link></li>
+													<li><Link to="/desktop-uri">PC Gaming High-Level</Link></li>
+													<li><Link to="/desktop-uri">PC Office</Link></li>
 												</ul>
 											</div>
 										</div>
 									</div>
 							</li>
-							<li><a href="/feedback">Feedback</a></li>
-							<li><a href="/contact">Contact</a></li>
-							<li><a href="/about-us">About</a></li>
-							<li><a href="/cos-cumparaturi">CART<span id="cart-quantity">0</span>
-							</a></li>
+							<li><Link to="/feedback">Feedback</Link></li>
+							<li><Link to="/contact">Contact</Link></li>
+							<li><Link to="/about-us">About</Link></li>
+							<li><Link to="/cos-cumparaturi">CART<span id="cart-quantity">0</span>
+							</Link></li>
 						</ul>
 						<label htmlFor="menu-btn" className="btn menu-btn"><i className="fas fa-bars"></i></label>
 			</div>
