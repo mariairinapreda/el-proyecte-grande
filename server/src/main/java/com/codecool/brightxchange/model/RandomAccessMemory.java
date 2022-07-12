@@ -9,13 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RandomAccessMemory {
     private int id;
-
     private RAMProducer ramProducer;
-
     private RandomAccessMemoryType memoryType;
-
     private int capacity;
-
     private int frequency;
 
     public RandomAccessMemory(int id, RAMProducer ramProducer, RandomAccessMemoryType memoryType, int capacity, int frequency) {
