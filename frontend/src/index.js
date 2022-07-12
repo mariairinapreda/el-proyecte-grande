@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import footer from "./components/footer";
+import navigation from "./components/navigation";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+let foot= footer;
+let nav = navigation;
 root.render(
   <React.StrictMode>
+      {nav}
     <App />
+      {foot}
   </React.StrictMode>
 );
 
