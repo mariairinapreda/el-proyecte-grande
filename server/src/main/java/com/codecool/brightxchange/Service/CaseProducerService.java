@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service("CaseProducerService")
-public class CaseProducerService implements CaseProducerDAO {
+public class CaseProducerService{
     @Autowired
     @Qualifier("CaseProducerMemory")
     private CaseProducerDAO caseProducerDAO;

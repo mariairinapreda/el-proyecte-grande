@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service("ChipsetProducerService")
-public class ChipsetProducerService implements ChipsetProducerDAO {
+public class ChipsetProducerService {
     @Autowired
     @Qualifier("ChipsetProducerMemory")
     private ChipsetProducerDAO chipsetProducerDAO;

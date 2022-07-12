@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service("ConnectivityService")
-public class ConnectivityService implements ConnectivityDAO {
+public class ConnectivityService {
     @Autowired
     @Qualifier("ConnectivityMemory")
     private ConnectivityDAO connectivityDAO;
