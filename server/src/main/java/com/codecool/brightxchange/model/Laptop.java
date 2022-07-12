@@ -12,7 +12,7 @@ public class Laptop extends BaseProduct{
     private LaptopProducer laptopProducer;
     private Display display;
     private Processor processor;
-    private RandomAccesMemory memory;
+    private RandomAccessMemory memory;
     private Storage storage;
     private GraphicsCard graphicsCard;
     private Connectivity connectivity;
@@ -20,7 +20,7 @@ public class Laptop extends BaseProduct{
     private String dimensions;
     private int weight;
 
-    public Laptop(int id, LaptopProducer laptopProducer, Display display, Processor processor, RandomAccesMemory memory, Storage storage, GraphicsCard graphicsCard, Connectivity connectivity, MotherBoardBackPanel backPanel, String dimensions, int weight) {
+    public Laptop(int id, LaptopProducer laptopProducer, Display display, Processor processor, RandomAccessMemory memory, Storage storage, GraphicsCard graphicsCard, Connectivity connectivity, MotherBoardBackPanel backPanel, String dimensions, int weight) {
         this.id = id;
         this.laptopProducer = laptopProducer;
         this.display = display;
