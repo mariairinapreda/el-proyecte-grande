@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class SSD {
     private int id;
     private String connectionInterface;
-private int writeSpeed;
-   private int readSpeed;
+    private int writeSpeed;
+    private int readSpeed;
 
     public SSD(int id, String connectionInterface, int writeSpeed, int readSpeed) {
         this.id = id;
