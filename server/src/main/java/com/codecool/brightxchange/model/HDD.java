@@ -7,16 +7,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Builder
-public class SSD {
+public class HDD {
     private int id;
+    private int rotationSpeed;
     private String connectionInterface;
-    private int writeSpeed;
-    private int readSpeed;
 
-    public SSD(int id, String connectionInterface, int writeSpeed, int readSpeed) {
+    public HDD(int id, int rotationSpeed, String connectionInterface) {
         this.id = id;
+        this.rotationSpeed = rotationSpeed;
         this.connectionInterface = connectionInterface;
-        this.writeSpeed = writeSpeed;
-        this.readSpeed = readSpeed;
     }
 }
