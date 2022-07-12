@@ -19,9 +19,10 @@ root.render(
           <Routes>
               <Route path="/" element={landingPage}/>
               <Route path="/add-case" element={footer}/>
-              <Route path="/cases" element={}>
-                  <Route path=":caseId" element={}></Route>
+              <Route path="/cases" element={footer}>
+                  <Route path=":caseId" element={footer}></Route>
               </Route>
+              <Route path="*" element={footer}></Route>
           </Routes>
       </BrowserRouter>
 
