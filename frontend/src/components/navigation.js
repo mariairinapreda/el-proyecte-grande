@@ -1,10 +1,13 @@
 import "../scss/main.css"
-
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 let user = {
 	"username": null
 }
+// let cart = <FontAwesomeIcon icon={solid("cart-plus")} />;
 
 function getNavigation() {
+
 	return (
 		<nav>
 			<div className="wrapper">
@@ -91,8 +94,8 @@ function getNavigation() {
 							<li><a href="/feedback">Feedback</a></li>
 							<li><a href="/contact">Contact</a></li>
 							<li><a href="/about-us">About</a></li>
-							<li><a href="/cos-cumparaturi"><i className="fa-solid fa-cart-shopping" id="cart"></i><span
-								id="cart-quantity">0</span></a></li>
+							<li><a href="/cos-cumparaturi">CART<span id="cart-quantity">0</span>
+							</a></li>
 						</ul>
 						<label htmlFor="menu-btn" className="btn menu-btn"><i className="fas fa-bars"></i></label>
 			</div>
