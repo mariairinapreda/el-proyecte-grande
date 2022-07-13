@@ -1,20 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from "react-router-dom";
 import footer from "./components/footer";
-import navigation from "./components/navigation";
+import landingPage from "./componentPages/LandingPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let foot= footer;
-let nav = navigation;
+
 root.render(
   <React.StrictMode>
-      {nav}
-    <App />
-      {foot}
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={landingPage}/>
+              <Route path="/add-case" element={footer}/>
+              <Route path="/cases" element={footer}>
+                  <Route path=":caseId" element={footer}></Route>
+              </Route>
+              <Route path="*" element={footer}></Route>
+          </Routes>
+      </BrowserRouter>
+
   </React.StrictMode>
 );
 
