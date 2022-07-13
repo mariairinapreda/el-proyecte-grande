@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -37,8 +39,16 @@ public class GraphicsCardFamily {
     )
     private String name;
 
-    public GraphicsCardFamily(Long id, String name) {
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<GCSeries> series = new HashSet<>();
+
+    public GraphicsCardFamily(Long id, String name, Set<GCSeries> series) {
         this.id = id;
         this.name = name;
+        this.series = series;
     }
 }
