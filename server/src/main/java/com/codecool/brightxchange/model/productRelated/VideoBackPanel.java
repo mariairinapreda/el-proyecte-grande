@@ -5,24 +5,43 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
 @Builder
 @Data
 @NoArgsConstructor
+@Entity(name = "VideoBackPanel")
+@Table(name = "video_back_panel")
 public class VideoBackPanel {
     @JsonProperty("videoBackPanelId")
-    private int id;
+    @Id
+    @SequenceGenerator(
+            name = "video_back_panel_sequence",
+            sequenceName = "video_back_panel_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "video_back_panel_sequence"
+    )
+    private Long id;
     @JsonProperty("videoBackPanelNumberOfVGA")
-    private int numberOfVGA;
+    @Column(name = "number_of_vga")
+    private Integer numberOfVGA;
+    @Column(name = "number_of_dvi")
     @JsonProperty("videoBackPanelNumberOfDVI")
-    private int numberOfDVI;
+    private Integer numberOfDVI;
     @JsonProperty("videoBackPanelNumberOfHDMI")
-    private int numberOfHDMI;
+    @Column(name = "number_of_hdmi")
+    private Integer numberOfHDMI;
     @JsonProperty("videoBackPanelNumberOfDisplayPort")
-    private int numberOfDisplayPort;
+    @Column(name = "number_of_display_port")
+    private Integer numberOfDisplayPort;
+    @Column(name = "number_of_jack")
     @JsonProperty("videoBackPanelNumberOfJack")
-    private int numberOfJack;
+    private Integer numberOfJack;
 
-    public VideoBackPanel(int id, int numberOfVGA, int numberOfDVI, int numberOfHDMI, int numberOfDisplayPort, int numberOfJack) {
+    public VideoBackPanel(Long id, Integer numberOfVGA, Integer numberOfDVI, Integer numberOfHDMI, Integer numberOfDisplayPort, Integer numberOfJack) {
         this.id = id;
         this.numberOfVGA = numberOfVGA;
         this.numberOfDVI = numberOfDVI;
