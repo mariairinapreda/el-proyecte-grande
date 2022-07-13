@@ -5,20 +5,43 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
 @Data
 @NoArgsConstructor
 @Builder
+@Table(name = "display")
+@Entity(name = "Display")
 public class Display {
-    @JsonProperty("displayId")
-    private int id;
-    @JsonProperty("displayDiagonal")
-    private int diagonal;
-    @JsonProperty("displayResolution")
+    @Id
+    @SequenceGenerator(
+            name = "display_id_sequence",
+            sequenceName = "display_id_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "display_id_sequence"
+    )
+    @Column(
+            name = "id",
+            updatable = false
+    )
+    @JsonProperty("id")
+    private Long id;
+
+    @Column(name = "diagonal")
+    @JsonProperty("diagonal")
+    private Float diagonal;
+    @Column(name = "resolution")
+    @JsonProperty("resolution")
     private String resolution;
-    @JsonProperty("displayRefreshRate")
+
+    @Column(name = "refresh_rate")
+    @JsonProperty("refresh_rate")
     private int refreshRate;
 
-    public Display(int id, int diagonal, String resolution, int refreshRate) {
+    public Display(Long id, Float diagonal, String resolution, int refreshRate) {
         this.id = id;
         this.diagonal = diagonal;
         this.resolution = resolution;
