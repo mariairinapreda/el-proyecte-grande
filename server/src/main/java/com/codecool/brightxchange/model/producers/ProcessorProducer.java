@@ -1,12 +1,48 @@
 package com.codecool.brightxchange.model.producers;
 
-import com.codecool.brightxchange.model.producers.BaseProducer;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
 @Data
 @Builder
 @NoArgsConstructor
-public class ProcessorProducer extends BaseProducer {
+@Entity(name = "ProcessorProducer")
+@Table(
+        name = "processor_producer",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "name_unique", columnNames = "name")
+        }
+)
+public class ProcessorProducer{
+    @JsonProperty("id")
+    @Id
+    @SequenceGenerator(
+            name = "processor_producer_sequence",
+            sequenceName = "processor_producer_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "processor_producer_sequence"
+    )
+    @Column(
+            name = "id",
+            updatable = false
+    )
+    private Long id;
+    @JsonProperty("name")
+    @Column(
+            name = "name",
+            columnDefinition = "TEXT"
+    )
+    private String name;
+
+    public ProcessorProducer(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
