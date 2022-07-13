@@ -5,10 +5,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 abstract class BaseProducer {
     protected int id;
-    protected String producer;
+    protected String name;
 
-    public BaseProducer(int id, String producer) {
+    public BaseProducer(int id, String name) {
         this.id = id;
-        this.producer = producer;
+        this.name = name;
     }
 }
