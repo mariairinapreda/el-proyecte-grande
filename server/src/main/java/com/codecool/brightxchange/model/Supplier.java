@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Supplier {
+    @JsonProperty("supplierId")
     private int id;
+    @JsonProperty("supplierName")
     private String name;
 
     public Supplier(int id, String name) {

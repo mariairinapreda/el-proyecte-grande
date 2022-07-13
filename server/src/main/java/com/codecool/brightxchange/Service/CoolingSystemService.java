@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service("CoolingSystemService")
-public class CoolingSystemService implements CoolingSystemDAO {
+public class CoolingSystemService {
     @Autowired
     @Qualifier("CoolingSystemMemory")
     private CoolingSystemDAO coolingSystemDAO;

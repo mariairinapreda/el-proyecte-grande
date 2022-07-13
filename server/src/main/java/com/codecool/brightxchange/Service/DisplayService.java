@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service("DisplayService")
-public class DisplayService implements DisplayDAO {
+public class DisplayService  {
     @Autowired
     @Qualifier("DisplayMemory")
     private DisplayDAO displayDAO;
