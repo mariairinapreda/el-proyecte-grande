@@ -1,11 +1,14 @@
 package com.codecool.brightxchange.model.productRelated;
 
+import com.codecool.brightxchange.model.products.GraphicsCard;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -37,8 +40,16 @@ public class GCModel {
     )
     private String name;
 
-    public GCModel(Long id, String name) {
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<GraphicsCard> graphicsCards = new HashSet<>();
+
+    public GCModel(Long id, String name, Set<GraphicsCard> graphicsCards) {
         this.id = id;
         this.name = name;
+        this.graphicsCards = graphicsCards;
     }
 }
