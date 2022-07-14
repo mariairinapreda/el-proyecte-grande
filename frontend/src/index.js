@@ -19,6 +19,20 @@ root.render(
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<LandingPage />} />
+
+              <Route path="/carcase" element={<LandingPage />} />
+              <Route path="/coolere" element={<LandingPage />} />
+              <Route path="/desktop-uri" element={<LandingPage />} />
+              <Route path="/hard-disk-uri" element={<LandingPage />} />
+              <Route path="/laptopuri" element={<LandingPage />} />
+              <Route path="/memorii" element={<LandingPage />} />
+              <Route path="/placi-de-baza" element={<LandingPage />} />
+              <Route path="/placi-video" element={<LandingPage />} />
+              <Route path="/procesoare" element={<LandingPage />} />
+              <Route path="/ssd-uri" element={<LandingPage />} />
+              <Route path="/surse" element={<LandingPage />} />
+              <Route path="/ventilatoare" element={<LandingPage />} />
+
               <Route path="/add-case" element={<Footer />}/>
               <Route path="/cases" element={<Footer />}>
                   <Route path=":caseId" element={<Footer />}></Route>
