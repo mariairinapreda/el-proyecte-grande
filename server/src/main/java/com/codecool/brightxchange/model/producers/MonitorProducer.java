@@ -1,11 +1,14 @@
 package com.codecool.brightxchange.model.producers;
 
+import com.codecool.brightxchange.model.products.Monitor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -42,8 +45,21 @@ public class MonitorProducer{
     )
     private String name;
 
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Monitor> monitors = new HashSet<>();
+
     public MonitorProducer(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public MonitorProducer(Long id, String name, Set<Monitor> monitors) {
+        this.id = id;
+        this.name = name;
+        this.monitors = monitors;
     }
 }
