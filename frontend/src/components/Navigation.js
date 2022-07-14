@@ -96,7 +96,7 @@ function Navigation() {
 							</li>
 							<li><Link to="/feedback">Feedback</Link></li>
 							<li><Link to="/contact">Contact</Link></li>
-							<li><Link to="/about-us">About</Link></li>
+							<li><Link to="/about-us">Despre noi</Link></li>
 							<li><Link to="/cos-cumparaturi">CART<span id="cart-quantity">0</span>
 							</Link></li>
 						</ul>
