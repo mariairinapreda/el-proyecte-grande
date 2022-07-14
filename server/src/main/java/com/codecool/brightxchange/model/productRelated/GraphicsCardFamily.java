@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.model.productRelated;
 
+import com.codecool.brightxchange.model.products.GraphicsCard;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
@@ -46,9 +47,18 @@ public class GraphicsCardFamily {
     )
     private Set<GCSeries> series = new HashSet<>();
 
-    public GraphicsCardFamily(Long id, String name, Set<GCSeries> series) {
+
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<GraphicsCard> graphicsCards = new HashSet<>();
+
+    public GraphicsCardFamily(Long id, String name, Set<GCSeries> series, Set<GraphicsCard> graphicsCards) {
         this.id = id;
         this.name = name;
         this.series = series;
+        this.graphicsCards = graphicsCards;
     }
 }
