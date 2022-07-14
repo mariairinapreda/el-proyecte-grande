@@ -30,10 +30,10 @@ public class Case{
     )
     private Long id;
 
-    @JsonProperty("productPrice")
+    @JsonProperty("price")
     private float price;
 
-    @JsonProperty("productCurrency")
+    @JsonProperty("currency")
     @ManyToOne
     @JoinColumn(
             name = "price_currency_id",
@@ -45,10 +45,10 @@ public class Case{
     )
     private PriceCurrency currency;
 
-    @JsonProperty("productQuantity")
+    @JsonProperty("quantity")
     private Integer quantity;
 
-    @JsonProperty("productSupplier")
+    @JsonProperty("supplier")
     @ManyToOne
     @JoinColumn(
             name = "supplier_id",
@@ -72,7 +72,7 @@ public class Case{
     )
     private CaseProducer caseProducer;
 
-    @JsonProperty("caseModel")
+    @JsonProperty("model")
     @Column(   
             name =  "model",
             columnDefinition = "TEXT"
@@ -91,15 +91,16 @@ public class Case{
     )
     private CaseType caseType;
 
-    @JsonProperty("caseNumberOfHDD")
+    @JsonProperty("numberOfHDD")
     @Column(name = "number_of_hdd")
     private Integer numberOfHDD;
 
-    @JsonProperty("caseNumberOfSSD")
+    @JsonProperty("numberOfSSD")
     @Column(name = "number_of_ssd")
     private Integer numberOfSSD;
 
-    public Case(Long id, float price, PriceCurrency currency, Integer quantity, Supplier supplier, CaseProducer caseProducer, String model, CaseType caseType, Integer numberOfHDD, Integer numberOfSSD) {
+    public Case(Long id, float price, PriceCurrency currency, Integer quantity, Supplier supplier,
+                CaseProducer caseProducer, String model, CaseType caseType, Integer numberOfHDD, Integer numberOfSSD) {
         this.id = id;
         this.price = price;
         this.currency = currency;

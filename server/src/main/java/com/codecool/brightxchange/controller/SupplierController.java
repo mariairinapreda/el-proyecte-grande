@@ -1,6 +1,8 @@
 package com.codecool.brightxchange.controller;
 
 import com.codecool.brightxchange.model.Supplier;
+import com.codecool.brightxchange.service.SupplierService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,6 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/supplier")
 public class SupplierController {
+
+    @Autowired
+    private SupplierService supplierService;
 
     @GetMapping
     public List<Supplier> getAll(){

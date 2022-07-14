@@ -1,6 +1,8 @@
 package com.codecool.brightxchange.controller;
 
 import com.codecool.brightxchange.model.PriceCurrency;
+import com.codecool.brightxchange.service.PriceCurrencyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,6 +11,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/price-currency")
 public class PriceCurrencyController {
+    @Autowired
+    private PriceCurrencyService priceCurrencyService;
 
     @GetMapping
     public List<PriceCurrency> getAll(){
@@ -19,4 +23,6 @@ public class PriceCurrencyController {
     public PriceCurrency getById(@PathVariable("id") Long id){
         return null;
     }
+
+
 }

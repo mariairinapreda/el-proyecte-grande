@@ -7,7 +7,6 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import footer from "./components/Footer";
 import LandingPage from "./componentPages/LandingPage";
 import Footer from "./components/Footer";
 

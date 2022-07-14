@@ -30,7 +30,7 @@ public class PriceCurrency {
             generator = "price_currency_sequence"
     )
     private Long id;
-    @JsonProperty("priceCurrency")
+    @JsonProperty("currency")
     @Column(
             name = "currency",
             columnDefinition = "TEXT"

@@ -1,6 +1,8 @@
-package com.codecool.brightxchange.controller;
+package com.codecool.brightxchange.controller.caseControllers;
 
 import com.codecool.brightxchange.model.productTypes.CaseType;
+import com.codecool.brightxchange.service.types.CaseTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,6 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/case-type")
 public class CaseTypeController {
+
+    @Autowired
+    private CaseTypeService caseTypeService;
 
     @GetMapping
     public List<CaseType> getAll(){

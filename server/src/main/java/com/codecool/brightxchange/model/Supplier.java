@@ -34,7 +34,7 @@ public class Supplier {
             generator = "supplier_sequence"
     )
     private Long id;
-    @JsonProperty("supplierName")
+    @JsonProperty("name")
     @Column(
             name = "name",
             columnDefinition = "TEXT"

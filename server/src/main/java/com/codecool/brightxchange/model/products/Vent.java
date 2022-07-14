@@ -74,7 +74,7 @@ public class Vent {
     )
     private String description;
 
-    @JsonProperty("ventDimensions")
+    @JsonProperty("dimensions")
     @Column(
             name = "dimensions",
             columnDefinition = "TEXT"
