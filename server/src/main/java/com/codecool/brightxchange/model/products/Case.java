@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @Entity(name = "Case")
-@Table(name = "case")
+@Table(name = "cases")
 public class Case{
     @JsonProperty("caseId")
     @Id
