@@ -1,14 +1,42 @@
-import {Fragment} from "react";
-import navigation from "../components/navigation";
-import footer from "../components/footer";
+import { useEffect, useState} from "react";
+import Footer from "../components/Footer";
+import Navigation from "../components/Navigation";
 
-function landingPage() {
+const LandingPage =() => {
+    const [data, setData] = useState(null);
+
+    useEffect(() =>{
+        fetch("http://localhost:8888/demo/case",{method:"GET"}).then(
+            response => response.json()
+        ).then(re =>
+            setData(re)
+        )
+    },[])
+if (data != null) {
+    console.log({data})
+}
+
+
     return(
-        <Fragment>
-            {navigation}
-            {footer}
-        </Fragment>
+        <>
+            <Navigation />
+            <ul style={{fontSize: "50px"}}>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+            </ul>
+            <Footer />
+        </>
     )
 }
 
-export default landingPage();
+export default LandingPage;

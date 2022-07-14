@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("GCSeriesService")
 public class GCSeriesService {
     @Autowired
-    @Qualifier("GCSeriesMemory")
     private GCSeriesDAO gcSeriesDAO;
 }

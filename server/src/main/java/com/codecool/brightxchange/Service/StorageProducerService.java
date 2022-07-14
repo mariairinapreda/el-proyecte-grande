@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("StorageProducerService")
 public class StorageProducerService {
     @Autowired
-    @Qualifier("StorageProducerMemory")
     private StorageProducerDAO storageProducerDAO;
 }

@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("GCConnectionInterfaceService")
 public class GCConnectionInterfaceService  {
     @Autowired
-    @Qualifier("GCConnectionInterfaceMemory")
     private GCConnectionInterfaceDAO gcConnectionInterfaceDAO;
 }

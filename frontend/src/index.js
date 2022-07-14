@@ -7,8 +7,9 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import footer from "./components/footer";
-import landingPage from "./componentPages/LandingPage";
+import footer from "./components/Footer";
+import LandingPage from "./componentPages/LandingPage";
+import Footer from "./components/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -17,12 +18,12 @@ root.render(
   <React.StrictMode>
       <BrowserRouter>
           <Routes>
-              <Route path="/" element={landingPage}/>
-              <Route path="/add-case" element={footer}/>
-              <Route path="/cases" element={footer}>
-                  <Route path=":caseId" element={footer}></Route>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/add-case" element={<Footer />}/>
+              <Route path="/cases" element={<Footer />}>
+                  <Route path=":caseId" element={<Footer />}></Route>
               </Route>
-              <Route path="*" element={footer}></Route>
+              <Route path="*" element={<Footer />}></Route>
           </Routes>
       </BrowserRouter>
 

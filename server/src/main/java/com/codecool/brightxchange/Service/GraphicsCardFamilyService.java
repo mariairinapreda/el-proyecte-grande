@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("GraphicsCardFamilyService")
 public class GraphicsCardFamilyService{
     @Autowired
-    @Qualifier("GraphicsCardFamilyMemory")
     private GraphicsCardFamilyDAO graphicsCardFamilyDAO;
 }

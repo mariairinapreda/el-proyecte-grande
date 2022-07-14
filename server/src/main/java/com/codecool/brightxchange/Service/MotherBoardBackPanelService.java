@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("MotherBoardBackPanelService")
 public class MotherBoardBackPanelService{
     @Autowired
-    @Qualifier("MotherBoardBackPanelMemory")
     private MotherBoardBackPanelDAO motherBoardBackPanelDAO;
 }

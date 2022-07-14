@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("RandomAccessMemoryTypeService")
 public class RandomAccessMemoryTypeService {
     @Autowired
-    @Qualifier("RandomAccessMemoryTypeMemory")
     private RandomAccessMemoryTypeDAO randomAccessMemoryTypeDAO;
 }

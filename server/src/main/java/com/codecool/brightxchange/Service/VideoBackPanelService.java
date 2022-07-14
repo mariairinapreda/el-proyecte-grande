@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("VideoBackPanelService")
 public class VideoBackPanelService {
     @Autowired
-    @Qualifier("VideoBackPanelMemory")
     private VideoBackPanelDAO videoBackPanelDAO;
 }

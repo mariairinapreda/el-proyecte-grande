@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("ConnectivityService")
 public class ConnectivityService {
     @Autowired
-    @Qualifier("ConnectivityMemory")
     private ConnectivityDAO connectivityDAO;
 }

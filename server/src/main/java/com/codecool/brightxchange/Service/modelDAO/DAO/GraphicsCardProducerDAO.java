@@ -1,4 +1,10 @@
 package com.codecool.brightxchange.Service.modelDAO.DAO;
 
-public interface GraphicsCardProducerDAO {
+import com.codecool.brightxchange.model.producers.ChipsetProducer;
+import com.codecool.brightxchange.model.producers.GraphicsCardProducer;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface GraphicsCardProducerDAO extends JpaRepository<GraphicsCardProducer, Long> {
 }

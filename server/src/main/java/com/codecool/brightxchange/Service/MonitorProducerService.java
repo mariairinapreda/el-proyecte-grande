@@ -8,6 +8,5 @@ import org.springframework.stereotype.Service;
 @Service("MonitorProducerService")
 public class MonitorProducerService {
     @Autowired
-    @Qualifier("MonitorProducerMemory")
     private MonitorProducerDAO monitorProducerDAO;
 }

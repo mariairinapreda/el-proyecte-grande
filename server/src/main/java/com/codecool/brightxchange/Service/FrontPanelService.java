@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("FrontPanelService")
 public class FrontPanelService {
     @Autowired
-    @Qualifier("FrontPanelMemory")
     private FrontPanelDAO frontPanelDAO;
 }

@@ -8,6 +8,5 @@ import org.springframework.stereotype.Service;
 @Service("GraphicsCardMemoryTypeService")
 public class GraphicsCardMemoryTypeService {
     @Autowired
-    @Qualifier("GraphicsCardMemoryTypeMemory")
     private GraphicsCardMemoryTypeDAO graphicsCardMemoryTypeDAO;
 }
