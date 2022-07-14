@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Service("VentProducerService")
 public class VentProducerService {
     @Autowired
-    @Qualifier("VentProducerMemory")
     private VentProducerDAO ventProducerDAO;
 
 }

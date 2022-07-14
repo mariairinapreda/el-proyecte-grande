@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("ChipsetProducerService")
 public class ChipsetProducerService {
     @Autowired
-    @Qualifier("ChipsetProducerMemory")
     private ChipsetProducerDAO chipsetProducerDAO;
 }

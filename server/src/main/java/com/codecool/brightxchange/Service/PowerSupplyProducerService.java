@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("PowerSupplyProducerService")
 public class PowerSupplyProducerService {
     @Autowired
-    @Qualifier("PowerSupplyProducerMemory")
     private PowerSupplyProducerDAO powerSupplyProducerDAO;
 }

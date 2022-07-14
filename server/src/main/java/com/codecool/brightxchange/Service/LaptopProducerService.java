@@ -10,6 +10,5 @@ import org.springframework.stereotype.Service;
 @Service("LaptopProducerService")
 public class LaptopProducerService{
     @Autowired
-    @Qualifier("LaptopProducerMemory")
     private LaptopProducerDAO laptopProducerDAO;
 }

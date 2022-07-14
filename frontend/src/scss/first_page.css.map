@@ -1,1 +1,12 @@
-{"version":3,"sourceRoot":"","sources":["../css-libraries/bulma/sass/utilities/_all.sass","first_page.scss","../css-libraries/bulma/sass/utilities/mixins.sass"],"names":[],"mappings":"AAAA;ACEA;EACE;EACA;;ACkGA;EDpGF;IAII;IACA;IACA;;;ACsGF;ED5GF;IASI;;;ACgHA;EDzHJ;IAYI;;;ACuHA;EDnIJ;IAeI;;;ACyFF;EDxGF;IAkBI;;;;AAIJ;EACE;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;;;AAGF;EACE;EACA","file":"first_page.css"}
+{
+  "version": 3,
+  "sourceRoot": "",
+  "sources": [
+    "../css-libraries/bulma/sass/utilities/_all.sass",
+    "first_page.scss",
+    "../css-libraries/bulma/sass/utilities/mixins.sass"
+  ],
+  "names": [],
+  "mappings": "AAAA;ACEA;EACE;EACA;;ACkGA;EDpGF;IAII;IACA;IACA;;;ACsGF;ED5GF;IASI;;;ACgHA;EDzHJ;IAYI;;;ACuHA;EDnIJ;IAeI;;;ACyFF;EDxGF;IAkBI;;;;AAIJ;EACE;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;;;AAGF;EACE;EACA",
+  "file": "first_page.css"
+}

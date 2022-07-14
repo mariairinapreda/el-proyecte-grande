@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 @Service("CoolingSystemService")
 public class CoolingSystemService {
     @Autowired
-    @Qualifier("CoolingSystemMemory")
     private CoolingSystemDAO coolingSystemDAO;
 }
