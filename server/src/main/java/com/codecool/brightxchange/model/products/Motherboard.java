@@ -10,6 +10,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -93,7 +95,14 @@ public class Motherboard {
     @Column(name = "number_of_m2")
     private Integer numberOfM2;
 
-    public Motherboard(Long id, float price, PriceCurrency currency, Integer quantity, Supplier supplier, ChipsetProducer chipsetProducer, MotherboardProducer motherboardProducer, String chipset, Integer numberOfSATA3, Integer numberOfM2) {
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Desktop> desktops = new HashSet<>();
+
+    public Motherboard(Long id, float price, PriceCurrency currency, Integer quantity, Supplier supplier, ChipsetProducer chipsetProducer, MotherboardProducer motherboardProducer, String chipset, Integer numberOfSATA3, Integer numberOfM2, Set<Desktop> desktops) {
         this.id = id;
         this.price = price;
         this.currency = currency;
@@ -104,5 +113,6 @@ public class Motherboard {
         this.chipset = chipset;
         this.numberOfSATA3 = numberOfSATA3;
         this.numberOfM2 = numberOfM2;
+        this.desktops = desktops;
     }
 }
