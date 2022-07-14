@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class BrightXchangeApplication {
@@ -19,19 +21,21 @@ public class BrightXchangeApplication {
     @Bean
     public CommandLineRunner createCategories(CategoryDAO repository) {
         return (args) ->{
-            repository.save(new Category("Carcase"));
-            repository.save(new Category("Coolere"));
-            repository.save(new Category("Desktop-uri"));
-            repository.save(new Category("Hard-disk-uri"));
-            repository.save(new Category("Laptopuri"));
-            repository.save(new Category("Memorii"));
-            repository.save(new Category("Placi de baza"));
-            repository.save(new Category("Placi video"));
-            repository.save(new Category("Procesoare"));
-            repository.save(new Category("SSD-uri"));
-            repository.save(new Category("Surse"));
-            repository.save(new Category("Ventilatoare"));
-            repository.findAll();
+            if(repository.findAll().size()<12 ) {
+                repository.save(new Category("Carcase"));
+                repository.save(new Category("Coolere"));
+                repository.save(new Category("Desktop-uri"));
+                repository.save(new Category("Hard-disk-uri"));
+                repository.save(new Category("Laptopuri"));
+                repository.save(new Category("Memorii"));
+                repository.save(new Category("Placi de baza"));
+                repository.save(new Category("Placi video"));
+                repository.save(new Category("Procesoare"));
+                repository.save(new Category("SSD-uri"));
+                repository.save(new Category("Surse"));
+                repository.save(new Category("Ventilatoare"));
+                repository.findAll();
+            }
         };
     }
 
