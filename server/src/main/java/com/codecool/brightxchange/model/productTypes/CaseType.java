@@ -1,11 +1,14 @@
 package com.codecool.brightxchange.model.productTypes;
 
+import com.codecool.brightxchange.model.products.Case;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -40,8 +43,21 @@ public class CaseType{
     @JsonProperty("name")
     private String name;
 
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Case> cases = new HashSet<>();
+
     public CaseType(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public CaseType(Long id, String name, Set<Case> cases) {
+        this.id = id;
+        this.name = name;
+        this.cases = cases;
     }
 }

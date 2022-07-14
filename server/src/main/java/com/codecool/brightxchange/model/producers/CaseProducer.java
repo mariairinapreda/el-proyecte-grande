@@ -1,12 +1,15 @@
 package com.codecool.brightxchange.model.producers;
 
+import com.codecool.brightxchange.model.products.Case;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Controller;
+
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -43,8 +46,21 @@ public class CaseProducer{
     )
     private String name;
 
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Case> cases = new HashSet<>();
+
     public CaseProducer(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public CaseProducer(Long id, String name, Set<Case> cases) {
+        this.id = id;
+        this.name = name;
+        this.cases = cases;
     }
 }
