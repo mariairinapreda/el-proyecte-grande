@@ -1,11 +1,14 @@
 package com.codecool.brightxchange.model.producers;
 
+import com.codecool.brightxchange.model.products.RandomAccessMemory;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -42,8 +45,21 @@ public class RAMProducer {
     )
     private String name;
 
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<RandomAccessMemory> randomAccessMemories = new HashSet<>();
+
     public RAMProducer(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public RAMProducer(Long id, String name, Set<RandomAccessMemory> randomAccessMemories) {
+        this.id = id;
+        this.name = name;
+        this.randomAccessMemories = randomAccessMemories;
     }
 }
