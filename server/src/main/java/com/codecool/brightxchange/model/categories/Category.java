@@ -10,7 +10,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity(name = "Category")
-@Table(name = "category")
+@Table(name = "category",
+    uniqueConstraints = {
+        @UniqueConstraint(name = "category_name_unique", columnNames = "name")
+    }
+)
 public class Category {
     @Id
     @SequenceGenerator(
