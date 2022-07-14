@@ -1,11 +1,14 @@
 package com.codecool.brightxchange.model.productRelated;
 
+import com.codecool.brightxchange.model.products.Laptop;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -41,10 +44,25 @@ public class Display {
     @JsonProperty("refresh_rate")
     private int refreshRate;
 
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Laptop> laptops = new HashSet<>();
+
     public Display(Long id, Float diagonal, String resolution, int refreshRate) {
         this.id = id;
         this.diagonal = diagonal;
         this.resolution = resolution;
         this.refreshRate = refreshRate;
+    }
+
+    public Display(Long id, Float diagonal, String resolution, int refreshRate, Set<Laptop> laptops) {
+        this.id = id;
+        this.diagonal = diagonal;
+        this.resolution = resolution;
+        this.refreshRate = refreshRate;
+        this.laptops = laptops;
     }
 }
