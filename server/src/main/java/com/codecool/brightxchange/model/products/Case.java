@@ -31,13 +31,22 @@ public class Case{
     private Long id;
 
     @JsonProperty("productPrice")
-    protected float price;
+    private float price;
 
     @JsonProperty("productCurrency")
-    protected PriceCurrency currency;
+    @ManyToOne
+    @JoinColumn(
+            name = "price_currency_id",
+            nullable = false,
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(
+                    name = "case_price_currency_fk"
+            )
+    )
+    private PriceCurrency currency;
 
     @JsonProperty("productQuantity")
-    protected Integer quantity;
+    private Integer quantity;
 
     @JsonProperty("productSupplier")
     @ManyToOne
