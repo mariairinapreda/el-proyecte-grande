@@ -38,4 +38,16 @@ public class Category {
     public Category(String name) {
         this.name = name;
     }
+
+    private String getTempName(){
+        return name.toLowerCase().replace(" ", "-");
+    }
+
+    public String getImageUrl(){
+        return String.format("https://brightxchangeprojectbucket.s3.eu-central-1.amazonaws.com/cat/%s.jpg", getTempName());
+    }
+
+    public String getUrl(){
+        return String.format("/%s",getTempName());
+    }
 }
