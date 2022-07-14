@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.model.productRelated;
 
+import com.codecool.brightxchange.model.products.Laptop;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
@@ -7,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -48,6 +51,16 @@ public class MotherBoardBackPanel {
     @Column(name = "number_of_rj45")
     private Integer numberOfRJ45;
 
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Laptop> laptops = new HashSet<>();
+
+
+
+
     public MotherBoardBackPanel(Long id, Integer numberOfHDMI, Integer numberOfDisplayPort, Integer numberOfUSB2, Integer numberOfUSB3_1_A, Integer numberOfUSB3_2_A, Integer numberOfUSB3_2_B, Integer numberOfRJ45) {
         this.id = id;
         this.numberOfHDMI = numberOfHDMI;
@@ -57,5 +70,17 @@ public class MotherBoardBackPanel {
         this.numberOfUSB3_2_A = numberOfUSB3_2_A;
         this.numberOfUSB3_2_B = numberOfUSB3_2_B;
         this.numberOfRJ45 = numberOfRJ45;
+    }
+
+    public MotherBoardBackPanel(Long id, Integer numberOfHDMI, Integer numberOfDisplayPort, Integer numberOfUSB2, Integer numberOfUSB3_1_A, Integer numberOfUSB3_2_A, Integer numberOfUSB3_2_B, Integer numberOfRJ45, Set<Laptop> laptops) {
+        this.id = id;
+        this.numberOfHDMI = numberOfHDMI;
+        this.numberOfDisplayPort = numberOfDisplayPort;
+        this.numberOfUSB2 = numberOfUSB2;
+        this.numberOfUSB3_1_A = numberOfUSB3_1_A;
+        this.numberOfUSB3_2_A = numberOfUSB3_2_A;
+        this.numberOfUSB3_2_B = numberOfUSB3_2_B;
+        this.numberOfRJ45 = numberOfRJ45;
+        this.laptops = laptops;
     }
 }
