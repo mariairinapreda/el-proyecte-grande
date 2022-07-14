@@ -1,11 +1,14 @@
 package com.codecool.brightxchange.model.productTypes;
 
+import com.codecool.brightxchange.model.products.RandomAccessMemory;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -40,8 +43,21 @@ public class RandomAccessMemoryType{
     @JsonProperty("name")
     private String name;
 
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<RandomAccessMemory> randomAccessMemories = new HashSet<>();
+
     public RandomAccessMemoryType(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public RandomAccessMemoryType(Long id, String name, Set<RandomAccessMemory> randomAccessMemories) {
+        this.id = id;
+        this.name = name;
+        this.randomAccessMemories = randomAccessMemories;
     }
 }
