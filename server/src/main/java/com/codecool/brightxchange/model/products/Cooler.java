@@ -71,8 +71,13 @@ public class Cooler {
     )
     private String dimensions;
 
-    public Cooler(Long id, String description, String dimensions) {
+
+    public Cooler(Long id, float price, PriceCurrency currency, Integer quantity, Supplier supplier, String description, String dimensions) {
         this.id = id;
+        this.price = price;
+        this.currency = currency;
+        this.quantity = quantity;
+        this.supplier = supplier;
         this.description = description;
         this.dimensions = dimensions;
     }

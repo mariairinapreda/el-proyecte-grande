@@ -158,8 +158,12 @@ public class Laptop {
     @JsonProperty("laptopWeight")
     private Integer weight;
 
-    public Laptop(Long id, LaptopProducer laptopProducer, Display display, Processor processor, RandomAccessMemory memory, Storage storage, GraphicsCard graphicsCard, Connectivity connectivity, MotherBoardBackPanel backPanel, String dimensions, Integer weight) {
+    public Laptop(Long id, float price, PriceCurrency currency, Integer quantity, Supplier supplier, LaptopProducer laptopProducer, Display display, Processor processor, RandomAccessMemory memory, Storage storage, GraphicsCard graphicsCard, Connectivity connectivity, MotherBoardBackPanel backPanel, String dimensions, Integer weight) {
         this.id = id;
+        this.price = price;
+        this.currency = currency;
+        this.quantity = quantity;
+        this.supplier = supplier;
         this.laptopProducer = laptopProducer;
         this.display = display;
         this.processor = processor;

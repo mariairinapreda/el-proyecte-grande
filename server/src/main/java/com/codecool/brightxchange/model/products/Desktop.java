@@ -189,8 +189,12 @@ public class Desktop{
     )
     private String description;
 
-    public Desktop(int id, Processor processor, GraphicsCard graphicsCard, Motherboard motherboard, RandomAccessMemory memory, Storage storage, Case desktopCase, MotherBoardBackPanel backPanel, FrontPanel frontPanel, Connectivity connectivity, CoolingSystem coolingSystem, PowerSupply powerSupply, String description) {
+    public Desktop(int id, float price, PriceCurrency currency, Integer quantity, Supplier supplier, Processor processor, GraphicsCard graphicsCard, Motherboard motherboard, RandomAccessMemory memory, Storage storage, Case desktopCase, MotherBoardBackPanel backPanel, FrontPanel frontPanel, Connectivity connectivity, CoolingSystem coolingSystem, PowerSupply powerSupply, String description) {
         this.id = id;
+        this.price = price;
+        this.currency = currency;
+        this.quantity = quantity;
+        this.supplier = supplier;
         this.processor = processor;
         this.graphicsCard = graphicsCard;
         this.motherboard = motherboard;

@@ -14,7 +14,7 @@ public class SupplierCreator {
         return suppliers;
     }
 
-    public void initialize(){
-        suppliers.add(new Supplier(1, "Bright Xchange"));
-    }
+//    public void initialize(){
+//        suppliers.add(new Supplier(1, "Bright Xchange"));
+//    }
 }

@@ -59,8 +59,12 @@ public class Motherboard {
     @JsonProperty("motherboardNumberOfM2")
     private int numberOfM2;
 
-    public Motherboard(int id, ChipsetProducer chipsetProducer, MotherboardProducer motherboardProducer, String chipset, int numberOfSATA3, int numberOfM2) {
+    public Motherboard(int id, float price, PriceCurrency currency, Integer quantity, Supplier supplier, ChipsetProducer chipsetProducer, MotherboardProducer motherboardProducer, String chipset, int numberOfSATA3, int numberOfM2) {
         this.id = id;
+        this.price = price;
+        this.currency = currency;
+        this.quantity = quantity;
+        this.supplier = supplier;
         this.chipsetProducer = chipsetProducer;
         this.motherboardProducer = motherboardProducer;
         this.chipset = chipset;
