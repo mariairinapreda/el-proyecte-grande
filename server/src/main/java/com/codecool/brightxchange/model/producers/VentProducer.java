@@ -1,11 +1,14 @@
 package com.codecool.brightxchange.model.producers;
 
+import com.codecool.brightxchange.model.products.Vent;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -42,8 +45,16 @@ public class VentProducer {
     )
     private String name;
 
-    public VentProducer(Long id, String name) {
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Vent> vents = new HashSet<>();
+
+    public VentProducer(Long id, String name, Set<Vent> vents) {
         this.id = id;
         this.name = name;
+        this.vents = vents;
     }
 }
