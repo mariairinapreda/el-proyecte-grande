@@ -131,9 +131,14 @@ public class PriceCurrency {
             fetch = FetchType.LAZY
     )
     private Set<PowerSupply> powerSupplies = new HashSet<>();
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Motherboard> motherboards = new HashSet<>();
 
-
-    public PriceCurrency(Long id, Currency currency, Set<Case> cases, Set<Cooler> coolers, Set<Desktop> desktops, Set<Processor> processors, Set<GraphicsCard> graphicsCards, Set<HDD> hdds, Set<SSD> ssds, Set<Vent> vents, Set<Storage> storages, Set<RandomAccessMemory> randomAccessMemories, Set<Monitor> monitors, Set<Laptop> laptops, Set<PowerSupply> powerSupplies) {
+    public PriceCurrency(Long id, Currency currency, Set<Case> cases, Set<Cooler> coolers, Set<Desktop> desktops, Set<Processor> processors, Set<GraphicsCard> graphicsCards, Set<HDD> hdds, Set<SSD> ssds, Set<Vent> vents, Set<Storage> storages, Set<RandomAccessMemory> randomAccessMemories, Set<Monitor> monitors, Set<Laptop> laptops, Set<PowerSupply> powerSupplies, Set<Motherboard> motherboards) {
         this.id = id;
         this.currency = currency;
         this.cases = cases;
@@ -149,5 +154,6 @@ public class PriceCurrency {
         this.monitors = monitors;
         this.laptops = laptops;
         this.powerSupplies = powerSupplies;
+        this.motherboards = motherboards;
     }
 }

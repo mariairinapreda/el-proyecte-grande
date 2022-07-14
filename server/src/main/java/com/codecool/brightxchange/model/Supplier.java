@@ -138,7 +138,14 @@ public class Supplier {
         this.name = name;
     }
 
-    public Supplier(Long id, String name, Set<Case> cases, Set<Cooler> coolers, Set<Desktop> desktops, Set<GraphicsCard> graphicsCards, Set<HDD> hdds, Set<SSD> ssds, Set<Vent> vents, Set<Storage> storages, Set<RandomAccessMemory> randomAccessMemories, Set<Processor> processors, Set<Monitor> monitors, Set<Laptop> laptops, Set<PowerSupply> powerSupplies) {
+    @OneToMany(
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Motherboard> motherboards = new HashSet<>();
+
+    public Supplier(Long id, String name, Set<Case> cases, Set<Cooler> coolers, Set<Desktop> desktops, Set<GraphicsCard> graphicsCards, Set<HDD> hdds, Set<SSD> ssds, Set<Vent> vents, Set<Storage> storages, Set<RandomAccessMemory> randomAccessMemories, Set<Processor> processors, Set<Monitor> monitors, Set<Laptop> laptops, Set<PowerSupply> powerSupplies, Set<Motherboard> motherboards) {
         this.id = id;
         this.name = name;
         this.cases = cases;
@@ -154,5 +161,6 @@ public class Supplier {
         this.monitors = monitors;
         this.laptops = laptops;
         this.powerSupplies = powerSupplies;
+        this.motherboards = motherboards;
     }
 }
