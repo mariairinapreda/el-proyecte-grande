@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import LandingPage from "./componentPages/LandingPage";
 import Footer from "./components/Footer";
+import CasePage from "./componentPages/CasePage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -19,7 +20,7 @@ root.render(
           <Routes>
               <Route path="/" element={<LandingPage />} />
 
-              <Route path="/carcase" element={<LandingPage />} />
+              <Route path="/carcase" element={<CasePage />} />
               <Route path="/coolere" element={<LandingPage />} />
               <Route path="/desktop-uri" element={<LandingPage />} />
               <Route path="/hard-disk-uri" element={<LandingPage />} />
