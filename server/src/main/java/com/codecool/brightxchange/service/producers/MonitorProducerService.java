@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 @Service("MonitorProducerService")
 public class MonitorProducerService {
-    @Autowired
-    private MonitorProducerDAO monitorProducerDAO;
+    private final MonitorProducerDAO monitorProducerDAO;
+
+    public MonitorProducerService(MonitorProducerDAO monitorProducerDAO) {
+        this.monitorProducerDAO = monitorProducerDAO;
+    }
 }

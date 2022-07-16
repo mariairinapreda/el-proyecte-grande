@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 @Service("LaptopProducerService")
 public class LaptopProducerService{
-    @Autowired
-    private LaptopProducerDAO laptopProducerDAO;
+    private final LaptopProducerDAO laptopProducerDAO;
+
+    public LaptopProducerService(LaptopProducerDAO laptopProducerDAO) {
+        this.laptopProducerDAO = laptopProducerDAO;
+    }
 }

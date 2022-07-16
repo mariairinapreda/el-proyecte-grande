@@ -15,16 +15,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/case")
 public class CaseController {
+    private final CaseService caseService;
+    private final CaseProducerService caseProducerService;
+    private final CaseTypeService caseTypeService;
+    private final PriceCurrencyService priceCurrencyService;
+    private final SupplierService supplierService;
+
     @Autowired
-    private CaseService caseService;
-    @Autowired
-    private CaseProducerService caseProducerService;
-    @Autowired
-    private CaseTypeService caseTypeService;
-    @Autowired
-    private PriceCurrencyService priceCurrencyService;
-    @Autowired
-    private SupplierService supplierService;
+    public CaseController(CaseService caseService, CaseProducerService caseProducerService, CaseTypeService caseTypeService, PriceCurrencyService priceCurrencyService, SupplierService supplierService) {
+        this.caseService = caseService;
+        this.caseProducerService = caseProducerService;
+        this.caseTypeService = caseTypeService;
+        this.priceCurrencyService = priceCurrencyService;
+        this.supplierService = supplierService;
+    }
 
 
     @GetMapping

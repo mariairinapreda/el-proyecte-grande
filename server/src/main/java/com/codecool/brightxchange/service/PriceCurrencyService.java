@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("PriceCurrencyService")
 public class PriceCurrencyService {
-    @Autowired
-    private PriceCurrencyDAO priceCurrencyDAO;
+    private final PriceCurrencyDAO priceCurrencyDAO;
+
+    public PriceCurrencyService(PriceCurrencyDAO priceCurrencyDAO) {
+        this.priceCurrencyDAO = priceCurrencyDAO;
+    }
 }

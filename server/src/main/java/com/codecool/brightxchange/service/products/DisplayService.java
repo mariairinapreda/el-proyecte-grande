@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("DisplayService")
 public class DisplayService  {
-    @Autowired
-    private DisplayDAO displayDAO;
+    private final DisplayDAO displayDAO;
+
+    public DisplayService(DisplayDAO displayDAO) {
+        this.displayDAO = displayDAO;
+    }
 }

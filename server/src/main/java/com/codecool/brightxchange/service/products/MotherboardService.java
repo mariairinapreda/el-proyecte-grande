@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("MotherboardService")
 public class MotherboardService {
-    @Autowired
-    private MotherboardDAO motherboardDAO;
+    private final MotherboardDAO motherboardDAO;
+
+    public MotherboardService(MotherboardDAO motherboardDAO) {
+        this.motherboardDAO = motherboardDAO;
+    }
 }

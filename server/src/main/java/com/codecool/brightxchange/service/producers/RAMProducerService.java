@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("RAMProducerService")
 public class RAMProducerService {
-    @Autowired
-    private RAMProducerDAO ramProducerDAO;
+    private final RAMProducerDAO ramProducerDAO;
+
+    public RAMProducerService(RAMProducerDAO ramProducerDAO) {
+        this.ramProducerDAO = ramProducerDAO;
+    }
 }

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("ChipsetProducerService")
 public class ChipsetProducerService {
-    @Autowired
-    private ChipsetProducerDAO chipsetProducerDAO;
+    private final ChipsetProducerDAO chipsetProducerDAO;
+
+    public ChipsetProducerService(ChipsetProducerDAO chipsetProducerDAO) {
+        this.chipsetProducerDAO = chipsetProducerDAO;
+    }
 }

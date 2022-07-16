@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("GraphicsCardFamilyService")
 public class GraphicsCardFamilyService{
-    @Autowired
-    private GraphicsCardFamilyDAO graphicsCardFamilyDAO;
+    private final GraphicsCardFamilyDAO graphicsCardFamilyDAO;
+
+    public GraphicsCardFamilyService(GraphicsCardFamilyDAO graphicsCardFamilyDAO) {
+        this.graphicsCardFamilyDAO = graphicsCardFamilyDAO;
+    }
 }

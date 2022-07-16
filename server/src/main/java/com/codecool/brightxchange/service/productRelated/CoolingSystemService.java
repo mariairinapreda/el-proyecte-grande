@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("CoolingSystemService")
 public class CoolingSystemService {
-    @Autowired
-    private CoolingSystemDAO coolingSystemDAO;
+    private final CoolingSystemDAO coolingSystemDAO;
+
+    public CoolingSystemService(CoolingSystemDAO coolingSystemDAO) {
+        this.coolingSystemDAO = coolingSystemDAO;
+    }
 }

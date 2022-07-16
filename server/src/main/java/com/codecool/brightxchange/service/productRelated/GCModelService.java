@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("GCModelService")
 public class GCModelService{
-    @Autowired
-    private GCModelDAO gcModelDAO;
+    private final GCModelDAO gcModelDAO;
+
+    public GCModelService(GCModelDAO gcModelDAO) {
+        this.gcModelDAO = gcModelDAO;
+    }
 }

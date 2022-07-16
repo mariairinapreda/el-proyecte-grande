@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("GraphicsCardMemoryTypeService")
 public class GraphicsCardMemoryTypeService {
-    @Autowired
-    private GraphicsCardMemoryTypeDAO graphicsCardMemoryTypeDAO;
+    private final GraphicsCardMemoryTypeDAO graphicsCardMemoryTypeDAO;
+
+    public GraphicsCardMemoryTypeService(GraphicsCardMemoryTypeDAO graphicsCardMemoryTypeDAO) {
+        this.graphicsCardMemoryTypeDAO = graphicsCardMemoryTypeDAO;
+    }
 }

@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 @Service("DesktopService")
 public class DesktopService {
 
-    @Autowired
-    private DesktopDAO desktopDAO;
+    private final DesktopDAO desktopDAO;
 
+    public DesktopService(DesktopDAO desktopDAO) {
+        this.desktopDAO = desktopDAO;
+    }
 }

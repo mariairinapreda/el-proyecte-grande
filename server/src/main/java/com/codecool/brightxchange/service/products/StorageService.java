@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 @Service("StorageService")
 public class StorageService {
 
-    @Autowired
-    private StorageDAO storageDAO;
+    private final StorageDAO storageDAO;
+
+    public StorageService(StorageDAO storageDAO) {
+        this.storageDAO = storageDAO;
+    }
 }

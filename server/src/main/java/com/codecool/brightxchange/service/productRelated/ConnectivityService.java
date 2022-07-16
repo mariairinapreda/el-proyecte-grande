@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("ConnectivityService")
 public class ConnectivityService {
-    @Autowired
-    private ConnectivityDAO connectivityDAO;
+    private final ConnectivityDAO connectivityDAO;
+
+    public ConnectivityService(ConnectivityDAO connectivityDAO) {
+        this.connectivityDAO = connectivityDAO;
+    }
 }

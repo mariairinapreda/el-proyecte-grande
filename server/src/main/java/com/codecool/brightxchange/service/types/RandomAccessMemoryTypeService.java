@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("RandomAccessMemoryTypeService")
 public class RandomAccessMemoryTypeService {
-    @Autowired
-    private RandomAccessMemoryTypeDAO randomAccessMemoryTypeDAO;
+    private final RandomAccessMemoryTypeDAO randomAccessMemoryTypeDAO;
+
+    public RandomAccessMemoryTypeService(RandomAccessMemoryTypeDAO randomAccessMemoryTypeDAO) {
+        this.randomAccessMemoryTypeDAO = randomAccessMemoryTypeDAO;
+    }
 }
