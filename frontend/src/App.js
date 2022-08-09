@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.styles.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./componentPages/LandingPage";
 import CasePage from "./componentPages/CasePage";
