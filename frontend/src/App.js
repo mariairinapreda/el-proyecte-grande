@@ -4,7 +4,7 @@ import LandingPage from "./componentPages/LandingPage";
 import CasePage from "./componentPages/CasePage";
 import Footer from "./components/footer/Footer";
 import React from "react";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/navigation/Navigation";
 
 class App extends React.Component {
   constructor() {
