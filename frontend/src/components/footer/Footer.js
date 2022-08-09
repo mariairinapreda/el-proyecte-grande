@@ -3,12 +3,12 @@
 const Footer = () => {
   return (
     <div className="footer-div">
-      <div>
+      <div className={"footer-text-div"}>
         <span>L.M.A Team &copy; 2022 Codecool Bucharest</span>
       </div>
       <div>
         <a
-          href="https://www.linkedin.com/in/loredana-mihai-b5b46b206/"
+          href="src/components/footer/Footer"
           target="_blank"
           rel="noreferrer"
         >
@@ -17,7 +17,7 @@ const Footer = () => {
         </a>
         |
         <a
-          href="https://www.linkedin.com/in/loredana-mihai-b5b46b206/"
+          href="src/components/footer/Footer"
           target="_blank"
           rel="noreferrer"
         >
@@ -26,7 +26,7 @@ const Footer = () => {
         </a>
         |
         <a
-          href="https://www.linkedin.com/in/marian-andrei-sidor-603069174/"
+          href="src/components/footer/Footer"
           target="_blank"
           rel="noreferrer"
         >

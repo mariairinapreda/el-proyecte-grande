@@ -2,7 +2,7 @@ import "./App.styles.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./componentPages/LandingPage";
 import CasePage from "./componentPages/CasePage";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 import React from "react";
 import Navigation from "./components/Navigation";
 
