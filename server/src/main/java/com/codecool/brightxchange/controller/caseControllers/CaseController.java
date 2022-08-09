@@ -21,30 +21,14 @@ public class CaseController {
     private PriceCurrencyService priceCurrencyService;
     private final SupplierService supplierService;
 
-    public CaseController(SupplierService supplierService) {
+    @Autowired
+    public CaseController(CaseService caseService, CaseProducerService caseProducerService, CaseTypeService caseTypeService, PriceCurrencyService priceCurrencyService, SupplierService supplierService) {
+        this.caseService = caseService;
+        this.caseProducerService = caseProducerService;
+        this.caseTypeService = caseTypeService;
+        this.priceCurrencyService = priceCurrencyService;
         this.supplierService = supplierService;
     }
-
-    @Autowired
-    public CaseController(PriceCurrencyService priceCurrencyService) {
-        this.priceCurrencyService = priceCurrencyService;
-    }
-
-    @Autowired
-    public CaseController(CaseTypeService caseTypeService) {
-        this.caseTypeService = caseTypeService;
-    }
-
-    @Autowired
-    public CaseController(CaseProducerService caseProducerService) {
-        this.caseProducerService = caseProducerService;
-    }
-
-    @Autowired
-    public CaseController(CaseService caseService) {
-        this.caseService = caseService;
-    }
-
 
     @GetMapping
     public List<Case> getAll(){
