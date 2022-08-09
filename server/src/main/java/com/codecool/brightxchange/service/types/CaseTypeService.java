@@ -9,8 +9,11 @@ import java.util.*;
 
 @Service("CaseTypeService")
 public class CaseTypeService {
-    @Autowired
-    private CaseTypeDAO caseTypeDAO;
+    private final CaseTypeDAO caseTypeDAO;
+
+    public CaseTypeService(CaseTypeDAO caseTypeDAO) {
+        this.caseTypeDAO = caseTypeDAO;
+    }
 
     public List<CaseType> getAll(){
         return caseTypeDAO.findAll();

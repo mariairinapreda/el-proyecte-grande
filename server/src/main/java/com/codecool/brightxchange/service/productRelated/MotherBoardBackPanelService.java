@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("MotherBoardBackPanelService")
 public class MotherBoardBackPanelService{
-    @Autowired
-    private MotherBoardBackPanelDAO motherBoardBackPanelDAO;
+    private final MotherBoardBackPanelDAO motherBoardBackPanelDAO;
+
+    public MotherBoardBackPanelService(MotherBoardBackPanelDAO motherBoardBackPanelDAO) {
+        this.motherBoardBackPanelDAO = motherBoardBackPanelDAO;
+    }
 }

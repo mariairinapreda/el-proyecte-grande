@@ -1,5 +1,4 @@
-@import "../css-libraries/bulma/css/bulma.min.css";
-/* Bulma Utilities */
+@import "../css-libraries/bulma/css/bulma.min.css"; /* Bulma Utilities */
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
@@ -276,7 +275,6 @@ nav .wrapper {
   .wrapper .btn {
     display: block;
   }
-
   .wrapper .nav-links {
     position: fixed;
     height: 100vh;
@@ -292,42 +290,33 @@ nav .wrapper {
     box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
     transition: all 0.3s ease;
   }
-
   /* custom scroll bar */
   ::-webkit-scrollbar {
     width: 10px;
   }
-
   ::-webkit-scrollbar-track {
     background: #242526;
   }
-
   ::-webkit-scrollbar-thumb {
     background: #3A3B3C;
   }
-
   #menu-btn:checked ~ .nav-links {
     left: 0%;
   }
-
   #menu-btn:checked ~ .btn.menu-btn {
     display: none;
   }
-
   #close-btn:checked ~ .btn.menu-btn {
     display: block;
   }
-
   .nav-links li {
     margin: 15px 10px;
   }
-
   .nav-links li a {
     padding: 0 20px;
     display: block;
     font-size: 20px;
   }
-
   .nav-links .drop-menu {
     position: static;
     opacity: 1;
@@ -340,16 +329,13 @@ nav .wrapper {
     box-shadow: none;
     transition: all 0.3s ease;
   }
-
   #showDrop:checked ~ .drop-menu,
 #showMega:checked ~ .mega-box {
     max-height: 100%;
   }
-
   .nav-links .desktop-item {
     display: none;
   }
-
   .nav-links .mobile-item {
     display: block;
     color: #f2f2f2;
@@ -360,20 +346,16 @@ nav .wrapper {
     border-radius: 5px;
     transition: all 0.3s ease;
   }
-
   .nav-links .mobile-item:hover {
     background: #3A3B3C;
   }
-
   .drop-menu li {
     margin: 0;
   }
-
   .drop-menu li a {
     border-radius: 5px;
     font-size: 18px;
   }
-
   .mega-box {
     position: static;
     top: 65px;
@@ -384,33 +366,27 @@ nav .wrapper {
     overflow: hidden;
     transition: all 0.3s ease;
   }
-
   .mega-box .content {
     box-shadow: none;
     flex-direction: column;
     padding: 20px 20px 0 20px;
   }
-
   .mega-box .content .row {
     width: 100%;
     margin-bottom: 15px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
-
   .mega-box .content .row:nth-child(1),
 .mega-box .content .row:nth-child(2) {
     border-top: 0px;
   }
-
   .content .row .mega-links {
     border-left: 0px;
     padding-left: 15px;
   }
-
   .row .mega-links li {
     margin: 0;
   }
-
   .content .row header {
     font-size: 19px;
   }

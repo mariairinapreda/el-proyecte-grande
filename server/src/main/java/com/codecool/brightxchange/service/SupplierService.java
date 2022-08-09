@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 @Service("SupplierService")
 public class SupplierService {
 
-    @Autowired
-    private SupplierDAO supplierDAO;
+    private final SupplierDAO supplierDAO;
+
+    public SupplierService(SupplierDAO supplierDAO) {
+        this.supplierDAO = supplierDAO;
+    }
 }

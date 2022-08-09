@@ -11,8 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/price-currency")
 public class PriceCurrencyController {
-    @Autowired
-    private PriceCurrencyService priceCurrencyService;
+    private final PriceCurrencyService priceCurrencyService;
+
+    public PriceCurrencyController(PriceCurrencyService priceCurrencyService) {
+        this.priceCurrencyService = priceCurrencyService;
+    }
 
     @GetMapping
     public List<PriceCurrency> getAll(){

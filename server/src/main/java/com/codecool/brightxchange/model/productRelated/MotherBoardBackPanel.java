@@ -1,7 +1,6 @@
 package com.codecool.brightxchange.model.productRelated;
 
 import com.codecool.brightxchange.model.products.Laptop;
-import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;

@@ -9,6 +9,9 @@ public class CaseProducerService{
 
 
 
-    @Autowired
-    private CaseProducerDAO caseProducerDAO;
+    private final CaseProducerDAO caseProducerDAO;
+
+    public CaseProducerService(CaseProducerDAO caseProducerDAO) {
+        this.caseProducerDAO = caseProducerDAO;
+    }
 }

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("VideoBackPanelService")
 public class VideoBackPanelService {
-    @Autowired
-    private VideoBackPanelDAO videoBackPanelDAO;
+    private final VideoBackPanelDAO videoBackPanelDAO;
+
+    public VideoBackPanelService(VideoBackPanelDAO videoBackPanelDAO) {
+        this.videoBackPanelDAO = videoBackPanelDAO;
+    }
 }

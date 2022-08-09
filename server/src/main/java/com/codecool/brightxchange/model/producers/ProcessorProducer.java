@@ -1,6 +1,5 @@
 package com.codecool.brightxchange.model.producers;
 
-import com.codecool.brightxchange.model.products.Desktop;
 import com.codecool.brightxchange.model.products.Processor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;

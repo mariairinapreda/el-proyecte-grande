@@ -14,9 +14,9 @@ const LandingPage =() => {
             setCategories(re)
         )
     },[])
-if (categories != null) {
-    console.log({categories})
-}
+    if (categories != null) {
+        console.log({categories})
+    }
 
 
     return(

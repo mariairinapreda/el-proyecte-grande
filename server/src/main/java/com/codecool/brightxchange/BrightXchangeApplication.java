@@ -2,14 +2,10 @@ package com.codecool.brightxchange;
 
 import com.codecool.brightxchange.model.categories.Category;
 import com.codecool.brightxchange.repositories.categories.CategoryDAO;
-import com.codecool.brightxchange.repositories.types.CaseTypeDAO;
-import com.codecool.brightxchange.model.productTypes.CaseType;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class BrightXchangeApplication {

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 @Service("SsdService")
 public class SsdService {
 
-    @Autowired
-    private SsdDAO ssdDAO;
+    private final SsdDAO ssdDAO;
+
+    public SsdService(SsdDAO ssdDAO) {
+        this.ssdDAO = ssdDAO;
+    }
 }

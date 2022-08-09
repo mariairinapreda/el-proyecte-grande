@@ -12,8 +12,11 @@ import java.util.List;
 @RequestMapping("/case-type")
 public class CaseTypeController {
 
-    @Autowired
-    private CaseTypeService caseTypeService;
+    private final CaseTypeService caseTypeService;
+
+    public CaseTypeController(CaseTypeService caseTypeService) {
+        this.caseTypeService = caseTypeService;
+    }
 
     @GetMapping
     public List<CaseType> getAll(){

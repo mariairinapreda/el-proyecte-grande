@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("HddService")
 public class HddService {
-    @Autowired
-    private HddDAO hddDAO;
+    private final HddDAO hddDAO;
+
+    public HddService(HddDAO hddDAO) {
+        this.hddDAO = hddDAO;
+    }
 }

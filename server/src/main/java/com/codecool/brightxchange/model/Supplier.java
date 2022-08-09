@@ -2,7 +2,6 @@ package com.codecool.brightxchange.model;
 
 import com.codecool.brightxchange.model.products.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.node.ValueNode;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;

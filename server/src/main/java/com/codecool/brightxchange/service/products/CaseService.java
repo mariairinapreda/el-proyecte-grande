@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service("CaseService")
 public class CaseService{
-    @Autowired
-    private CaseDAO caseDAO;
+    private final CaseDAO caseDAO;
+
+    public CaseService(CaseDAO caseDAO) {
+        this.caseDAO = caseDAO;
+    }
 
     public void addCase(Case tempCase){
         caseDAO.save(tempCase);

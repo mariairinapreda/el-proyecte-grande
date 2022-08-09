@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("GCConnectionInterfaceService")
 public class GCConnectionInterfaceService  {
-    @Autowired
-    private GCConnectionInterfaceDAO gcConnectionInterfaceDAO;
+    private final GCConnectionInterfaceDAO gcConnectionInterfaceDAO;
+
+    public GCConnectionInterfaceService(GCConnectionInterfaceDAO gcConnectionInterfaceDAO) {
+        this.gcConnectionInterfaceDAO = gcConnectionInterfaceDAO;
+    }
 }

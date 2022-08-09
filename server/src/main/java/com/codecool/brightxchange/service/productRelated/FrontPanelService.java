@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("FrontPanelService")
 public class FrontPanelService {
-    @Autowired
-    private FrontPanelDAO frontPanelDAO;
+    private final FrontPanelDAO frontPanelDAO;
+
+    public FrontPanelService(FrontPanelDAO frontPanelDAO) {
+        this.frontPanelDAO = frontPanelDAO;
+    }
 }

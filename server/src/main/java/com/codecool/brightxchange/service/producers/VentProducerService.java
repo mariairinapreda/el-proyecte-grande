@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service("VentProducerService")
 public class VentProducerService {
-    @Autowired
-    private VentProducerDAO ventProducerDAO;
+    private final VentProducerDAO ventProducerDAO;
 
+    public VentProducerService(VentProducerDAO ventProducerDAO) {
+        this.ventProducerDAO = ventProducerDAO;
+    }
 }
