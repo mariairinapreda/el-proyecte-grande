@@ -1,4 +1,4 @@
-import "../scss/products_page.css";
+import "../scss/products_page.scss";
 
 const CasePage = () => {
   // const [cases,setCases] = useState([]);
