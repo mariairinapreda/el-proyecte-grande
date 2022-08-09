@@ -9,15 +9,20 @@ import Navigation from "./components/navigation/Navigation";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      user:{
+        username:"",
+        status:"user"
+      }
+    };
   }
 
   render() {
     let { user } = this.state;
     return (
       <>
-        <Navigation user={user} />
         <BrowserRouter>
+          <Navigation user={user} />
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/carcase" element={<CasePage />} />
