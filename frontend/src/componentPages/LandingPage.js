@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../scss/first_page.css";
+import "../scss/first_page.scss";
 
 const LandingPage = () => {
   const [categories, setCategories] = useState([]);
