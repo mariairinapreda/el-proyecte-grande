@@ -1,4 +1,6 @@
 import "../scss/products_page.css";
+import ProductsContainer from "../wrappers/products-container/ProductsContainer";
+
 
 const CasePage = () => {
   // const [cases,setCases] = useState([]);
@@ -96,8 +98,7 @@ const CasePage = () => {
   ];
   return (
     <>
-      <div className="products">
-        <div className="cards-container">
+      <ProductsContainer>
           {cases.map((e, i) => (
             <div key={"case_" + i} className="custom-card">
               <img className="custom-card-image" src={e.imageUrl} alt="None" />
@@ -130,8 +131,7 @@ const CasePage = () => {
               </div>
             </div>
           ))}
-        </div>
-      </div>
+      </ProductsContainer>
     </>
   );
 };
