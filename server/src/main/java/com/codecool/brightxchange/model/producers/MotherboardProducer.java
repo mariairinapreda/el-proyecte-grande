@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 @Builder
 @NoArgsConstructor
-@Entity(name = "GraphicMotherboardProducersCardProducer")
+@Entity(name = "MotherboardProducer")
 @Table(
         name = "motherboard_producer",
         uniqueConstraints = {
