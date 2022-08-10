@@ -1,5 +1,5 @@
-const SddPage = () => {
+const SsdPage = () => {
   return <></>;
 };
 
-export default SddPage;
+export default SsdPage;
