@@ -100,7 +100,7 @@ const CasePage = () => {
     <ProductsContainer key={"cases-container"}>
       {cases.map((e, i) => (
         <Card
-          key={`carcasa_${e.caseProducer.name}_${e.model}`}
+          key={`carcasa_${e.caseProducer.name}_${e.model}_${i}`}
           title={`Carcasa ${e.caseProducer.name} ${e.caseType.name} ${e.model}`}
           price={e.price}
           currency={e.currency.currency}
