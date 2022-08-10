@@ -21,7 +21,7 @@ public interface MonitorDAO extends JpaRepository<Monitor, Long> {
             " m.dimensions = :dimensions," +
             " m.refreshRate= :refreshRate," +
             " m.responseTime = :responseTime," +
-            " m.weight = :responseTime" +
+            " m.weight = :weight" +
             " where m.id= :id ")
     void update(@Param("id") long id,
                 @Param("price") float price,
@@ -42,7 +42,7 @@ public interface MonitorDAO extends JpaRepository<Monitor, Long> {
     @Modifying
     @Query("update Monitor m set m.backPanel = :backPanel where m.id =:id")
     void updateVideoBackPanel(@Param("id") long id,
-                        @Param("monitorProducer") VideoBackPanel backPanel);
+                        @Param("backPanel") VideoBackPanel backPanel);
 
     @Modifying
     @Query("update Monitor m set m.supplier = :supplier where m.id =:id")

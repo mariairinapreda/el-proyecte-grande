@@ -40,7 +40,7 @@ public interface LaptopDAO extends JpaRepository<Laptop, Long> {
 
 
     @Modifying
-    @Query("update Laptop l set l.connectivity = :backPanel where l.id = :id")
+    @Query("update Laptop l set l.connectivity = :connectivity where l.id = :id")
     void updateConnectivity(@Param("id") float id,
                         @Param("connectivity") Connectivity connectivity);
 
@@ -72,5 +72,5 @@ public interface LaptopDAO extends JpaRepository<Laptop, Long> {
     @Modifying
     @Query("update Laptop l set l.storage = :storage where l.id = :id")
     void updateStorage(@Param("id") float id,
-                        @Param("backPanel") Storage storage);
+                        @Param("storage") Storage storage);
 }
