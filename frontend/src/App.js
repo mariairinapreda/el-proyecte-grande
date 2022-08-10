@@ -1,15 +1,15 @@
 import "./App.styles.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import CasePage from "./pages/CasePage";
 import Footer from "./components/footer/Footer";
 import React from "react";
 import Navigation from "./components/navigation/Navigation";
-import CoolerPage from "./pages/CoolerPage";
-import HddPage from "./pages/HddPage";
-import RamPage from "./pages/RamPage";
-import SsdPage from "./pages/SsdPage";
-import VentPage from "./pages/VentPage";
+import SsdPage from "./pages/products/SsdPage";
+import VentPage from "./pages/products/VentPage";
+import RamPage from "./pages/products/RamPage";
+import HddPage from "./pages/products/HddPage";
+import CoolerPage from "./pages/products/CoolerPage";
+import CasePage from "./pages/products/CasePage";
 
 class App extends React.Component {
   constructor() {
