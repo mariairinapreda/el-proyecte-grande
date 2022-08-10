@@ -27,4 +27,10 @@ public class CaseTypeService {
         return caseTypeDAO.findCaseTypesByIdAfter(id);
     }
 
+    public void addCaseType(CaseType caseType){
+        caseTypeDAO.save(caseType);
+    }
+    public void updateCaseType(long id, CaseType caseType){
+        caseTypeDAO.update(id, caseType.getName());
+    }
 }
