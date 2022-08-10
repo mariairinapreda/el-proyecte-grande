@@ -1,4 +1,4 @@
-
+import "./Card.styles.scss"
 
 const Card = ({title, imageUrl, details,price, currency}) => {
   return (

@@ -97,17 +97,19 @@ const CasePage = () => {
 		},
 	];
 	return (
-		<>
-			<ProductsContainer>
+
+			<ProductsContainer key={"cases-container"}>
 					{cases.map((e, i) =>
-						<Card title={`Carcasa ${e.caseProducer} ${e.caseType} ${e.model}`}
+						<Card
+							key={`carcasa_${e.caseProducer.name}_${e.model}`}
+							title={`Carcasa ${e.caseProducer.name} ${e.caseType.name} ${e.model}`}
 							  price={e.price}
-							  currency={e.currency}
+							  currency={e.currency.currency}
 							  imageUrl={e.imageUrl}
 							  details={<CaseDetails numberOfHDD={e.numberOfHDD} numberOfSSD={e.numberOfSSD}/>}/>
 					)}
 			</ProductsContainer>
-		</>
+
 	);
 };
 

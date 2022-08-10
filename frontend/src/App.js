@@ -11,7 +11,7 @@ class App extends React.Component {
     super();
     this.state = {
       user:{
-        username:"",
+        username:"test",
         status:"user"
       }
     };
@@ -42,7 +42,7 @@ class App extends React.Component {
             <Route path="/cases" element={<Footer />}>
               <Route path=":caseId" element={<Footer />}></Route>
             </Route>
-            <Route path="*" element={<Footer />}></Route>
+            <Route path="*" element={<div>404</div>}></Route>
           </Routes>
         </BrowserRouter>
         <Footer />

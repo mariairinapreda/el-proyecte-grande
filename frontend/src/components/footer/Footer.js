@@ -1,9 +1,9 @@
-// import "../scss/main.css"
+import classes from "./Footer.module.scss"
 
 const Footer = () => {
   return (
-    <div className="footer-div">
-      <div className={"footer-text-div"}>
+    <div className={classes.footerDiv}>
+      <div>
         <span>L.M.A Team &copy; 2022 Codecool Bucharest</span>
       </div>
       <div>
@@ -12,8 +12,8 @@ const Footer = () => {
           target="_blank"
           rel="noreferrer"
         >
+          Loredana-Stefania Mihai
           {" "}
-          Loredana-Stefania Mihai{" "}
         </a>
         |
         <a
@@ -22,7 +22,8 @@ const Footer = () => {
           rel="noreferrer"
         >
           {" "}
-          Maria-Irina Preda{" "}
+            Maria-Irina Preda
+          {" "}
         </a>
         |
         <a
