@@ -2,7 +2,7 @@
 
 
 .container {
-    background-color: #f3dfc9;
+    //background-color: #f3dfc9;
     border-radius: 20px;
     margin-bottom: 10px!important;
 }
@@ -61,96 +61,10 @@
 .container-title {
     padding-left: 10px;
     font-size: 30px;
-    background-color: #fcd3a6;
+    //background-color: #fcd3a6;
     border-radius: 20px;
 }
 
-.products{
-    padding: 2% 2%;
-}
 
-.cards-container{
-    display: grid;
-    gap: 30px;
-    @include mobile{
-        grid-template-columns: 1fr;
-    }
-    @include tablet-only{
-        grid-template-columns: 1fr 1fr;
-    }
-    @include desktop-only{
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-    @include widescreen-only{
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    @include fullhd{
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-}
 
-.custom-card{
-    width: 100%;
-    max-height: max-content;
-    display: flex;
-    flex-direction: column;
-    background-color: #414141;
-    box-shadow: 0 0 5px 2px black ;
-    justify-content: space-between;
 
-}
-
-.custom-card-header{
-    text-align: center;
-    padding: 0 5%;
-}
-.custom-card-title{
-    color: white;
-    font-size: 1.5em;
-}
-
-.custom-card-image{
-    padding: 2.5%;
-}
-
-.custom-card-body{
-    padding-right: 5%;
-    padding-bottom: 5%;
-}
-
-.custom-card-details{
-    color: white;
-    margin: 20px;
-    text-align: center;
-}
-
-.custom-card-text{
-    font-size: 1em;
-    color: antiquewhite;
-}
-
-.custom-card-header .custom-card-text{
-    text-align: center;
-}
-
-.custom-card-body .custom-card-text{
-    text-align: right;
-    font-size: 1.5em;
-}
-
-.custom-card-body .custom-card-text p{
-    margin-right: 20px;
-    color: white;
-    font-weight: bold;
-}
-
-.custom-card-body .custom-card-text a{
-    display: inline-block;
-    background-color: white;
-    color: #252525;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 30px;
-    max-width: fit-content;
-    padding: 10px;
-}

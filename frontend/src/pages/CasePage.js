@@ -1,4 +1,6 @@
-import "../scss/products_page.css";
+import Card from "../wrappers/card/Card";
+import CaseDetails from "../wrappers/card/details/case-details/CaseDetails";
+import ProductsContainer from "../wrappers/products-container/ProductsContainer";
 
 const CasePage = () => {
   // const [cases,setCases] = useState([]);
@@ -95,44 +97,23 @@ const CasePage = () => {
     },
   ];
   return (
-    <>
-      <div className="products">
-        <div className="cards-container">
-          {cases.map((e, i) => (
-            <div key={"case_" + i} className="custom-card">
-              <img className="custom-card-image" src={e.imageUrl} alt="None" />
-              <div className="custom-card-header">
-                <p className="custom-card-title">
-                  Carcasa {e.caseProducer.name} {e.caseType.name} {e.model}
-                </p>
-              </div>
-              <table className="custom-card-details">
-                <tbody>
-                  <tr>
-                    <td>Numar suport HDD: {e.numberOfHDD}</td>
-                  </tr>
-                  <tr>
-                    <td>Numar suport SSD: {e.numberOfSSD}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="custom-card-body">
-                <div className="custom-card-text">
-                  <p className="lead">
-                    {e.price} {e.currency.currency}
-                  </p>
-                </div>
-                <div className="custom-card-text">
-                  <button className="btn btn-success add-product">
-                    Adauga in cos
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
+    <ProductsContainer key={"cases-container"}>
+      {cases.map((e, i) => (
+        <Card
+          key={`carcasa_${e.caseProducer.name}_${e.model}_${i}`}
+          title={`Carcasa ${e.caseProducer.name} ${e.caseType.name} ${e.model}`}
+          price={e.price}
+          currency={e.currency.currency}
+          imageUrl={e.imageUrl}
+          details={
+            <CaseDetails
+              numberOfHDD={e.numberOfHDD}
+              numberOfSSD={e.numberOfSSD}
+            />
+          }
+        />
+      ))}
+    </ProductsContainer>
   );
 };
 

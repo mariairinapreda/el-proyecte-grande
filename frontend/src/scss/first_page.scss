@@ -19,6 +19,9 @@
   @include widescreen{
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+  @include fullhd{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
   @include tablet{
     grid-column-gap: 30px;
 

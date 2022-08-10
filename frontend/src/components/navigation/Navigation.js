@@ -1,151 +1,152 @@
-import "../../scss/main.css";
 import { Link } from "react-router-dom";
-
+import classes from "./Navigation.module.scss";
+import "font-awesome/css/font-awesome.min.css"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faBars,faTimes} from "@fortawesome/free-solid-svg-icons";
 const Navigation = ({ user }) => {
   return (
-    <nav>
-      <div className="wrapper">
-        {user.username != null ? (
-          <div className="logo">
+    <nav className={classes.nav}>
+      <div className={classes.wrapper}>
+        {user.username == null ? (
+          <div className={classes.logo}>
             <Link to="/login">Logare</Link>
             <Link to="/register">Inregistrare</Link>
           </div>
         ) : (
-          <div className="logo">
-            <Link to="/">Login</Link>
+          <div className={classes.logo}>
+            <Link to="/">{user.username}</Link>
             <Link to="/logout">Deconectare</Link>
           </div>
         )}
-        <input type="radio" name="slider" id="menu-btn" />
-        <input type="radio" name="slider" id="close-btn" />
-        <ul className="nav-links">
-          <label htmlFor="close-btn" className="btn close-btn">
-            <i className="fas fa-times"></i>
+        <input type="checkbox" name="slider" id={"menu-btn"} className={classes.showMenu} />
+        <ul className={classes.navLinks}>
+          <label htmlFor="menu-btn" className={[classes.closeBtn].join()}>
+            <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
           </label>
-          <li>
+          <li className={classes.link}>
             <Link to="/">Home</Link>
           </li>
           {user.status === "admin" && (
-            <li>
-              <Link to="/" className="desktop-item">
+            <li className={classes.link}>
+              <Link to="/" className={classes.desktopItem}>
                 Adauga produse
               </Link>
-              <input type="checkbox" id="showDrop" />
-              <label htmlFor="showDrop" className="mobile-item">
+              <input type="checkbox" className={classes.showDrop} />
+              <label htmlFor="showDrop" className={classes.mobileItem}>
                 Adauga produs
               </label>
-              <ul className="drop-menu">
-                <li>
+              <ul className={classes.dropMenu}>
+                <li className={classes.link}>
                   <Link to="/add-case">Link button</Link>
                 </li>
-                <li>
+                <li className={classes.link}>
                   <Link to="/add-case">Carcasa</Link>
                 </li>
-                <li>
+                <li className={classes.link}>
                   <Link to="/add-cooler">Cooler</Link>
                 </li>
-                <li>
+                <li className={classes.link}>
                   <Link to="/add-desktop">Desktop</Link>
                 </li>
-                <li>
+                <li className={classes.link}>
                   <Link to="/add-graphics-card">Placa video</Link>
                 </li>
-                <li>
+                <li className={classes.link}>
                   <Link to="/add-motherboard">Placa de baza</Link>
                 </li>
-                <li>
+                <li className={classes.link}>
                   <Link to="/add-power-supply">Sursa</Link>
                 </li>
-                <li>
+                <li className={classes.link}>
                   <Link to="/add-processor">Procesor</Link>
                 </li>
-                <li>
+                <li className={classes.link}>
                   <Link to="/add-ram">Memorie</Link>
                 </li>
-                <li>
+                <li className={classes.link}>
                   <Link to="/add-vent">Ventilator</Link>
                 </li>
               </ul>
             </li>
           )}
-          <li>
-            <Link to="/" className="desktop-item">
+          <li className={classes.link}>
+            <Link to="/" className={classes.desktopItem}>
               Categorii
             </Link>
-            <input type="checkbox" id="showMega" />
-            <label htmlFor="showMega" className="mobile-item">
+            <input type="checkbox" className={classes.showMega} />
+            <label htmlFor="showMega" className={classes.mobileItem}>
               Categorii
             </label>
-            <div className="mega-box">
-              <div className="content">
-                <div className="row">
+            <div className={classes.megaBox}>
+              <div className={classes.content}>
+                <div className={classes.row}>
                   {/*<img src="/static/img/logo/icon.png" alt="Logo"/>*/}
                 </div>
-                <div className="row">
+                <div className={classes.row}>
                   <header>Componente</header>
-                  <ul className="mega-links">
-                    <li>
+                  <ul className={classes.megaLinks}>
+                    <li className={classes.link}>
                       <Link to="/placi-video">Placi video</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/procesoare">Procesoare</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/placi-de-baza">Placi de baza</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/memorii">Memorii</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/hard-disk-uri">Hard Disk-uri</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/ssd-uri">SSD</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/surse">Surse</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/carcase">Carcase</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/coolere">Coolere</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/ventilatoare">Ventilatoare</Link>
                     </li>
                   </ul>
                 </div>
-                <div className="row">
+                <div className={classes.row}>
                   <header>Laptop</header>
-                  <ul className="mega-links">
-                    <li>
+                  <ul className={classes.megaLinks}>
+                    <li className={classes.link}>
                       <Link to="/laptop-uri">Notebook</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/laptop-uri">Ultrabook</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/laptop-uri">Laptop Business</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/laptop-uri">Laptop Gaming</Link>
                     </li>
                   </ul>
                 </div>
-                <div className="row">
+                <div className={classes.row}>
                   <header>Sisteme Gaming & Office</header>
-                  <ul className="mega-links">
-                    <li>
+                  <ul className={classes.megaLinks}>
+                    <li className={classes.link}>
                       <Link to="/desktop-uri">PC Gaming Low-Level</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/desktop-uri">PC Gaming Middle-Level</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/desktop-uri">PC Gaming High-Level</Link>
                     </li>
-                    <li>
+                    <li className={classes.link}>
                       <Link to="/desktop-uri">PC Office</Link>
                     </li>
                   </ul>
@@ -153,23 +154,23 @@ const Navigation = ({ user }) => {
               </div>
             </div>
           </li>
-          <li>
-            <Link to="/feedback">Feedback</Link>
-          </li>
-          <li>
+          {/*<li className={classes.link}>*/}
+          {/*  <Link to="/feedback">Feedback</Link>*/}
+          {/*</li>*/}
+          <li className={classes.link}>
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
+          <li className={classes.link}>
             <Link to="/about-us">Despre noi</Link>
           </li>
-          <li>
-            <Link to="/cos-cumparaturi">
-              CART<span id="cart-quantity">0</span>
+          <li className={classes.link}>
+            <Link to="/cos-cumparaturi" className={classes.cart}>
+              COS<span className={classes.cartQuantity}>0</span>
             </Link>
           </li>
         </ul>
-        <label htmlFor="menu-btn" className="btn menu-btn">
-          <i className="fas fa-bars"></i>
+        <label htmlFor="menu-btn" className={classes.showMenuLabel}>
+          <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
         </label>
       </div>
     </nav>
