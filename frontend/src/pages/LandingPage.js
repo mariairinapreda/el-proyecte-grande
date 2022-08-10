@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../scss/first_page.scss";
+import ProductsContainer from "../wrappers/products-container/ProductsContainer";
 
 const LandingPage = () => {
   const [categories, setCategories] = useState([]);
@@ -16,7 +17,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className={"container"}>
+      <ProductsContainer key={"categories"}>
         {categories.map((category) => (
           <div key={"category_" + category.id} className={"category-card"}>
             <Link to={category.url}>
@@ -29,7 +30,7 @@ const LandingPage = () => {
             </Link>
           </div>
         ))}
-      </div>
+      </ProductsContainer>
     </>
   );
 };
