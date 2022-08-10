@@ -97,7 +97,6 @@ const CasePage = () => {
 		},
 	];
 	return (
-
 			<ProductsContainer key={"cases-container"}>
 					{cases.map((e, i) =>
 						<Card
