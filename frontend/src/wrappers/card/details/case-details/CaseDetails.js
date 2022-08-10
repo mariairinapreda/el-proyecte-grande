@@ -1,7 +1,7 @@
-import "./CaseDetails.styles.scss"
+import classes from "./CaseDetails.module.scss"
 
 const CaseDetails = ({numberOfHDD, numberOfSSD}) => (
-	<table className={"custom-card-details"}>
+	<table className={classes.customCardDetails}>
 		<tbody>
 			<tr>
 				<td>Number of HDD: {numberOfHDD}</td>
