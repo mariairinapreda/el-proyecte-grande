@@ -36,7 +36,7 @@ public class MonitorService {
                               Integer quantity,
                               Integer power,
                               Integer diagonal,
-                              Integer dimensions,
+                              String dimensions,
                               Integer refreshRate,
                               Integer responseTime,
                               Integer weight){
