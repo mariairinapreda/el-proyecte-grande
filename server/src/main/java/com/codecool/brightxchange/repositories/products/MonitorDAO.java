@@ -28,7 +28,7 @@ public interface MonitorDAO extends JpaRepository<Monitor, Long> {
                 @Param("quantity") Integer quantity,
                 @Param("power") Integer power,
                 @Param("diagonal") Integer diagonal,
-                @Param("dimensions") Integer dimensions,
+                @Param("dimensions") String dimensions,
                 @Param("refreshRate") Integer refreshRate,
                 @Param("responseTime") Integer responseTime,
                 @Param("weight") Integer weight

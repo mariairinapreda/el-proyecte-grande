@@ -19,8 +19,8 @@ public class CaseTypeService {
         return caseTypeDAO.findAll();
     }
 
-    public CaseType getById(Long id){
-        return caseTypeDAO.findById(id).orElse(new CaseType((long) -1, "no name"));
+    public Optional<CaseType> getById(Long id){
+        return caseTypeDAO.findById(id);
     }
 
     public List<CaseType> getAllAfterId(Long id){
