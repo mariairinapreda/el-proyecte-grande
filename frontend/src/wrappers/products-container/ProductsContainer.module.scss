@@ -1,24 +1,25 @@
 @import "../../css-libraries/bulma/sass/utilities/_all";
-.products{
+
+.products {
   margin: 90px 2%;
 }
 
-.cardsContainer{
+.cardsContainer {
   display: grid;
   gap: 30px;
-  @include mobile{
-    grid-template-columns: auto;
+  @include mobile {
+    grid-template-columns: 1fr;
   }
-  @include tablet-only{
-    grid-template-columns: auto auto;
+  @include tablet-only {
+    grid-template-columns: 1fr 1fr;
   }
-  @include desktop-only{
-    grid-template-columns: auto auto auto;
+  @include desktop-only {
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  @include widescreen-only{
-    grid-template-columns: auto auto auto auto;
+  @include widescreen-only {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  @include fullhd{
-    grid-template-columns: auto auto auto auto auto;
+  @include fullhd {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
