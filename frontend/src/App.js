@@ -9,6 +9,7 @@ import RamPage from "./pages/products/RamPage";
 import HddPage from "./pages/products/HddPage";
 import CoolerPage from "./pages/products/CoolerPage";
 import CasePage from "./pages/products/CasePage";
+import AddCaseForm from "./pages/products-add/case/AddCaseForm";
 
 class App extends React.Component {
   constructor() {
@@ -45,7 +46,7 @@ class App extends React.Component {
             <Route path="/surse" element={<LandingPage user={user} />} />
             <Route path="/ventilatoare" element={<VentPage user={user} />} />
 
-            <Route path="/add-case" element={<Footer user={user} />} />
+            <Route path="/add-case" element={<AddCaseForm />} />
             <Route path="/cases" element={<Footer user={user} />}>
               <Route path=":caseId" element={<Footer user={user} />}></Route>
             </Route>

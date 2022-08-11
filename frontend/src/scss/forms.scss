@@ -3,36 +3,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&display=swap');
 
 
-#new,#existent{
+#new, #existent {
   display: none;
 }
 
-label[for="new"]{
+label[for="new"] {
   float: right;
 }
 
 label[for="new"],
-label[for="existent"]{
+label[for="existent"] {
   border-radius: 5px;
   border: solid 1px gray;
   padding: 5px;
-  @include mobile{
+  @include mobile {
     font-size: 15px;
   }
 }
 
 #existent:checked ~ label[for="existent"],
-#new:checked ~ label[for="new"]{
+#new:checked ~ label[for="new"] {
   box-shadow: 0 0 2px 2px #01bdbe;
 }
 
-#existent-div,#new-div{
+#existent-div, #new-div {
   display: none;
   border-radius: 10px;
 }
 
 #existent:checked ~ #existent-div,
-#new:checked ~ #new-div{
+#new:checked ~ #new-div {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -41,115 +41,21 @@ label[for="existent"]{
   width: 100%;
 }
 
-h1{
-  font-size: 30px!important;
-  font-weight: bold!important;
+h1 {
+  font-size: 30px !important;
+  font-weight: bold !important;
   text-align: center;
   width: 100%;
 }
 
-h2{
-  font-size: 25px!important;
-  font-weight: bold!important;
+h2 {
+  font-size: 25px !important;
+  font-weight: bold !important;
   text-align: right;
 }
 
-form{
-  @include mobile{
-    margin: 40px 10% 80px;
-  }
-  @include tablet-only{
-    margin: 40px 15% 80px;
-  }
-  @include desktop-only{
-    margin: 40px 20% 80px;
-  }
-  @include widescreen-only{
-    margin: 40px 25% 80px;
-  }
-  @include fullhd{
-    margin: 40px 30% 80px;
-  }
-  @include tablet{
-    min-width: 320px;
-  }
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 7px 2px black;
-  font-family: 'Zilla Slab', serif;
-}
 
-form div{
-  margin-bottom: 10px;
-  min-height: 50px;
-}
-
-form div button{
-  font-size: 30px;
-  color: #00b89c;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.5s;
-  @include mobile{
-    font-size: 15px;
-    padding: 5px;
-  }
-  @include tablet-only{
-    font-size: 20px;
-    padding: 5px;
-  }
-  @include desktop{
-    padding: 10px;
-  }
-}
-
-form div button span {
-  font-size: 30px;
-  color: #00b89c;
-  border-radius: 10px;
-  @include mobile{
-    font-size: 15px;
-  }
-  @include tablet-only{
-    font-size: 20px;
-  }
-}
-
-#submit span:after{
-  content: '\00bb';
-  opacity: 0;
-  transition: 0.5s;
-}
-
-#submit:hover span {
-  padding: 0 10px;
-}
-
-#submit:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-#cancel span:after{
-  content: '\00ab';
-  opacity: 0;
-  transition: 0.5s;
-}
-
-#cancel:hover span {
-  padding: 0 10px;
-}
-
-#cancel:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-button[type="submit"] {
-  float: right;
-}
-
-.drag-area{
+.drag-area {
   border: 2px dashed #000000;
   height: 350px;
   width: 100%;
@@ -162,31 +68,31 @@ button[type="submit"] {
   margin: 20px 0;
 }
 
-.drag-area.active{
+.drag-area.active {
   border: 2px solid #000000;
 }
 
-.drag-area .icon{
+.drag-area .icon {
   font-size: 100px;
   color: #000000;
 }
 
-.drag-area header{
+.drag-area header {
   font-size: 30px;
   font-weight: 500;
   color: #000000;
 }
 
-.drag-area span{
+.drag-area span {
   font-size: 25px;
   font-weight: 500;
   color: #000000;
   margin: 10px 0 15px 0;
 }
 
-.drag-area button{
+.drag-area button {
   padding: 10px 25px;
-  font-size: 20px!important;
+  font-size: 20px !important;
   font-weight: 500;
   border: none;
   outline: none;
@@ -196,7 +102,7 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-.drag-area img{
+.drag-area img {
   height: 100%;
   width: 100%;
   object-fit: contain;

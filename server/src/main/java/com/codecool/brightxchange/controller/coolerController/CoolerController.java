@@ -20,27 +20,29 @@ public class CoolerController {
     }
 
     @GetMapping
-    public List<Cooler> getAll(){
+    public List<Cooler> getAll() {
         return coolerService.getAll();
     }
 
     @GetMapping("{id}")
-    public Cooler getById(@PathVariable("id") Long id){
+    public Cooler getById(@PathVariable("id") Long id) {
         return coolerService.getById(id).orElse(null);
     }
 
     @PostMapping
-    public void addCooler(@RequestBody Cooler tempCooler){
+    public void addCooler(@RequestBody Cooler tempCooler) {
         coolerService.addCooler(tempCooler);
     }
 
 
     @PutMapping("{id}")
-    public void updateCooler(@PathVariable("id") long id, @RequestBody Cooler updatedCooler){coolerService.updateCooler(id,updatedCooler);}
+    public void updateCooler(@PathVariable("id") long id, @RequestBody Cooler updatedCooler) {
+        coolerService.updateCooler(id, updatedCooler);
+    }
 
 
-    @PutMapping("{id}")
-    public void updateCoolerSupplier(@PathVariable Long id, @RequestBody Supplier supplier){
+    @PutMapping("{id}/supplier")
+    public void updateCoolerSupplier(@PathVariable Long id, @RequestBody Supplier supplier) {
         coolerService.updateSupplier(id, supplier);
     }
 

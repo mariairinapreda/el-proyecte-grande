@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
 import Card from "../../wrappers/card/Card";
 import SsdDetails from "../../wrappers/card/details/ssd-details/SsdDetails";
@@ -28,11 +28,11 @@ const SsdPage = ({ user }) => {
     },
   ]);
 
-  useEffect(() => {
-    fetch("http://localhost:8888/ssd", { method: "GET" })
-      .then((response) => response.json())
-      .then((re) => setSsds(re));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:8888/ssd", { method: "GET" })
+  //     .then((response) => response.json())
+  //     .then((re) => setSsds(re));
+  // }, []);
 
   return (
     <>
