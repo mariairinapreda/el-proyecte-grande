@@ -32,17 +32,22 @@ public class CaseController {
 
     @GetMapping
     public List<Case> getAll(){
-        return null;
+        return caseService.getAll();
     }
 
     @GetMapping("{id}")
     public Case getById(@PathVariable("id") Long id){
-        return null;
+        return caseService.getCaseById(id).orElse(null);
     }
 
     @PostMapping
     public void saveNewCase(@RequestBody Case tempCase){
         caseService.addCase(tempCase);
+    }
+
+    @PutMapping("{id}")
+    public void updateCase(@PathVariable("id") long id, @RequestBody Case updatedCase){
+        caseService.updateCase(id, updatedCase);
     }
 
 }
