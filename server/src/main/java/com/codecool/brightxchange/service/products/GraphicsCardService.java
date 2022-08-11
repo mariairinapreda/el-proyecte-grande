@@ -1,5 +1,9 @@
 package com.codecool.brightxchange.service.products;
 
+import com.codecool.brightxchange.model.Supplier;
+import com.codecool.brightxchange.model.producers.GraphicsCardProducer;
+import com.codecool.brightxchange.model.productRelated.*;
+import com.codecool.brightxchange.model.productTypes.GraphicsCardMemoryType;
 import com.codecool.brightxchange.model.products.GraphicsCard;
 import com.codecool.brightxchange.repositories.products.GraphicsCardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,17 +41,32 @@ public class GraphicsCardService{
                 graphicsCard.getResolution(),
                 graphicsCard.getVideoMemory(),
                 graphicsCard.getOther());
-        graphicsCardDAO.updateModel(id, graphicsCard.getModel());
-        graphicsCardDAO.updateGraphicsCardMemoryType(id, graphicsCard.getMemoryType());
-        graphicsCardDAO.updateGraphicsCardFamily(id, graphicsCard.getFamily());
-        graphicsCardDAO.updateSeries(id, graphicsCard.getGcSeries());
-        graphicsCardDAO.updateProducer(id, graphicsCard.getProducer());
-        graphicsCardDAO.updateSupplier(id, graphicsCard.getSupplier());
-        graphicsCardDAO.updateConnectionInterface(id, graphicsCard.getGcConnectionInterface());
-        graphicsCardDAO.updateVideoBackPanel(id, graphicsCard.getBackPanel());
-
+    }
+    public void updateGraphicsCardModel(long id, GCModel gcModel){
+        graphicsCardDAO.updateModel(id, gcModel);
+    }
+    public void updateGraphicsMemoryType(long id, GraphicsCardMemoryType graphicsCardMemoryType){
+        graphicsCardDAO.updateGraphicsCardMemoryType(id, graphicsCardMemoryType);
+    }
+    public void updateCardFamily(long id, GraphicsCardFamily graphicsCardFamily){
+        graphicsCardDAO.updateGraphicsCardFamily(id, graphicsCardFamily);
+    }
+    public void updateGcSeries(long id, GCSeries gcSeries){
+        graphicsCardDAO.updateSeries(id, gcSeries);
+    }
+    public void updateGraphicsCardProducer(long id, GraphicsCardProducer graphicsCardProducer){
+        graphicsCardDAO.updateProducer(id, graphicsCardProducer);
+    }
+    public void updateGraphicsCardSupplier(long id, Supplier supplier){
+        graphicsCardDAO.updateSupplier(id, supplier);
+    }
+    public void updateGCConnectionInterFace(long id, GCConnectionInterface connectionInterface){
+        graphicsCardDAO.updateConnectionInterface(id, connectionInterface);
     }
 
+    public void updateGcVideoBackPanel(long id, VideoBackPanel videoBackPanel){
+        graphicsCardDAO.updateVideoBackPanel(id, videoBackPanel);
+    }
 
 
 

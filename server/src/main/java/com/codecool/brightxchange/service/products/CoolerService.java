@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.service.products;
 
+import com.codecool.brightxchange.model.Supplier;
 import com.codecool.brightxchange.model.products.Cooler;
 import com.codecool.brightxchange.repositories.products.CoolerDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,9 @@ public class CoolerService {
 
     public void updateCooler(long id, Cooler cooler) {
         coolerDAO.update(id, cooler.getDescription(), cooler.getCurrency(), cooler.getDimensions(), cooler.getPrice(), cooler.getQuantity());
-        coolerDAO.updateSupplier(id, cooler.getSupplier());
-
+    }
+    public void updateSupplier(long id, Supplier supplier){
+        coolerDAO.updateSupplier(id, supplier);
     }
 
 

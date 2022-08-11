@@ -17,7 +17,7 @@ public interface StorageDAO extends JpaRepository<Storage, Long> {
     @Query("update Storage s set" +
             " s.price= :price," +
             " s.capacity = :capacity," +
-            " s.quantity = :quatity" +
+            " s.quantity = :quantity" +
             " where s.id= :id ")
     void update(@Param("id") long id,
                 @Param("price") float price,
@@ -36,12 +36,12 @@ public interface StorageDAO extends JpaRepository<Storage, Long> {
                                @Param("storageProducer")StorageProducer storageProducer);
 
     @Modifying
-    @Query("update Storage s set s.ssd =: ssd where s.id = :id")
+    @Query("update Storage s set s.ssd =:ssd where s.id = :id")
     void updateSSD(@Param("id") float id,
                    @Param("ssd") SSD ssd);
 
     @Modifying
-    @Query("update Storage s set s.hdd =: hdd where s.id = :id")
+    @Query("update Storage s set s.hdd =:hdd where s.id = :id")
     void updateHDD(@Param("id") float id,
                    @Param("hdd") HDD hdd);
 }

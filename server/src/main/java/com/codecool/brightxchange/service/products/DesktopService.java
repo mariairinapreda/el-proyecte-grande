@@ -1,6 +1,11 @@
 package com.codecool.brightxchange.service.products;
 
-import com.codecool.brightxchange.model.products.Desktop;
+import com.codecool.brightxchange.model.Supplier;
+import com.codecool.brightxchange.model.productRelated.Connectivity;
+import com.codecool.brightxchange.model.productRelated.CoolingSystem;
+import com.codecool.brightxchange.model.productRelated.FrontPanel;
+import com.codecool.brightxchange.model.productRelated.MotherBoardBackPanel;
+import com.codecool.brightxchange.model.products.*;
 import com.codecool.brightxchange.repositories.products.DesktopDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,23 +36,42 @@ public class DesktopService {
 
     public void updateDesktop(long id, Desktop desktop) {
         desktopDAO.update(id, desktop.getCurrency(), desktop.getPrice(), desktop.getQuantity());
-        desktopDAO.updateProcessor(id, desktop.getProcessor());
-        desktopDAO.updateBackPanel(id, desktop.getBackPanel());
-        desktopDAO.updateConnectivity(id, desktop.getConnectivity());
-        desktopDAO.updateCoolingSystem(id, desktop.getCoolingSystem());
-        desktopDAO.updateMemory(id, desktop.getMemory());
-        desktopDAO.updateFrontPanel(id, desktop.getFrontPanel());
-        desktopDAO.updateGraphicsCard(id, desktop.getGraphicsCard());
-        desktopDAO.updateStorage(id, desktop.getStorage());
-        desktopDAO.updateSupplier(id, desktop.getSupplier());
-        desktopDAO.updateCase(id, desktop.getDesktopCase());
-        desktopDAO.updateMotherBoard(id, desktop.getMotherboard());
-        desktopDAO.updatePowerSupply(id, desktop.getPowerSupply());
-
-
-
-
-
+    }
+    public void updateDesktopProcessor(long id, Processor processor){
+        desktopDAO.updateProcessor(id, processor);
+    }
+    public void updateDesktopBackPanel(long id, MotherBoardBackPanel motherBoardBackPanel){
+        desktopDAO.updateBackPanel(id, motherBoardBackPanel);
+    }
+    public void updateDesktopConnectivity(long id, Connectivity connectivity){
+        desktopDAO.updateConnectivity(id,connectivity);
+    }
+    public void updateDesktopCoolingSystem(long id, CoolingSystem coolingSystem){
+        desktopDAO.updateCoolingSystem(id, coolingSystem);
+    }
+    public void updateDesktopMemory(long id, RandomAccessMemory randomAccessMemory){
+        desktopDAO.updateMemory(id, randomAccessMemory);
+    }
+    public void updateDesktopFrontPanel(long id, FrontPanel frontPanel){
+        desktopDAO.updateFrontPanel(id, frontPanel);
+    }
+    public void updateDesktopGraphicsCard(long id, GraphicsCard graphicsCard){
+        desktopDAO.updateGraphicsCard(id, graphicsCard);
+    }
+    public void updateDesktopStorage(long id, Storage storage){
+        desktopDAO.updateStorage(id, storage);
+    }
+    public void updateDesktopSupplier(long id, Supplier supplier){
+        desktopDAO.updateSupplier(id, supplier);
+    }
+    public void updateDesktopCase(long id, Case case_){
+        desktopDAO.updateCase(id, case_);
+    }
+    public void updateDesktopMotherBoard(long id, Motherboard motherboard){
+        desktopDAO.updateMotherBoard(id,motherboard);
+    }
+    public void updateDesktopPowerSupply(long id, PowerSupply powerSupply){
+        desktopDAO.updatePowerSupply(id, powerSupply);
     }
 
 }

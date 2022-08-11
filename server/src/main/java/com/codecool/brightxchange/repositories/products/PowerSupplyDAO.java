@@ -27,7 +27,7 @@ public interface PowerSupplyDAO extends JpaRepository<PowerSupply, Long> {
     );
 
     @Modifying
-    @Query("update PowerSupply ps set ps.supplier =: supplier where ps.id = :id")
+    @Query("update PowerSupply ps set ps.supplier = :supplier where ps.id = :id")
     void updateSupplier(@Param("id") long id,
                         @Param("supplier") Supplier supplier);
 

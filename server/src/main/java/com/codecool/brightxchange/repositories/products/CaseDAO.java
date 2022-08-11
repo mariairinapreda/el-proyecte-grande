@@ -15,7 +15,7 @@ import java.util.Set;
 
 @Repository
 public interface CaseDAO extends JpaRepository<Case, Long> {
-    Set<Case> getAllByQuantityAfter();
+    Set<Case> getAllByQuantityAfter(Integer quantity);
 
     @Modifying
     @Query("update Case c set  c.currency= :currency, " +
@@ -43,6 +43,6 @@ public interface CaseDAO extends JpaRepository<Case, Long> {
 
     @Modifying
     @Query("update Case c set c.supplier= :supplier  where c.id= :id ")
-    void updateSupplier(@Param("id") long id, @Param("Supplier") Supplier supplier);
+    void updateSupplier(@Param("id") long id, @Param("supplier") Supplier supplier);
 
 }

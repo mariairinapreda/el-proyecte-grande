@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../scss/first_page.scss";
 import ProductsContainer from "../wrappers/products-container/ProductsContainer";
+import LandingPageCard from "../wrappers/landing-page-card/LandingPageCard";
 
 const LandingPage = () => {
   const [categories, setCategories] = useState([]);
@@ -18,17 +19,13 @@ const LandingPage = () => {
   return (
     <>
       <ProductsContainer key={"categories"}>
-        {categories.map((category) => (
-          <div key={"category_" + category.id} className={"category-card"}>
-            <Link to={category.url}>
-              <img
-                className={"category-card-image"}
-                src={category.imageUrl}
-                alt={category.name + " Image"}
-              />
-              <p className={"category-card-title"}>{category.name}</p>
-            </Link>
-          </div>
+        {categories.map((category,index) => (
+          <LandingPageCard
+              key={`Category_${index}`}
+              url={category.url}
+              imageUrl={category.imageUrl}
+              name={category.name}
+          />
         ))}
       </ProductsContainer>
     </>

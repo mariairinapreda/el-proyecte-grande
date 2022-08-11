@@ -25,7 +25,7 @@ public interface SsdDAO extends JpaRepository<SSD, Long> {
 
 
     @Modifying
-    @Query("update SSD s set s.supplier = :supplier where s.id = : id")
+    @Query("update SSD s set s.supplier = :supplier where s.id = :id")
     void updateSupplier(@Param("id") float id,
                         @Param("supplier")Supplier supplier);
 

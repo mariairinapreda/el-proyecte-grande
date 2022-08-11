@@ -22,7 +22,7 @@ public interface ProcessorDAO extends JpaRepository<Processor, Long> {
             " p.numberOfCores = :numberOfCores," +
             " p.productionFactory = :productionFactory," +
             " p.socket = :socket," +
-            " p.threads = :socket" +
+            " p.threads = :threads" +
             " where p.id= :id ")
     void update(@Param("id") long id,
                 @Param("price") float price,

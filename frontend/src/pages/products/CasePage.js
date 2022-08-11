@@ -1,6 +1,6 @@
-import Card from "../wrappers/card/Card";
-import CaseDetails from "../wrappers/card/details/case-details/CaseDetails";
-import ProductsContainer from "../wrappers/products-container/ProductsContainer";
+import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
+import Card from "../../wrappers/card/Card";
+import CaseDetails from "../../wrappers/card/details/case-details/CaseDetails";
 
 const CasePage = () => {
   // const [cases,setCases] = useState([]);
