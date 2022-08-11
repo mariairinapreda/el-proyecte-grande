@@ -1,8 +1,9 @@
 import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
 import Card from "../../wrappers/card/Card";
 import CaseDetails from "../../wrappers/card/details/case-details/CaseDetails";
+import Navigation from "../../components/navigation/Navigation";
 
-const CasePage = () => {
+const CasePage = ({ user }) => {
   // const [cases,setCases] = useState([]);
 
   // useEffect(() => {
@@ -97,23 +98,26 @@ const CasePage = () => {
     },
   ];
   return (
-    <ProductsContainer key={"cases-container"}>
-      {cases.map((e, i) => (
-        <Card
-          key={`carcasa_${e.caseProducer.name}_${e.model}_${i}`}
-          title={`Carcasa ${e.caseProducer.name} ${e.caseType.name} ${e.model}`}
-          price={e.price}
-          currency={e.currency.currency}
-          imageUrl={e.imageUrl}
-          details={
-            <CaseDetails
-              numberOfHDD={e.numberOfHDD}
-              numberOfSSD={e.numberOfSSD}
-            />
-          }
-        />
-      ))}
-    </ProductsContainer>
+    <>
+      <Navigation actualUser={user} />
+      <ProductsContainer key={"cases-container"}>
+        {cases.map((e, i) => (
+          <Card
+            key={`carcasa_${e.caseProducer.name}_${e.model}_${i}`}
+            title={`Carcasa ${e.caseProducer.name} ${e.caseType.name} ${e.model}`}
+            price={e.price}
+            currency={e.currency.currency}
+            imageUrl={e.imageUrl}
+            details={
+              <CaseDetails
+                numberOfHDD={e.numberOfHDD}
+                numberOfSSD={e.numberOfSSD}
+              />
+            }
+          />
+        ))}
+      </ProductsContainer>
+    </>
   );
 };
 

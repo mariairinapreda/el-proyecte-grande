@@ -1,24 +1,32 @@
 import { Link } from "react-router-dom";
 import classes from "./Navigation.module.scss";
-import "font-awesome/css/font-awesome.min.css"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars,faTimes} from "@fortawesome/free-solid-svg-icons";
-const Navigation = ({ user }) => {
+import "font-awesome/css/font-awesome.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+
+const Navigation = ({ actualUser }) => {
+  // const [actualUser, setUser] = useAtom(user);
+  // console.log(actualUser);
   return (
     <nav className={classes.nav}>
       <div className={classes.wrapper}>
-        {user.username == null ? (
+        {actualUser.username == null ? (
           <div className={classes.logo}>
             <Link to="/login">Logare</Link>
             <Link to="/register">Inregistrare</Link>
           </div>
         ) : (
           <div className={classes.logo}>
-            <Link to="/">{user.username}</Link>
+            <Link to="/">{actualUser.username}</Link>
             <Link to="/logout">Deconectare</Link>
           </div>
         )}
-        <input type="checkbox" name="slider" id={"menu-btn"} className={classes.showMenu} />
+        <input
+          type="checkbox"
+          name="slider"
+          id={"menu-btn"}
+          className={classes.showMenu}
+        />
         <ul className={classes.navLinks}>
           <label htmlFor="menu-btn" className={[classes.closeBtn].join()}>
             <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
@@ -26,7 +34,7 @@ const Navigation = ({ user }) => {
           <li className={classes.link}>
             <Link to="/">Home</Link>
           </li>
-          {user.status === "admin" && (
+          {actualUser.status === "admin" && (
             <li className={classes.link}>
               <Link to="/" className={classes.desktopItem}>
                 Adauga produse

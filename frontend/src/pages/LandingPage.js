@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "../scss/first_page.scss";
 import ProductsContainer from "../wrappers/products-container/ProductsContainer";
 import LandingPageCard from "../wrappers/landing-page-card/LandingPageCard";
+import Navigation from "../components/navigation/Navigation";
 
-const LandingPage = () => {
+const LandingPage = ({ user }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -18,13 +18,14 @@ const LandingPage = () => {
 
   return (
     <>
+      <Navigation actualUser={user} />
       <ProductsContainer key={"categories"}>
-        {categories.map((category,index) => (
+        {categories.map((category, index) => (
           <LandingPageCard
-              key={`Category_${index}`}
-              url={category.url}
-              imageUrl={category.imageUrl}
-              name={category.name}
+            key={`Category_${index}`}
+            url={category.url}
+            imageUrl={category.imageUrl}
+            name={category.name}
           />
         ))}
       </ProductsContainer>

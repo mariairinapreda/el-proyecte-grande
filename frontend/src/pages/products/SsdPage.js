@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
 import Card from "../../wrappers/card/Card";
 import SsdDetails from "../../wrappers/card/details/ssd-details/SsdDetails";
+import Navigation from "../../components/navigation/Navigation";
 
-const SsdPage = () => {
+const SsdPage = ({ user }) => {
   const [ssds, setSsds] = useState([
     {
       price: 135,
@@ -34,25 +35,28 @@ const SsdPage = () => {
   }, []);
 
   return (
-    <ProductsContainer>
-      {ssds.map((e, index) => (
-        <Card
-          key={`ssd_${e.storageProducer.name}_${index}`}
-          imageUrl={e.imageUrl}
-          price={e.price}
-          currency={e.currency.currency}
-          details={
-            <SsdDetails
-              connectionInterface={e.connectionInterface}
-              capacity={e.capacity}
-              unit={e.unit}
-              writeSpeed={e.writeSpeed}
-              readSpeed={e.readSpeed}
-            />
-          }
-        />
-      ))}
-    </ProductsContainer>
+    <>
+      <Navigation actualUser={user} />
+      <ProductsContainer>
+        {ssds.map((e, index) => (
+          <Card
+            key={`ssd_${e.storageProducer.name}_${index}`}
+            imageUrl={e.imageUrl}
+            price={e.price}
+            currency={e.currency.currency}
+            details={
+              <SsdDetails
+                connectionInterface={e.connectionInterface}
+                capacity={e.capacity}
+                unit={e.unit}
+                writeSpeed={e.writeSpeed}
+                readSpeed={e.readSpeed}
+              />
+            }
+          />
+        ))}
+      </ProductsContainer>
+    </>
   );
 };
 

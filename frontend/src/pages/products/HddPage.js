@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
 import Card from "../../wrappers/card/Card";
 import HddDetails from "../../wrappers/card/details/hdd-details/HddDetails";
+import Navigation from "../../components/navigation/Navigation";
 
-const HddPage = () => {
+const HddPage = ({ user }) => {
   const [hdds, setHdds] = useState([
     {
       price: 135,
@@ -33,24 +34,27 @@ const HddPage = () => {
   }, []);
 
   return (
-    <ProductsContainer>
-      {hdds.map((e, index) => (
-        <Card
-          key={`hdd_${e.storageProducer}_${index}`}
-          title={`Hard-Disk ${e.storageProducer.name} ${e.capacity} ${e.unit}`}
-          imageUrl={e.imageUrl}
-          price={e.price}
-          currency={e.currency.currency}
-          details={
-            <HddDetails
-              connectionInterface={e.connectionInterface}
-              capacity={e.capacity}
-              unit={e.unit}
-            />
-          }
-        />
-      ))}
-    </ProductsContainer>
+    <>
+      <Navigation actualUser={user} />
+      <ProductsContainer>
+        {hdds.map((e, index) => (
+          <Card
+            key={`hdd_${e.storageProducer}_${index}`}
+            title={`Hard-Disk ${e.storageProducer.name} ${e.capacity} ${e.unit}`}
+            imageUrl={e.imageUrl}
+            price={e.price}
+            currency={e.currency.currency}
+            details={
+              <HddDetails
+                connectionInterface={e.connectionInterface}
+                capacity={e.capacity}
+                unit={e.unit}
+              />
+            }
+          />
+        ))}
+      </ProductsContainer>
+    </>
   );
 };
 

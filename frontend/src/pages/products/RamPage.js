@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
 import Card from "../../wrappers/card/Card";
 import RamDetails from "../../wrappers/card/details/ram-details/RamDetails";
+import Navigation from "../../components/navigation/Navigation";
 
-const RamPage = () => {
+const RamPage = ({ user }) => {
   const [rams, setRams] = useState([
     {
       price: 135,
@@ -34,24 +35,27 @@ const RamPage = () => {
   }, []);
 
   return (
-    <ProductsContainer>
-      {rams.map((e, index) => (
-        <Card
-          key={`ram_${e.ramProducer.name}_${index}`}
-          title={`Memorie RAM ${e.ramProducer.name} ${e.capacity} GB`}
-          imageUrl={e.imageUrl}
-          price={e.price}
-          currency={e.currency.currency}
-          details={
-            <RamDetails
-              memoryType={e.memoryType.name}
-              capacity={e.capacity}
-              frequency={e.frequency}
-            />
-          }
-        />
-      ))}
-    </ProductsContainer>
+    <>
+      <Navigation actualUser={user} />
+      <ProductsContainer>
+        {rams.map((e, index) => (
+          <Card
+            key={`ram_${e.ramProducer.name}_${index}`}
+            title={`Memorie RAM ${e.ramProducer.name} ${e.capacity} GB`}
+            imageUrl={e.imageUrl}
+            price={e.price}
+            currency={e.currency.currency}
+            details={
+              <RamDetails
+                memoryType={e.memoryType.name}
+                capacity={e.capacity}
+                frequency={e.frequency}
+              />
+            }
+          />
+        ))}
+      </ProductsContainer>
+    </>
   );
 };
 

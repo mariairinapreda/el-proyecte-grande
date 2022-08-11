@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
 import Card from "../../wrappers/card/Card";
 import CoolerDetails from "../../wrappers/card/details/cooler-details/CoolerDetails";
+import Navigation from "../../components/navigation/Navigation";
 
-const CoolerPage = () => {
+const CoolerPage = ({ user }) => {
   const [coolers, setCooler] = useState([
     {
       price: 299.9,
@@ -32,23 +33,26 @@ const CoolerPage = () => {
   }, []);
 
   return (
-    <ProductsContainer key={"coolers"}>
-      {coolers.map((e, index) => (
-        <Card
-          key={`cooler_${index}`}
-          title={`Cooler ${e.producer.name} ${e.model}`}
-          price={e.price}
-          currency={e.currency.currency}
-          imageUrl={e.imageUrl}
-          details={
-            <CoolerDetails
-              description={e.description}
-              dimensions={e.dimensions}
-            />
-          }
-        />
-      ))}
-    </ProductsContainer>
+    <>
+      <Navigation actualUser={user} />
+      <ProductsContainer key={"coolers"}>
+        {coolers.map((e, index) => (
+          <Card
+            key={`cooler_${index}`}
+            title={`Cooler ${e.producer.name} ${e.model}`}
+            price={e.price}
+            currency={e.currency.currency}
+            imageUrl={e.imageUrl}
+            details={
+              <CoolerDetails
+                description={e.description}
+                dimensions={e.dimensions}
+              />
+            }
+          />
+        ))}
+      </ProductsContainer>
+    </>
   );
 };
 

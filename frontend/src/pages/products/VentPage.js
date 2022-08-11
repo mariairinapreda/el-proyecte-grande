@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
 import Card from "../../wrappers/card/Card";
 import VentDetails from "../../wrappers/card/details/vent-details/VentDetails";
+import Navigation from "../../components/navigation/Navigation";
 
-const VentPage = () => {
+const VentPage = ({ user }) => {
   const [vents, setVents] = useState([
     {
       price: 135,
@@ -34,26 +35,29 @@ const VentPage = () => {
   }, []);
 
   return (
-    <ProductsContainer>
-      {vents.map((e, index) => (
-        <Card
-          key={`vent_${e.ventProducer.name}_${index}`}
-          title={`Ventilator ${e.ventProducer.name}`}
-          imageUrl={e.imageUrl}
-          price={e.price}
-          currency={e.currency.currency}
-          details={
-            <VentDetails
-              rotationSpeed={e.rotationSpeed}
-              ventsNumber={e.ventsNumber}
-              description={e.description}
-              dimensions={e.dimensions}
-              ventDimensions={e.ventDimensions}
-            />
-          }
-        />
-      ))}
-    </ProductsContainer>
+    <>
+      <Navigation actualUser={user} />
+      <ProductsContainer>
+        {vents.map((e, index) => (
+          <Card
+            key={`vent_${e.ventProducer.name}_${index}`}
+            title={`Ventilator ${e.ventProducer.name}`}
+            imageUrl={e.imageUrl}
+            price={e.price}
+            currency={e.currency.currency}
+            details={
+              <VentDetails
+                rotationSpeed={e.rotationSpeed}
+                ventsNumber={e.ventsNumber}
+                description={e.description}
+                dimensions={e.dimensions}
+                ventDimensions={e.ventDimensions}
+              />
+            }
+          />
+        ))}
+      </ProductsContainer>
+    </>
   );
 };
 
