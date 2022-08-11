@@ -1,5 +1,8 @@
 package com.codecool.brightxchange.service.products;
 
+import com.codecool.brightxchange.model.Supplier;
+import com.codecool.brightxchange.model.producers.CaseProducer;
+import com.codecool.brightxchange.model.productTypes.CaseType;
 import com.codecool.brightxchange.model.products.Case;
 import com.codecool.brightxchange.repositories.products.CaseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +36,18 @@ public void updateCase(long id,Case c){
                 c.getQuantity(),
                 c.getModel(),
                 c.getNumberOfHDD(),
-                c.getNumberOfSSD());
-        caseDAO.updateCaseType(id,c.getCaseType() );
-        caseDAO.updateCaseProducer(id, c.getCaseProducer());
-        caseDAO.updateSupplier(id, c.getSupplier());
-}
+                c.getNumberOfSSD());}
+    public void updateType(long id, CaseType caseType){
+        caseDAO.updateCaseType(id,caseType);
+    }
+
+    public void updateProducer(long id, CaseProducer caseProducer){
+        caseDAO.updateCaseProducer(id, caseProducer);
+    }
+
+    public void updateTheSupplier(long id, Supplier supplier){
+        caseDAO.updateSupplier(id, supplier);
+    }
+
 
 }
