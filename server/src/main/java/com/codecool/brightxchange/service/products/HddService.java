@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.service.products;
 
+import com.codecool.brightxchange.model.Supplier;
 import com.codecool.brightxchange.model.products.HDD;
 import com.codecool.brightxchange.repositories.products.HddDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,9 @@ public class HddService {
                 hdd.getCurrency(),
                 hdd.getConnectionInterface(),
                 hdd.getRotationSpeed());
-        hddDAO.updateSupplier(id, hdd.getSupplier());
+    }
+    public void updateSupplier(long id, Supplier supplier){
+        hddDAO.updateSupplier(id,supplier);
     }
 
 

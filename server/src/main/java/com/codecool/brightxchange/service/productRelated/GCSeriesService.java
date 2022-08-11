@@ -1,6 +1,7 @@
 package com.codecool.brightxchange.service.productRelated;
 
 import com.codecool.brightxchange.model.productRelated.GCSeries;
+import com.codecool.brightxchange.model.productRelated.GraphicsCardFamily;
 import com.codecool.brightxchange.repositories.productRelated.GCSeriesDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,10 @@ public class GCSeriesService {
 
     public  void updateGCSeries(long id, GCSeries gcSeries){
         gcSeriesDAO.update(id, gcSeries.getName());
-        gcSeriesDAO.updateGraphicsCardFamily(id, gcSeries.getFamily());
+    }
+
+    public void updateCardFamily(long id, GraphicsCardFamily graphicsCardFamily){
+        gcSeriesDAO.updateGraphicsCardFamily(id, graphicsCardFamily);
     }
 
 
