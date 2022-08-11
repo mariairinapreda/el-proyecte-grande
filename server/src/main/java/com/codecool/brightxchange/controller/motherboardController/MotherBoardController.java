@@ -45,16 +45,16 @@ public class MotherBoardController {
                 motherboard.getNumberOfSATA3());
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/motherboard-supplier")
     public void updateSupplier(@PathVariable("id")long id, @RequestBody Supplier supplier){
         motherboardService.updateSupplier(id, supplier);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/motherboard-producer")
     public void updateProducer(@PathVariable("id")long id, @RequestBody MotherboardProducer motherboardProducer){
         motherboardService.updateMotherboardProducer(id, motherboardProducer);
     }
-    @PutMapping("{id}")
+    @PutMapping("{id}/chipset-producer")
     public void updateChipsetProducer(@PathVariable("id")long id, @RequestBody ChipsetProducer chipsetProducer){
         motherboardService.updateChipsetProducer(id, chipsetProducer);
     }

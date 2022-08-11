@@ -49,22 +49,22 @@ public class CaseController {
     }
 
     @PutMapping("{id}")
-    public void updateCase(@PathVariable("id") long id, @RequestBody Case updatedCase){
+    public void updateCase(@PathVariable("id") Long id, @RequestBody Case updatedCase){
         caseService.updateCase(id, updatedCase);
     }
 
-    @PutMapping("{id}")
-    public void updateCaseSupplier(@PathVariable("id") long id, @RequestBody Supplier  supplier){
+    @PutMapping("{id}/supplier")
+    public void updateCaseSupplier(@PathVariable("id") Long id, @RequestBody Supplier  supplier){
         caseService.updateTheSupplier(id, supplier);
     }
 
-    @PutMapping({"id"})
-    public void updateCaseProducer(@PathVariable("id") long id, @RequestBody CaseProducer caseProducer){
+    @PutMapping("{id}/case-producer")
+    public void updateCaseProducer(@PathVariable("id") Long id, @RequestBody CaseProducer caseProducer){
         caseService.updateProducer(id, caseProducer);
     }
 
-    @PutMapping({"id"})
-    public void updateCaseType(@PathVariable("id") long id, @RequestBody CaseType caseType){
+    @PutMapping("{id}/case-type")
+    public void updateCaseType(@PathVariable("id") Long id, @RequestBody CaseType caseType){
         caseService.updateType(id, caseType);
     }
 

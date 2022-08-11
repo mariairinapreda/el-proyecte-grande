@@ -39,7 +39,7 @@ public class HDDController {
         hddService.saveHDD(hdd);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/supplier")
     public void updateSupplier(@PathVariable("id")Long id, @RequestBody Supplier supplier){
         hddService.updateSupplier(id, supplier);
     }

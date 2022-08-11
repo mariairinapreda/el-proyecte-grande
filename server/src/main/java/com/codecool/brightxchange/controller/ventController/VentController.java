@@ -38,11 +38,11 @@ public class VentController {
     public void updateVent(@PathVariable("ïd") long id, @RequestBody Vent vent){
         ventService.updateVent(id, vent);
     }
-    @PutMapping("{id}")
+    @PutMapping("{id}/supplier")
     public void updateVentSupplier(@PathVariable("id")long id, @RequestBody Supplier supplier){
         ventService.updateVentSupplier(id, supplier);
     }
-    @PutMapping("{id}")
+    @PutMapping("{id}/vent-producer")
     public void updateVentProducer(@PathVariable("id")long id, @RequestBody VentProducer ventProducer){
         ventService.updateVentProducer(id, ventProducer);
     }

@@ -38,7 +38,7 @@ public class GCSeriesController {
         gcSeriesService.updateGCSeries(id, gcSeries);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/graphics-card-family")
     public void updateCardFamily(@PathVariable("id") Long id, @RequestBody GraphicsCardFamily graphicsCardFamily){
         gcSeriesService.updateCardFamily(id, graphicsCardFamily);
     }

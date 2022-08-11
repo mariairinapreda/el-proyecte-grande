@@ -45,19 +45,19 @@ public class StorageController {
                 storage.getPrice());
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/supplier")
     public void updateSupplier(@PathVariable("id")long id, @RequestBody Supplier supplier){
         storageService.updateSupplier(id, supplier);
     }
-    @PutMapping("{id}")
+    @PutMapping("{id}/storage-producer")
     public void updateStorageProducer(@PathVariable("id")long id, @RequestBody StorageProducer storageProducer){
         storageService.updateStorageProducer(id, storageProducer);
     }
-    @PutMapping("{id}")
+    @PutMapping("{id}/ssd")
     public void updateSSD(@PathVariable("id")long id, @RequestBody SSD ssd){
         storageService.updateSSD(id, ssd);
     }
-    @PutMapping("{id}")
+    @PutMapping("{id}/hdd")
     public void updateHDD(@PathVariable("id")long id, @RequestBody HDD hdd){
         storageService.updateHDD(id, hdd);
     }
