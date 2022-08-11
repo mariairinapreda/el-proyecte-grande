@@ -44,16 +44,16 @@ public class PowerSupplyController {
                 powerSupply.getQuantity());
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/power-supply-supplier")
     public void updateSupplier(@PathVariable("id")long id,@RequestBody Supplier supplier){
         powerSupplyService.updateSupplier(id, supplier);
     }
-    @PutMapping("{id}")
+    @PutMapping("{id}/power-supply-type")
     public void updateType(@PathVariable("id")long id, @RequestBody PowerSupplyType powerSupplyType){
         powerSupplyService.updatePowerSupplyType(id, powerSupplyType);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/power-supply-producer")
     public void updatePowerSupplyProducer(@PathVariable("id")long id, @RequestBody PowerSupplyProducer powerSupplyProducer){
         powerSupplyService.updatePowerSupplyProducer(id, powerSupplyProducer);
     }

@@ -47,16 +47,16 @@ public class MonitorController {
    }
 
 
-   @PutMapping("{id}")
+   @PutMapping("{id}/monitor-producer")
     public void updateProducer(@PathVariable("id")long id, @RequestBody MonitorProducer monitorProducer){
         monitorService.updateMonitorProducer(id, monitorProducer);
    }
-   @PutMapping("{id}")
+   @PutMapping("{id}/video-back-panel")
     public void updateBackPanel(@PathVariable("id")long id, @RequestBody VideoBackPanel backPanel){
         monitorService.updateVideoBackPanel(id, backPanel);
    }
 
-   @PutMapping("{id}")
+   @PutMapping("{id}/monitor-supplier")
     public void updateSupplier(@PathVariable("id")long id, @RequestBody Supplier supplier){
         monitorService.updateSupplier(id, supplier);
    }

@@ -41,17 +41,17 @@ public class RandomAccessMemoryController {
                 randomAccessMemory.getPrice());
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/supplier")
     public void updateSupplier(@PathVariable("id")long id, Supplier supplier){
         ramService.updateSupplier(id, supplier);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/memory-type")
     public  void updateRamType(@PathVariable("id")long id, @RequestBody RandomAccessMemoryType randomAccessMemoryType){
         ramService.updateMemoryType(id, randomAccessMemoryType);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/ram-producer")
     public void updateRamProducer(@PathVariable("id")long id, @RequestBody RAMProducer ramProducer){
         ramService.updateRamProducer(id, ramProducer);
     }

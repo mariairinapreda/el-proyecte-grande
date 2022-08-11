@@ -40,7 +40,7 @@ public class SSDController {
                 ssd.getPrice());
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/supplier")
     public void updateSupplier(@PathVariable("id")long id, @RequestBody Supplier supplier){
         service.updateSupplier(id, supplier);
     }

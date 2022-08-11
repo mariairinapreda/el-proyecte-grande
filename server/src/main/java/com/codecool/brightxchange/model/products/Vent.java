@@ -32,6 +32,9 @@ public class Vent {
     @JsonProperty("productPrice")
     private float price;
 
+    @Column(name = "model")
+    @JsonProperty("model")
+    private String model;
     @JsonProperty("productCurrency")
     @ManyToOne
     @JoinColumn(
@@ -97,9 +100,10 @@ public class Vent {
     @Column(name = "vent_dimensions")
     private Integer ventDimensions;
 
-    public Vent(Long id, float price, PriceCurrency currency, Integer quantity, Supplier supplier, Integer rotationSpeed, Integer ventsNumber, String description, String dimensions, VentProducer ventProducer, Integer ventDimensions) {
+    public Vent(Long id, float price,String model, PriceCurrency currency, Integer quantity, Supplier supplier, Integer rotationSpeed, Integer ventsNumber, String description, String dimensions, VentProducer ventProducer, Integer ventDimensions) {
         this.id = id;
         this.price = price;
+        this.model=model;
         this.currency = currency;
         this.quantity = quantity;
         this.supplier = supplier;

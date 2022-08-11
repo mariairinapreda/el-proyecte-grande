@@ -45,11 +45,11 @@ public class ProcessorController {
                 processor.getThreads());
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/supplier")
     public void updateSupplier(@PathVariable("id")long id, @RequestBody Supplier supplier){
         processorService.updateSupplier(id, supplier);
     }
-    @PutMapping("{id}")
+    @PutMapping("{id}/processor-producer")
     public void updateProducer(@PathVariable("id")long id, @RequestBody ProcessorProducer producer){
         processorService.updateProducer(id, producer);
     }
