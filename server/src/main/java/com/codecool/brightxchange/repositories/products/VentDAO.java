@@ -18,22 +18,20 @@ public interface VentDAO extends JpaRepository<Vent, Long> {
             " v.currency= :currency," +
             " v.price= :price," +
             "v.quantity= :quantity," +
-            "v.description= :description,"+
-            "v.dimensions= :dimensions,"+
-            "v.ventDimensions= :dimensions,"+
-            "v.ventsNumber= :ventsNumber"+
+            "v.description= :description," +
+            "v.dimensions= :dimensions," +
+            "v.ventDimensions= :ventDimensions," +
+            "v.ventsNumber= :ventsNumber" +
             " where v.id= :id ")
     void update(@Param("id") long id,
                 @Param("rotationSpeed") int rotationSpeed,
                 @Param("currency") PriceCurrency currency,
                 @Param("price") float price,
-                @Param("quantity")int quantity,
+                @Param("quantity") int quantity,
                 @Param("description") String description,
-                @Param("dimensions")String dimensions,
-                @Param("ventDimensions")int ventDimensions,
-                @Param("ventsNumber")int ventsNumber);
-
-
+                @Param("dimensions") String dimensions,
+                @Param("ventDimensions") int ventDimensions,
+                @Param("ventsNumber") int ventsNumber);
 
 
     @Modifying

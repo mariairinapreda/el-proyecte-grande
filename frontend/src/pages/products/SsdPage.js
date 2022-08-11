@@ -1,31 +1,59 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
+import Card from "../../wrappers/card/Card";
+import SsdDetails from "../../wrappers/card/details/ssd-details/SsdDetails";
 
 const SsdPage = () => {
-  const [ssds, setSsds] = useState([{
-    price : 135,
-    currency : {
-      currency: "RON",
+  const [ssds, setSsds] = useState([
+    {
+      price: 135,
+      currency: {
+        currency: "RON",
+      },
+      quantity: 5,
+      supplier: {
+        name: "Bright Xchange",
+      },
+      writeSpeed: 350,
+      readSpeed: 450,
+      connectionInterface: "",
+      capacity: 5,
+      unit: "TB",
+      storageProducer: {
+        name: "",
+      },
+      imageUrl:
+        "https://brightxchangeprojectbucket.s3.eu-central-1.amazonaws.com/cat/ssd-uri.jpg",
     },
-    quantity : 5,
-    supplier : {
-      name: "Bright Xchange",
-    },
-    rotationSpeed : 350,
-    connectionInterface : "",
-    capacity: 5,
-    unit: "TB",
-    storageProducer: {
-      name: ""
-    }
-  }]);
+  ]);
 
   useEffect(() => {
-    fetch("http://localhost:8888/ssd", {method:"GET"})
-        .then(response => response.json())
-        .then(re => setSsds(re))
-  },[])
+    fetch("http://localhost:8888/ssd", { method: "GET" })
+      .then((response) => response.json())
+      .then((re) => setSsds(re));
+  }, []);
 
-  return <></>;
+  return (
+    <ProductsContainer>
+      {ssds.map((e, index) => (
+        <Card
+          key={`ssd_${e.storageProducer.name}_${index}`}
+          imageUrl={e.imageUrl}
+          price={e.price}
+          currency={e.currency.currency}
+          details={
+            <SsdDetails
+              connectionInterface={e.connectionInterface}
+              capacity={e.capacity}
+              unit={e.unit}
+              writeSpeed={e.writeSpeed}
+              readSpeed={e.readSpeed}
+            />
+          }
+        />
+      ))}
+    </ProductsContainer>
+  );
 };
 
 export default SsdPage;
