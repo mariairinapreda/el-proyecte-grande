@@ -42,42 +42,42 @@ public class LaptopController {
         laptopService.update(laptop.getId(), laptop.getPrice(), laptop.getWeight(), laptop.getQuantity());
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/viseo-back-panel")
     public void updateVideoBackPanel(@PathVariable("id")Long id, @RequestBody VideoBackPanel videoBackPanel){
         laptopService.updateVideoBackPanel(id, videoBackPanel);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/connectivity")
     public void updateConnectivity(@PathVariable("id")Long id, @RequestBody Connectivity connectivity){
         laptopService.updateConnectivity(id, connectivity);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/display")
     public void updateDisplay(@PathVariable("id")Long id, @RequestBody Display display){
         laptopService.updateDisplay(id, display);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/graphics-card")
     public void updateGraphicsCard(@PathVariable("id") Long id, @RequestBody GraphicsCard graphicsCard){
         laptopService.updateGraphicsCard(id, graphicsCard);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/laptop-producer")
     public void updateLaptopProducer(@PathVariable("id") Long id, @RequestBody LaptopProducer laptopProducer){
         laptopService.updateLaptopProducer(id, laptopProducer);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/random-access-memory")
     public void updateMemory(@PathVariable("id")Long id, @RequestBody RandomAccessMemory randomAccessMemory){
         laptopService.updateMemory(id, randomAccessMemory);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/processor")
     public void updateProcessor(@PathVariable("id")Long id, @RequestBody Processor processor){
         laptopService.updateProcessor(id, processor);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/storage")
     public void updateStorage(@PathVariable("id")Long id, @RequestBody Storage storage){
         laptopService.updateStorage(id, storage);
     }

@@ -41,62 +41,62 @@ public class DesktopController {
         desktopService.updateDesktop(id, desktop);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/processor")
     public void updateDesktopProcessor(@PathVariable("id") long id, @RequestBody Processor processor){
         desktopService.updateDesktopProcessor(id, processor);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/motherboard-back-panel")
     public void updateDesktopBackPanel(@PathVariable("id") long id, @RequestBody MotherBoardBackPanel motherBoardBackPanel){
         desktopService.updateDesktopBackPanel(id, motherBoardBackPanel);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/connectivity")
     public void updateDesktopConnectivity(@PathVariable("id") long id, @RequestBody Connectivity connectivity){
         desktopService.updateDesktopConnectivity(id, connectivity);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/cooling-system")
     public void updateDesktopCoolingSystem(@PathVariable("id") long id, @RequestBody CoolingSystem coolingSystem){
         desktopService.updateDesktopCoolingSystem(id, coolingSystem);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/random-access-memory")
     public void updateDesktopMemory(@PathVariable("id") long id, @RequestBody RandomAccessMemory randomAccessMemory){
         desktopService.updateDesktopMemory(id, randomAccessMemory);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/front-panel")
     public void updateDesktopFrontPanel(@PathVariable("id") long id, @RequestBody FrontPanel frontPanel){
         desktopService.updateDesktopFrontPanel(id, frontPanel);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/graphics-card")
     public void updateDesktopGraphicsCard(@PathVariable("id") long id, @RequestBody GraphicsCard graphicsCard){
         desktopService.updateDesktopGraphicsCard(id, graphicsCard);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/storage")
     public void updateDesktopStorage(@PathVariable("id") long id, @RequestBody Storage storage){
         desktopService.updateDesktopStorage(id, storage);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/supplier")
     public void updateDesktopSupplier(@PathVariable("id")long id, @RequestBody Supplier supplier){
         desktopService.updateDesktopSupplier(id, supplier);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/case")
     public void updateDesktopCase(@PathVariable("id")long id, @RequestBody Case updatedCase){
         desktopService.updateDesktopCase(id, updatedCase);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/motherboard")
     public void updateDesktopMotherBoard(@PathVariable("id") long id, @RequestBody Motherboard motherboard){
         desktopService.updateDesktopMotherBoard(id, motherboard);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/power-supply")
     public void updateDesktopPowerSupply(@PathVariable("id") long id, @RequestBody PowerSupply powerSupply){
         desktopService.updateDesktopPowerSupply(id, powerSupply);
     }

@@ -33,7 +33,7 @@ public class CaseTypeController {
         caseTypeService.addCaseType(caseType);
     }
 
-    @PutMapping({"id"})
+    @PutMapping("{id}")
     public void updateCaseType(@PathVariable("id")long id, @RequestBody CaseType caseType){
         caseTypeService.updateCaseType(id, caseType);
     }
