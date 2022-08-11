@@ -1,5 +1,8 @@
 package com.codecool.brightxchange.controller.caseControllers;
 
+import com.codecool.brightxchange.model.Supplier;
+import com.codecool.brightxchange.model.producers.CaseProducer;
+import com.codecool.brightxchange.model.productTypes.CaseType;
 import com.codecool.brightxchange.model.products.Case;
 import com.codecool.brightxchange.service.PriceCurrencyService;
 import com.codecool.brightxchange.service.SupplierService;
@@ -48,6 +51,21 @@ public class CaseController {
     @PutMapping("{id}")
     public void updateCase(@PathVariable("id") long id, @RequestBody Case updatedCase){
         caseService.updateCase(id, updatedCase);
+    }
+
+    @PutMapping("{id}")
+    public void updateCaseSupplier(@PathVariable("id") long id, @RequestBody Supplier  supplier){
+        caseService.updateTheSupplier(id, supplier);
+    }
+
+    @PutMapping({"id"})
+    public void updateCaseProducer(@PathVariable("id") long id, @RequestBody CaseProducer caseProducer){
+        caseService.updateProducer(id, caseProducer);
+    }
+
+    @PutMapping({"id"})
+    public void updateCaseType(@PathVariable("id") long id, @RequestBody CaseType caseType){
+        caseService.updateType(id, caseType);
     }
 
 }
