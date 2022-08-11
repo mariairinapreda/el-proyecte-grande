@@ -1,24 +1,36 @@
 package com.codecool.brightxchange.controller.monitorController;
 
 import com.codecool.brightxchange.model.productRelated.VideoBackPanel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.codecool.brightxchange.service.productRelated.VideoBackPanelService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/video-back-panel")
 public class VideoBackPanelController {
+    private final VideoBackPanelService service;
+
+    public VideoBackPanelController(VideoBackPanelService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public List<VideoBackPanel> getAll(){
-        return null;
+        return service.getAll();
     }
 
     @GetMapping("{id}")
     public VideoBackPanel getById(@PathVariable("id") Long id){
-        return null;
+        return service.getById(id).get();
+    }
+    @PostMapping
+    public void addVideoBackPanel(@RequestBody VideoBackPanel videoBackPanel){
+        service.saveVideoBackPanel(videoBackPanel);
+    }
+
+    @PutMapping("{id}")
+    public void update(@PathVariable("id") long id, @RequestBody VideoBackPanel videoBackPanel){
+        service.updateVideoBackPanel(id, videoBackPanel);
     }
 }
