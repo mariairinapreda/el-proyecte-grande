@@ -20,14 +20,23 @@ public class CaseTypeController {
 
     @GetMapping
     public List<CaseType> getAll(){
-        return null;
+        return  caseTypeService.getAll();
     }
 
     @GetMapping("{id}")
     public CaseType getById(@PathVariable("id") Long id){
-        return null;
+        return caseTypeService.getById(id).orElse(null);
     }
 
+    @PostMapping
+    public void saveNewCaseType(@RequestBody CaseType caseType){
+        caseTypeService.addCaseType(caseType);
+    }
+
+    @PutMapping({"id"})
+    public void updateCaseType(@PathVariable("id")long id, @RequestBody CaseType caseType){
+        caseTypeService.updateCaseType(id, caseType);
+    }
 
 
 }
