@@ -18,6 +18,7 @@ const CaseFormStep2 = ({
       changeExistence={changeExistence}
       existentData={<div></div>}
       newData={<div></div>}
+      totalSteps={4}
     ></FormCard>
   );
 };

@@ -8,12 +8,13 @@ const FormCard = ({
   stepData,
   newData,
   existentData,
+  totalSteps,
 }) => {
   return (
     <form className={classes.form}>
       <h1>Adaugare {productType}</h1>
       <h2>
-        Pasul {step} din 4 - {stepData}
+        Pasul {step} din {totalSteps} - {stepData}
       </h2>
       <div>{newData}</div>
       <div>{existentData}</div>
