@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.service;
 
+import com.codecool.brightxchange.model.CategoryImage;
 import com.codecool.brightxchange.repositories.CategoryImageRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,4 +12,11 @@ public class CategoryImageService {
     public CategoryImageService(CategoryImageRepository repository) {
         this.repository = repository;
     }
+
+
+    public void  addCategoryImageService(CategoryImage categoryImage){
+        repository.save(categoryImage);
+    }
+
+
 }
