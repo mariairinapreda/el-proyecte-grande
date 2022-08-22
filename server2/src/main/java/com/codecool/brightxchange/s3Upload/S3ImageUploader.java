@@ -1,17 +1,18 @@
 package com.codecool.brightxchange.s3Upload;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.codecool.brightxchange.model.CategoryImage;
 import com.codecool.brightxchange.model.ProductImage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
-import software.amazon.awssdk.auth.credentials.AwsCredentialsProviderChain;
-import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
-import software.amazon.awssdk.core.sync.RequestBody;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,7 +23,7 @@ import java.util.List;
 
 @Service
 public class S3ImageUploader {
-    private final S3Client s3Client;
+    private final AmazonS3 s3Client;
     private final String s3KeyId;
     private final String s3AccessKey;
     private final String s3BucketName;
@@ -30,28 +31,28 @@ public class S3ImageUploader {
     private final String s3ImageUrl;
     private File categoryImage;
 
-    public S3ImageUploader(@Value("${s3_id") String id, @Value("${s3_key}") String key, @Value("${s3_name}") String name, @Value("${s3_url_prod}") String ImageUrl) {
+    public S3ImageUploader(@Value("${s3_id}") String id, @Value("${s3_key}") String key, @Value("${s3_name}") String name, @Value("${s3_url_prod}") String ImageUrl) {
         s3KeyId = id;
         s3AccessKey = key;
         s3BucketName = name;
         s3ImageUrl = ImageUrl;
         productImages = new ArrayList<>();
 
-        AwsBasicCredentials credentials = AwsBasicCredentials.create(s3KeyId, s3AccessKey);
-        StaticCredentialsProvider staticCredentialsProvider = StaticCredentialsProvider.create(credentials);
-        AwsCredentialsProviderChain providerChain = AwsCredentialsProviderChain.builder().addCredentialsProvider(staticCredentialsProvider).build();
-        s3Client = S3Client.builder().region(Region.EU_CENTRAL_1).credentialsProvider(providerChain).build();
+        AWSCredentials credentials = new BasicAWSCredentials(s3KeyId, s3AccessKey);
+        AWSCredentialsProvider provider = new AWSStaticCredentialsProvider(credentials);
+
+        s3Client = AmazonS3Client.builder().withRegion(Regions.EU_CENTRAL_1).withCredentials(provider).build();
+
     }
 
     public List<ProductImage> uploadProductImages(String fileName) {
         List<ProductImage> images = new ArrayList<>();
         for (int i = 0; i < productImages.size(); i++) {
             String imageName = String.format("%s_%s.jpg", fileName, i);
-            PutObjectRequest request = PutObjectRequest.builder()
-                    .bucket(s3BucketName)
-                    .key(imageName)
-                    .build();
-            s3Client.putObject(request, RequestBody.fromFile(productImages.get(i)));
+
+            PutObjectRequest request = new PutObjectRequest(s3BucketName, imageName, productImages.get(i));
+            s3Client.putObject(request);
+
             productImages.get(i).delete();
             images.add(new ProductImage(s3ImageUrl + imageName));
         }
@@ -62,11 +63,8 @@ public class S3ImageUploader {
 
     public CategoryImage uploadCategoryImage(String fileName) {
         String imageName = String.format(fileName + ".jpg");
-        PutObjectRequest request = PutObjectRequest.builder()
-                .bucket(s3BucketName)
-                .key(imageName)
-                .build();
-        s3Client.putObject(request, RequestBody.fromFile(categoryImage));
+        PutObjectRequest request = new PutObjectRequest(s3BucketName, imageName, categoryImage);
+        s3Client.putObject(request);
         categoryImage.delete();
         return new CategoryImage(s3ImageUrl + imageName);
     }

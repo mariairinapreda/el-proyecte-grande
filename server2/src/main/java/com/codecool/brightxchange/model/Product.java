@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 import java.util.List;
 
 @Builder
@@ -29,13 +28,13 @@ public class Product {
 
     private Float price;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<ProductImage> images;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Producer producer;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Supplier supplier;
 
 

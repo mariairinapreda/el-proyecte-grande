@@ -15,11 +15,16 @@ public class CategorySpecService {
         this.repository = repository;
     }
 
-    public void addCategorySpec(CategorySpec categorySpec){
+    public void addCategorySpec(CategorySpec categorySpec) {
         repository.save(categorySpec);
     }
-    public void addAllCategorySpec(List<CategorySpec> categorySpecList){
+
+    public void addAllCategorySpec(List<CategorySpec> categorySpecList) {
         repository.saveAll(categorySpecList);
+    }
+
+    public List<CategorySpec> saveAllAndFlush(List<CategorySpec> categorySpecList) {
+        return repository.saveAllAndFlush(categorySpecList);
     }
 
 

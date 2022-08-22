@@ -23,7 +23,7 @@ public class ProductImage {
     )
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Product product;
 
     @Column(

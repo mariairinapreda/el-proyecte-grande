@@ -24,7 +24,7 @@ public class ProductSpec {
     )
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private CategorySpec categorySpec;
 
     @Column(

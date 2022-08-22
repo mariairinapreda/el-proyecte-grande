@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 import java.util.List;
 
 @Builder
@@ -30,9 +29,9 @@ public class Producer {
     )
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
     private List<Category> categories;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<Product> products;
 }

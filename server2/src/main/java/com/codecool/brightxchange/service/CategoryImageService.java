@@ -14,8 +14,12 @@ public class CategoryImageService {
     }
 
 
-    public void  addCategoryImageService(CategoryImage categoryImage){
+    public void addCategoryImageService(CategoryImage categoryImage) {
         repository.save(categoryImage);
+    }
+
+    public CategoryImage saveAndFlush(CategoryImage categoryImage) {
+        return repository.saveAndFlush(categoryImage);
     }
 
 
