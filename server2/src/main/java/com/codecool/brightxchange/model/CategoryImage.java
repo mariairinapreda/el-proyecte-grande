@@ -34,4 +34,8 @@ public class CategoryImage {
     )
     @JsonProperty("imageUrl")
     private String imageUrl;
+
+    public CategoryImage(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

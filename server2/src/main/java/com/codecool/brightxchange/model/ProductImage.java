@@ -30,4 +30,8 @@ public class ProductImage {
             columnDefinition = "TEXT"
     )
     private String imageUrl;
+
+    public ProductImage(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
