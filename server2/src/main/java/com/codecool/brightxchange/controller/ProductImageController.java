@@ -11,5 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("product-images")
 public class ProductImageController {
 
-    public void imageUploader(@RequestParam("image") MultipartFile image){}
+    public void imageUploader(@RequestParam("image") MultipartFile image) {
+    }
 }

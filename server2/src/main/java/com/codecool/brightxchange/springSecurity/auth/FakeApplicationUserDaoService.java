@@ -4,12 +4,13 @@ import com.codecool.brightxchange.springSecurity.security.ApplicationUserRole;
 import com.google.common.collect.Lists;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Optional;
 
 
 @Repository("fake")
-public class FakeApplicationUserDaoService implements ApplicationUserDAO{
+public class FakeApplicationUserDaoService implements ApplicationUserDAO {
     private final PasswordEncoder passwordEncoder;
 
     public FakeApplicationUserDaoService(PasswordEncoder passwordEncoder) {
@@ -24,7 +25,7 @@ public class FakeApplicationUserDaoService implements ApplicationUserDAO{
                 .findFirst();
     }
 
-    private List<ApplicationUser> getApplicationUsers(){
+    private List<ApplicationUser> getApplicationUsers() {
         List<ApplicationUser> applicationUsers = Lists.newArrayList(
                 new ApplicationUser(
                         "annasmith",

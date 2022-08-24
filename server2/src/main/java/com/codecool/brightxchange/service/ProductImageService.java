@@ -13,7 +13,7 @@ public class ProductImageService {
         this.repository = repository;
     }
 
-    public void addProductImage(ProductImage productImage){
+    public void addProductImage(ProductImage productImage) {
         repository.save(productImage);
 
     }

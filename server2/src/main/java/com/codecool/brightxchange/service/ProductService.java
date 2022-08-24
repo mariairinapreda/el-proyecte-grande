@@ -12,7 +12,7 @@ public class ProductService {
         this.repository = repository;
     }
 
-    public void  addProductService(Product product){
+    public void addProductService(Product product) {
         repository.save(product);
 
     }

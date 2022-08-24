@@ -1,9 +1,11 @@
 package com.codecool.brightxchange.springSecurity.jwt;
 
 import com.google.common.net.HttpHeaders;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+@Data
 @Component
 @ConfigurationProperties(prefix = "application.jwt")
 public class JwtConfig {
@@ -14,32 +16,12 @@ public class JwtConfig {
     public JwtConfig() {
     }
 
-    public String getSecretKey() {
-        return secretKey;
-    }
-
-    public void setSecretKey(String secretKey) {
-        this.secretKey = secretKey;
-    }
-
-    public String getTokenPrefix() {
-        return tokenPrefix;
-    }
-
-    public void setTokenPrefix(String tokenPrefix) {
-        this.tokenPrefix = tokenPrefix;
-    }
-
-    public Integer getTokenExpirationAfterDays() {
-        return tokenExpirationAfterDays;
-    }
-
     public void setTokenExpirationAfterDays(Integer tokenExpirationAfterDays) {
         this.tokenExpirationAfterDays = tokenExpirationAfterDays;
     }
 
 
-    public String getAuthorizationHeader(){
+    public String getAuthorizationHeader() {
         return HttpHeaders.AUTHORIZATION;
 
     }

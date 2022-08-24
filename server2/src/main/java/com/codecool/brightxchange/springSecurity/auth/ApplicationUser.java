@@ -17,13 +17,13 @@ public class ApplicationUser implements UserDetails {
     private final boolean isEnabled;
 
     public ApplicationUser(
-                           String username,
-                           String password,
-                           Set<? extends GrantedAuthority> grantedAuthorities,
-                           boolean isAccountNonExpired,
-                           boolean isAccountNonLocked,
-                           boolean isCredentialsNonExpired,
-                           boolean isEnabled) {
+            String username,
+            String password,
+            Set<? extends GrantedAuthority> grantedAuthorities,
+            boolean isAccountNonExpired,
+            boolean isAccountNonLocked,
+            boolean isCredentialsNonExpired,
+            boolean isEnabled) {
         this.grantedAuthorities = grantedAuthorities;
         this.password = password;
         this.username = username;

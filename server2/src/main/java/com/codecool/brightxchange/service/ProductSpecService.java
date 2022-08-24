@@ -14,11 +14,11 @@ public class ProductSpecService {
         this.repository = repository;
     }
 
-    public void addProductSpec(ProductSpec productSpec){
+    public void addProductSpec(ProductSpec productSpec) {
         repository.save(productSpec);
     }
 
-    public void addAllProductSpec(List<ProductSpec> productSpecList){
+    public void addAllProductSpec(List<ProductSpec> productSpecList) {
         repository.saveAll(productSpecList);
     }
 

@@ -12,7 +12,7 @@ public class SupplierService {
         this.repository = repository;
     }
 
-    public void addSupplier(Supplier supplier){
+    public void addSupplier(Supplier supplier) {
         repository.save(supplier);
     }
 }

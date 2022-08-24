@@ -15,7 +15,7 @@ public class SupplierController {
     }
 
     @PostMapping
-    public void addSupplier(@RequestBody Supplier supplier){
+    public void addSupplier(@RequestBody Supplier supplier) {
         service.addSupplier(supplier);
     }
 
