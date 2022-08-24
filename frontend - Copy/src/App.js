@@ -10,6 +10,7 @@ import HddPage from "./pages/products/HddPage";
 import CoolerPage from "./pages/products/CoolerPage";
 import CasePage from "./pages/products/CasePage";
 import AddCaseForm from "./pages/products-add/case/AddCaseForm";
+import AddCategory from "./new/category-add/AddCategory";
 
 class App extends React.Component {
   constructor() {
@@ -29,6 +30,13 @@ class App extends React.Component {
         <BrowserRouter>
           {/*<Navigation user={user} />*/}
           <Routes>
+
+            <Route path="/demo" element={<AddCategory />} />
+
+
+
+
+
             <Route path="/" element={<LandingPage user={user} />} />
             <Route path="/carcase" element={<CasePage user={user} />} />
             <Route path="/coolere" element={<CoolerPage user={user} />} />
@@ -50,6 +58,7 @@ class App extends React.Component {
             <Route path="/cases" element={<Footer user={user} />}>
               <Route path=":caseId" element={<Footer user={user} />}></Route>
             </Route>
+
             <Route path="*" element={<div>404</div>}></Route>
           </Routes>
         </BrowserRouter>
