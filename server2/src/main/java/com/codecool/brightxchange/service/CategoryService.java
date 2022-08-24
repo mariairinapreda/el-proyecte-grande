@@ -23,7 +23,11 @@ public class CategoryService {
         repository.save(category);
     }
 
-    public Category selectLast(){
+    public Category saveAndFlush(Category category) {
+        return repository.saveAndFlush(category);
+    }
+
+    public Category selectLast() {
         return repository.findTopByOrderByIdDesc();
     }
 }

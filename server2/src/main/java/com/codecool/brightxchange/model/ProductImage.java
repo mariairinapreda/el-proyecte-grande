@@ -23,11 +23,15 @@ public class ProductImage {
     )
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Product product;
 
     @Column(
             columnDefinition = "TEXT"
     )
     private String imageUrl;
+
+    public ProductImage(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

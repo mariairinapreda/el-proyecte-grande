@@ -2,14 +2,14 @@ package com.codecool.brightxchange.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -40,21 +40,24 @@ public class Category {
     @JsonProperty("name")
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @JsonProperty("categorySpecs")
     private List<CategorySpec> categorySpecs;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JsonProperty("image")
     private CategoryImage image;
+//
+//    @ManyToMany(cascade = {CascadeType.ALL})
+//    @JsonProperty("producers")
+//    private List<Producer> producers;
+//
+//    @OneToMany(cascade = {CascadeType.ALL})
+//    @JsonProperty("products")
+//    private List<Product> products;
 
-    @ManyToMany
-    @JsonProperty("producers")
-    private List<Producer> producers;
 
-    @OneToMany
-    @JsonProperty("products")
-    private List<Product> products;
-
-
+    public String getImageName() {
+        return String.format("category_%s_%s", id, name);
+    }
 }

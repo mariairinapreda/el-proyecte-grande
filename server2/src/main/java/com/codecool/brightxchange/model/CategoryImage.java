@@ -1,12 +1,12 @@
 package com.codecool.brightxchange.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,13 +25,14 @@ public class CategoryImage {
     @JsonProperty("id")
     private Long id;
 
-    @ManyToOne
-    @JsonProperty("category")
-    private Category category;
 
     @Column(
             columnDefinition = "TEXT"
     )
     @JsonProperty("imageUrl")
     private String imageUrl;
+
+    public CategoryImage(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

@@ -1,6 +1,8 @@
 package com.codecool.brightxchange.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -24,17 +26,20 @@ public class CategorySpec {
     )
     private Long id;
 
+    @JsonProperty("name")
     @Column(
             columnDefinition = "TEXT"
     )
     private String name;
 
+    @JsonProperty("type")
     @Column(
             columnDefinition = "TEXT"
     )
     private String type;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Category category;
 
 }
