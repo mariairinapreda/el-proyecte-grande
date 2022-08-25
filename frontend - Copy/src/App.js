@@ -11,6 +11,8 @@ import CoolerPage from "./pages/products/CoolerPage";
 import CasePage from "./pages/products/CasePage";
 import AddCaseForm from "./pages/products-add/case/AddCaseForm";
 import AddCategory from "./new/category-add/AddCategory";
+import Login from "./authentication/Login";
+import Log from "./authentication/Log";
 
 class App extends React.Component {
   constructor() {
@@ -32,6 +34,9 @@ class App extends React.Component {
           <Routes>
 
             <Route path="/demo" element={<AddCategory />} />
+
+            <Route path="/login" element={<Login />}/>
+            <Route path="/log" element={<Log />}/>
 
 
 
