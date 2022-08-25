@@ -57,6 +57,16 @@ public class Category {
 //    private List<Product> products;
 
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", categorySpecs=" + categorySpecs +
+                ", image=" + image +
+                '}';
+    }
+
     public String getImageName() {
         return String.format("category_%s_%s", id, name);
     }

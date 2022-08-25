@@ -35,4 +35,12 @@ public class CategoryImage {
     public CategoryImage(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    @Override
+    public String toString() {
+        return "CategoryImage{" +
+                "id=" + id +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 }

@@ -38,13 +38,20 @@ public class CategoryController {
         List<CategorySpec> categorySpecs = specService.saveAllAndFlush(category.getCategorySpecs());
         category.setCategorySpecs(categorySpecs);
         // update category
-        category = service.saveAndFlush(category);
+//        category = service.saveAndFlush(category);
         // upload Image
+        System.out.println("start upload");
         CategoryImage categoryImage = uploader.uploadCategoryImage(category.getImageName());
+        System.out.println("end upload");
+        System.out.println(categoryImage);
         // add bound
 //        categoryImage.setCategory(category);
         // save image details and update category
+
         category.setImage(imageService.saveAndFlush(categoryImage));
+
+        service.saveAndFlush(category);
+        System.out.println(category);
 
         return category;
     }

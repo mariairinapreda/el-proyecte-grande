@@ -49,6 +49,7 @@ public class S3ImageUploader {
         PutObjectRequest request = new PutObjectRequest(config.getName(), imageName, categoryImage);
         s3Client.putObject(request);
         categoryImage.delete();
+        System.out.println("uploaded");
         return new CategoryImage(config.getUrl() + imageName);
     }
 

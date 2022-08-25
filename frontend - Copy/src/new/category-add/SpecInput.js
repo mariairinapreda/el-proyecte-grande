@@ -1,7 +1,27 @@
-import React from "react";
+import React, {Component} from "react";
 
 
-const SpecInput = ({count}) => (<label>Spec {count} <input className={"spec"}/></label>)
+class SpecInput extends Component{
+    constructor({count}) {
+        super(count);
+        this.state = {
+            count: count
+        }
+    }
+
+    render() {
+        let {count} = this.state;
+        return <div>
+            <label>Spec {count} Name :<input type={"text"} className={"spec"}/></label>
+            <label>Spec {count} Type :
+                <select className={"type"}>
+                    <option value={"text"} selected>Text</option>
+                    <option value={"number"}>Numeric</option>
+                </select>
+            </label>
+        </div>;
+    }
+}
 
 
 export default SpecInput;
