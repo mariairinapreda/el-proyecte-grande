@@ -13,6 +13,7 @@ import AddCaseForm from "./pages/products-add/case/AddCaseForm";
 import AddCategory from "./new/category-add/AddCategory";
 import Login from "./authentication/Login";
 import Log from "./authentication/Log";
+import Register from "./authentication/Register";
 
 class App extends React.Component {
   constructor() {
@@ -36,6 +37,7 @@ class App extends React.Component {
             <Route path="/demo" element={<AddCategory />} />
 
             <Route path="/login" element={<Login />}/>
+            <Route path="/register" element={<Register />}/>
             <Route path="/log" element={<Log />}/>
 
 

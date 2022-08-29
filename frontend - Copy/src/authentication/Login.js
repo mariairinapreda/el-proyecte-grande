@@ -1,35 +1,33 @@
 import {Component} from "react";
 import {useAtom} from "jotai";
-import {BASE_PATH, JWT_TOKEN} from "../atoms/STORE";
+import {BASE_PATH, JWT_TOKEN, USER_ID} from "../atoms/STORE";
 import axios from "axios";
 
 const Login= () =>{
 
 	const state = {
-		username: "linda",
+		email: "asd@asd.com",
 		password: "password"
 	}
 	const [token, setToken] = useAtom(JWT_TOKEN);
+	const [userId, setUserId] = useAtom(USER_ID);
 
-	const onSumbit = (e) => {
+	const onSubmit = (e) => {
 		e.preventDefault();
 
-		let path = `${BASE_PATH}/login`
+		let path = `${BASE_PATH}/api/auth/signin`
 		axios.post(path,state,{
-			method:"post",
 			headers: {
-				"Content-Type": "application/json",
-				"Accept": "application/json"
+				"Content-Type": "application/json"
 			}
 		}).then(response => {
-			setToken(response.config.headers.Authorization)
-			console.log(token)
-		})
-		// setToken()
+			setToken(response.data.token);
+			setUserId(response.data.userId);
+		});
 	};
 
 
-	return <form onSubmit={onSumbit}>
+	return <form onSubmit={onSubmit}>
 		<button type={"submit"}>SUBMIT</button>
 	</form>
 
