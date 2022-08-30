@@ -34,8 +34,4 @@ public class Product {
     @ManyToOne(cascade = {CascadeType.ALL})
     private Producer producer;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    private Supplier supplier;
-
-
 }

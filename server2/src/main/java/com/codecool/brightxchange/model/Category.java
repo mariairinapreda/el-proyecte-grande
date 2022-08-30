@@ -47,7 +47,7 @@ public class Category {
     @OneToOne(cascade = {CascadeType.ALL})
     @JsonProperty("image")
     private CategoryImage image;
-//
+
 //    @ManyToMany(cascade = {CascadeType.ALL})
 //    @JsonProperty("producers")
 //    private List<Producer> producers;
