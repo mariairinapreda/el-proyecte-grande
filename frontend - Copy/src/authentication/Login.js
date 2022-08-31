@@ -2,6 +2,8 @@ import {Component} from "react";
 import {useAtom} from "jotai";
 import {BASE_PATH, JWT_TOKEN, USER_ID} from "../atoms/STORE";
 import axios from "axios";
+import FormContainer from "../wrappers/form/container/FormContainer";
+import FormCard from "../wrappers/form/card/FormCard";
 
 const Login= () =>{
 
@@ -27,9 +29,17 @@ const Login= () =>{
 	};
 
 
-	return <form onSubmit={onSubmit}>
-		<button type={"submit"}>SUBMIT</button>
-	</form>
+	return (
+		<FormContainer>
+			<FormCard>
+				<form onSubmit={onSubmit}>
+					<label>E-mail: <input type={"email"}/></label>
+					<label>Password: <input type={"password"}/></label>
+					<button type={"submit"}>SUBMIT</button>
+				</form>
+			</FormCard>
+		</FormContainer>
+	);
 
 }
 

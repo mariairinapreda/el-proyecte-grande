@@ -14,7 +14,7 @@
     margin: 40px 25% 80px;
   }
   @include fullhd {
-    margin: 40px 30% 80px;
+    margin: 40px 20% 80px;
   }
   @include tablet {
     min-width: 320px;
@@ -23,6 +23,23 @@
   border-radius: 20px;
   box-shadow: 0 0 7px 2px black;
   font-family: 'Zilla Slab', serif;
+
+  & .content {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    font-size: 25px;
+
+    & label {
+      margin-bottom: 20px;
+      & input {
+        font-size: 20px;
+        margin-left: 20px;
+        border-radius: 10px;
+        padding: 5px;
+      }
+    }
+  }
 
   & h1 {
     font-size: 30px !important;
