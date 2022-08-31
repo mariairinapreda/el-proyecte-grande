@@ -18,7 +18,7 @@ const Register = () => {
       "Content-Type": "application/json",
       "Accept": "application/json"
     }
-  }).then(respose => console.log(respose))}
+  }).then(response => console.log(response))}
   return <form onSubmit={onSubmit}>
     <button type={"submit"}>SUBMIT</button>
   </form>
