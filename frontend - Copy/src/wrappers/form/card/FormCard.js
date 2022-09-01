@@ -1,9 +1,10 @@
 import classes from "./FormCard.module.scss";
 
 const FormCard = (props) => {
-    console.log(props.cancelMessage)
   return (
     <form onSubmit={props.onSubmit} className={classes.form}>
+        <h1>{props.title}</h1>
+
         <div className={classes.content}>{props.children}</div>
         <div>
             <button

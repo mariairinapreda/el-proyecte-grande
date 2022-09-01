@@ -38,7 +38,7 @@ class App extends React.Component {
 
             <Route path="/login" element={<Login />}/>
             <Route path="/register" element={<Register />}/>
-            <Route path="/log" element={<Log />}/>
+            {/*<Route path="/log" element={<Log />}/>*/}
 
 
 

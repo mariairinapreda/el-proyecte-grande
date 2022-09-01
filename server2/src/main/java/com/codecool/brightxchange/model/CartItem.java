@@ -4,8 +4,6 @@ import com.codecool.brightxchange.springSecurity.entity.Client;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.hibernate.annotations.Entity;
-
 import javax.persistence.*;
 
 @Getter

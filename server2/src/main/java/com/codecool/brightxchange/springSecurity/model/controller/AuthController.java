@@ -48,17 +48,14 @@ public class AuthController {
         try {
             String email = data.getEmail();
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, data.getPassword()));
-            List<String> roles = authentication.getAuthorities()
-                    .stream()
-                    .map(GrantedAuthority::getAuthority)
-                    .collect(Collectors.toList());
+            List<String> roles = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
 
             String token = jwtTokenServices.createToken(email, roles);
             Client client = clients.findByEmail(email).get();
 
             Map<Object, Object> model = new HashMap<>();
-            model.put("userId", client.getId());
-//            model.put("username", client.getUsername());
+            model.put("id", client.getId());
+            model.put("name", String.format("%s %s", client.getFirstName(), client.getLastName()));
 //            model.put("roles", roles);
             model.put("token", token);
 //            model.put("status", 200);
