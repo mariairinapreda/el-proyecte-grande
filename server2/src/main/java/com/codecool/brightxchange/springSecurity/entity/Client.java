@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.springSecurity.entity;
 
+import com.codecool.brightxchange.model.CartItem;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -34,7 +35,8 @@ public class Client {
 
     @Column(nullable = false)
     private String password;
-
+    @OneToMany
+    private List<CartItem> cartItems = new ArrayList<>();
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
 
