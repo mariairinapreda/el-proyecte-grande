@@ -27,7 +27,8 @@ public class Product {
     private Integer quantity;
 
     private Float price;
-
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<ProductSpec> productSpecList;
     @OneToMany(cascade = {CascadeType.ALL})
     private List<ProductImage> images;
 
