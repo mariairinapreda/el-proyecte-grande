@@ -1,6 +1,12 @@
 import classes from "./FormCard.module.scss";
+import {useNavigate} from "react-router-dom";
 
 const FormCard = (props) => {
+    const navigate = useNavigate();
+    const onCancel = () => {
+        navigate("/")
+    }
+
   return (
     <form onSubmit={props.onSubmit} className={classes.form}>
         <h1>{props.title}</h1>
@@ -9,6 +15,7 @@ const FormCard = (props) => {
         <div>
             <button
                 type="cancel"
+                onClick={onCancel}
                 className={classes.cancel}
             >
                 <span></span>

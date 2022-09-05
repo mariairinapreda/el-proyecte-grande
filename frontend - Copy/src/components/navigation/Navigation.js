@@ -23,7 +23,7 @@ const Navigation = () => {
         ) : (
           <div className={classes.logo}>
             <Link to="/">{actualUser.name}</Link>
-            <a onClick={logout}>Deconectare</a>
+            <p onClick={logout}>Deconectare</p>
           </div>
         )}
         <input
@@ -53,7 +53,9 @@ const Navigation = () => {
           </li>
           <li className={classes.link}>
             <Link to="/cos-cumparaturi" className={classes.cart}>
-              COS<span className={classes.cartQuantity}>0</span>
+              {/*COS*/}
+              <i className="fa-solid fa-cart-shopping"></i>
+              <span className={classes.cartQuantity}>0</span>
             </Link>
           </li>
         </ul>
