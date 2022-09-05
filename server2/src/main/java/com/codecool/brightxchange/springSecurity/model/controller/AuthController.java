@@ -56,12 +56,12 @@ public class AuthController {
             Map<Object, Object> model = new HashMap<>();
             model.put("id", client.getId());
             model.put("name", String.format("%s %s", client.getFirstName(), client.getLastName()));
-//            model.put("roles", roles);
+            model.put("roles", roles);
             model.put("token", token);
 //            model.put("status", 200);
             return ResponseEntity.ok(model);
         } catch (AuthenticationException e) {
-            throw new BadCredentialsException("Invalid email/password supplied");
+            return new ResponseEntity<>("Incorrect credentials", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
         }
     }
 

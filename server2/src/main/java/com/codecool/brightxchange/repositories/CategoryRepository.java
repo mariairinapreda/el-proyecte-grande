@@ -7,7 +7,5 @@ import java.beans.Transient;
 
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-
-    @Transient
     Category findTopByOrderByIdDesc();
 }
