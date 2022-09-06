@@ -5,6 +5,7 @@ import com.codecool.brightxchange.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -29,5 +30,9 @@ public class CategoryService {
 
     public Category selectLast() {
         return repository.findTopByOrderByIdDesc();
+    }
+
+    public Optional<Category> getOne(Long id){
+        return repository.findById(id);
     }
 }
