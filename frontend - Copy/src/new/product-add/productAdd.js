@@ -1,8 +1,8 @@
 import {useAtom} from "jotai";
-import {BASE_PATH, JWT_TOKEN, USER_ID} from "../atoms/STORE";
 import axios from "axios";
 import SpecInput from "../category-add/SpecInput";
 import {Component} from "react";
+import {BASE_PATH} from "../../atoms/STORE";
 
 
 
@@ -19,7 +19,7 @@ class ProductAdd extends Component{
 
 onSubmit=()=>{}
     componentDidMount() {
-        axios.get(`http://localhost:8888/categories`)
+        axios.get(`${BASE_PATH}/categories`)
             .then(response=> console.log(response))
     }
 

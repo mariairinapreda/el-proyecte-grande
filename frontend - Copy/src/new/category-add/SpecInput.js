@@ -2,10 +2,13 @@ import React, {Component} from "react";
 
 
 class SpecInput extends Component{
-    constructor({count}) {
-        super(count);
+    constructor({count, value, onChange, type}) {
+        super({count, value, onChange, type});
         this.state = {
-            count: count
+            count: count,
+            value: value,
+            onChange: onChange,
+            type: type
         }
     }
 
