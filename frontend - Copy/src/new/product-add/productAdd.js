@@ -1,8 +1,7 @@
-import {useAtom} from "jotai";
-import {BASE_PATH, JWT_TOKEN, USER_ID} from "../atoms/STORE";
+
 import axios from "axios";
-import SpecInput from "../category-add/SpecInput";
 import {Component} from "react";
+import ProductSpecInput from "./ProductSpecInput";
 
 
 
@@ -24,10 +23,10 @@ onSubmit=()=>{}
     }
 
     render() {
-        return <div><div id={"specs"} className={"specs-container"}>
-                {this.state.specs.map((s, index) => <SpecInput key={s.id} count={index}/>)}
-            </div>
-
+        return <div>
+        {/*// <div id={"specs"} className={"specs-container"}>*/}
+        {/*//         {this.state.specs.map((s, index) => <ProductSpecInput key={s.id} count={index}/>)}*/}
+        {/*//     </div>*/}
             <button onClick={this.addSpecInput}>Add spec</button>
 
             <div>
