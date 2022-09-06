@@ -4,6 +4,9 @@ import com.codecool.brightxchange.model.CategoryImage;
 import com.codecool.brightxchange.repositories.CategoryImageRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CategoryImageService {
 
@@ -21,6 +24,13 @@ public class CategoryImageService {
     public CategoryImage saveAndFlush(CategoryImage categoryImage) {
         return repository.saveAndFlush(categoryImage);
     }
+
+public List<CategoryImage> getAllImages(){
+        return repository.findAll();
+}
+public Optional<CategoryImage> getById(Long id){
+        return repository.findById(id);
+}
 
 
 }

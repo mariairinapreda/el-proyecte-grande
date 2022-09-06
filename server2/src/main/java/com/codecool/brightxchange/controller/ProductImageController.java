@@ -1,4 +1,4 @@
-package com.codecool.brightxchange.controller.productImageController;
+package com.codecool.brightxchange.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

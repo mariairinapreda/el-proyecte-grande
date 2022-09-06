@@ -1,12 +1,12 @@
 package com.codecool.brightxchange.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
-
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,4 +35,13 @@ public class Product {
     @ManyToOne(cascade = {CascadeType.ALL})
     private Producer producer;
 
+
+
+    public List<String> getImageNames(){
+        List<String> imageName=new ArrayList<>();
+        for (ProductImage image : images) {
+            imageName.add(image.getImageUrl());
+        }
+        return imageName;
+    }
 }

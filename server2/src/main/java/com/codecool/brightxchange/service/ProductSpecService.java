@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.service;
 
+import com.codecool.brightxchange.model.Product;
 import com.codecool.brightxchange.model.ProductSpec;
 import com.codecool.brightxchange.repositories.ProductSpecRepository;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,7 @@ public class ProductSpecService {
     public void addAllProductSpec(List<ProductSpec> productSpecList) {
         repository.saveAll(productSpecList);
     }
-
+    public List<ProductSpec> addProduct(List<ProductSpec> productSpecs){
+        return repository.saveAllAndFlush(productSpecs);
+    }
 }

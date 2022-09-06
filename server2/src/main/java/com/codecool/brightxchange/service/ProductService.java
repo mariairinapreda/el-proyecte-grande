@@ -16,4 +16,7 @@ public class ProductService {
         repository.save(product);
 
     }
+public Product saveAProduct(Product product){
+        return repository.saveAndFlush(product);
+}
 }

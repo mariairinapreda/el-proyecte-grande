@@ -52,6 +52,16 @@ public class S3ImageUploader {
         System.out.println("uploaded");
         return new CategoryImage(config.getUrl() + imageName);
     }
+    public ProductImage uploadProductImage(String fileName) {
+        String imageName = String.format(fileName + ".jpg");
+        for (File productImage : productImages) {
+            PutObjectRequest request = new PutObjectRequest(config.getName(), imageName, productImage);
+            s3Client.putObject(request);
+            categoryImage.delete();
+            System.out.println("uploaded");
+        }
+        return new ProductImage(config.getUrl() + imageName);
+    }
 
 
     public void saveCategoryImage(MultipartFile image) {
