@@ -9,7 +9,9 @@ import com.codecool.brightxchange.service.CategoryService;
 import com.codecool.brightxchange.service.CategorySpecService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
@@ -33,11 +35,18 @@ public class AdminCategoryController {
 
     @PostMapping
     private Category add(@RequestBody Category category) {
-        // save category specs
-        List<CategorySpec> categorySpecs = specService.saveAllAndFlush(category.getCategorySpecs());
-        category.setCategorySpecs(categorySpecs);
+        System.out.println(category);
+        List<CategorySpec> categorySpecs = category.getCategorySpecs();
+        category.setCategorySpecs(new ArrayList<>());
         // update category
-//        category = service.saveAndFlush(category);
+        category = service.saveAndFlush(category);
+        // save category specs
+        for (CategorySpec categorySpec : categorySpecs) {
+            categorySpec.setCategory(category);
+        }
+
+
+        category.setCategorySpecs(specService.saveAllAndFlush(categorySpecs));
         // upload Image
         System.out.println("start upload");
         CategoryImage categoryImage = uploader.uploadCategoryImage(category.getImageName());

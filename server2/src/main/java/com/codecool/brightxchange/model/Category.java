@@ -41,7 +41,7 @@ public class Category {
     private String name;
 
     @OneToMany(cascade = {CascadeType.ALL})
-    @JsonProperty("categorySpecs")
+    @JsonProperty("specs")
     private List<CategorySpec> categorySpecs;
 
     @OneToOne(cascade = {CascadeType.ALL})

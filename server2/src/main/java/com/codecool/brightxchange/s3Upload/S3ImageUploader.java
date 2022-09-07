@@ -50,7 +50,7 @@ public class S3ImageUploader {
         s3Client.putObject(request);
         categoryImage.delete();
         System.out.println("uploaded");
-        return new CategoryImage(config.getUrl() + imageName);
+        return new CategoryImage(config.getUrl() + imageName.replace(" ","%20"));
     }
     public ProductImage uploadProductImage(String fileName) {
         String imageName = String.format(fileName + ".jpg");

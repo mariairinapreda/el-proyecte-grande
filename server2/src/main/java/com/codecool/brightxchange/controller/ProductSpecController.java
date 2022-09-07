@@ -8,4 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("product-specs")
 public class ProductSpecController {
+
 }

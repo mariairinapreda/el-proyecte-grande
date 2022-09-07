@@ -23,6 +23,7 @@ public class Product {
             generator = "product_sequence"
     )
     private Long id;
+    private String name;
 
     private Integer quantity;
 

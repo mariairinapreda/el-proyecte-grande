@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/admin/product")
+@RequestMapping("/api/admin/products")
 public class AdminProductController {
     private final ProductImageService productImageService;
     private final ProductSpecService productSpecService;

@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("category-images")
+@RequestMapping("/api/admin/category-images")
 public class CategoryImageController {
     private final S3ImageUploader uploader;
     private final CategoryImageService categoryImageService;
