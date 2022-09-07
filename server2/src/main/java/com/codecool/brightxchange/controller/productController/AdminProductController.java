@@ -2,12 +2,12 @@ package com.codecool.brightxchange.controller.productController;
 
 import com.codecool.brightxchange.model.*;
 import com.codecool.brightxchange.s3Upload.S3ImageUploader;
+import com.codecool.brightxchange.service.CategoryService;
 import com.codecool.brightxchange.service.ProductImageService;
 import com.codecool.brightxchange.service.ProductService;
 import com.codecool.brightxchange.service.ProductSpecService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -17,41 +17,37 @@ public class AdminProductController {
     private final ProductImageService productImageService;
     private final ProductSpecService productSpecService;
     private final ProductService productService;
+    private final CategoryService categoryService;
     private final S3ImageUploader uploader;
 
     public AdminProductController(ProductImageService productImageService,
                                   ProductSpecService productSpecService,
                                   ProductService productService,
-                                  S3ImageUploader uploader) {
+                                  CategoryService categoryService, S3ImageUploader uploader) {
         this.productImageService = productImageService;
         this.productSpecService = productSpecService;
         this.productService = productService;
+        this.categoryService = categoryService;
         this.uploader = uploader;
     }
     @PostMapping
     public Product save(@RequestBody Product product){
-        // save category specs
+        System.out.println(product);
+        product.setCategory(categoryService.getOne(product.getCategory().getId()).get());
+        // save product specs
         List<ProductSpec> productSpecs = productSpecService.addProduct(product.getProductSpecList());
+        // save product
         product.setProductSpecList(productSpecs);
-        // update category
-//        category = service.saveAndFlush(category);
+        product = productService.saveAndFlush(product);
         // upload Image
         System.out.println("start upload");
-        List<ProductImage> productImages=new ArrayList<>();
-        for (String image : product.getImageNames()) {
-            ProductImage productImage = uploader.uploadProductImage(image);
-            productImages.add(productImage);
-
-        }
+        List<ProductImage> productImages= uploader.uploadProductImages(product.getNameForImages());
         product.setImages(productImageService.saveAndFlush(productImages));
 
         System.out.println("end upload");
+
         // add bound
-//        categoryImage.setCategory(category);
-        // save image details and update category
-
-
-        productService.saveAProduct(product);
+        productService.saveAndFlush(product);
         System.out.println(product);
 
         return product;

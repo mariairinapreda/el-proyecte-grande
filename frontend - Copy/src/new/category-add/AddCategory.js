@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ADMIN_PATH, USER } from "../../atoms/STORE";
 import { useAtom } from "jotai";
+import FormCard from "../../wrappers/form/card/FormCard";
+import FormContainer from "../../wrappers/form/container/FormContainer";
+import {useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 const AddCategory = () => {
   const [user] = useAtom(USER);
+  const {register, handleSubmit} = useForm();
+
+  const navigate = useNavigate()
 
   const defaultSpecs = [
     { key: "name", name: "nume", type: "text" },
@@ -27,7 +34,8 @@ const AddCategory = () => {
     setState({ ...state, name: e.target.value });
   };
 
-  const addSpecInput = () => {
+  const addSpecInput = (e) => {
+    e.preventDefault()
     let count = state.specs.length + 1;
     let name = `spec${count}`;
     const newSpecs = state.specs;
@@ -63,11 +71,13 @@ const AddCategory = () => {
     });
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    const formData = new FormData();
+    formData.append("image", e.file[0])
     axios
       .post(
         `${ADMIN_PATH}/category-images`,
-        { image: document.getElementById("image-input").files[0] },
+        formData,
         {
           method: "POST",
           headers: {
@@ -87,92 +97,92 @@ const AddCategory = () => {
               Accept: "application/json",
             },
           })
-          .then((r) => console.log(r));
+          .then(() => navigate("/"));
       });
-
-    console.log(state);
   };
 
   return (
-    <div>
-      <label>
-        Numele categoriei:{" "}
-        <input
-          id={"category-name"}
-          name={"category-name"}
-          value={state.name}
-          onChange={onNameChange}
-        />
-      </label>
-      <h3>Specificatii</h3>
-      <div id={"specs"} className={"specs-container"}>
-        {defaultSpecs.map((s, index) => (
-          <div key={`${s.name}_${index}`}>
-            <label>
-              {" "}
-              {index + 1}. nume:{" "}
-              <input
-                type={"text"}
-                name={s.key}
-                value={s.name}
-                className={"spec"}
-                disabled={true}
-              />
-            </label>
-            <label>
-              {" "}
-              tip:
-              <select
-                name={s.key}
-                value={s.type}
-                disabled={true}
-                className={"type"}
-              >
-                <option value={"text"}>Text</option>
-                <option value={"number"}>Numeric</option>
-              </select>
-            </label>
-          </div>
-        ))}
-        {state.specs.map((s, index) => (
-          <div key={`${s.key}_${index}`}>
-            <label>
-              {" "}
-              {index + 5}. nume:{" "}
-              <input
-                type={"text"}
-                name={s.key}
-                value={s.name}
-                onChange={onSpecChangeValue}
-                className={"spec"}
-              />
-            </label>
-            <label>
-              {" "}
-              tip:
-              <select
-                name={s.key}
-                value={s.type}
-                className={"type"}
-                onChange={onSpecChangeType}
-              >
-                <option value={"text"}>Text</option>
-                <option value={"number"}>Numeric</option>
-              </select>
-            </label>
-          </div>
-        ))}
-      </div>
+    <FormContainer>
+      <FormCard onSubmit={handleSubmit(onSubmit)}>
+        <label>
+          Numele categoriei:{" "}
+          <input
+              id={"category-name"}
+              name={"category-name"}
+              value={state.name}
+              onChange={onNameChange}
+          />
+        </label>
+        <h3>Specificatii</h3>
+        <div id={"specs"} className={"specs-container"}>
+          {defaultSpecs.map((s, index) => (
+              <div key={`${s.name}_${index}`}>
+                <label>
+                  {" "}
+                  {index + 1}. nume:{" "}
+                  <input
+                      type={"text"}
+                      name={s.key}
+                      value={s.name}
+                      className={"spec"}
+                      disabled={true}
+                  />
+                </label>
+                <label>
+                  {" "}
+                  tip:
+                  <select
+                      name={s.key}
+                      value={s.type}
+                      disabled={true}
+                      className={"type"}
+                  >
+                    <option value={"text"}>Text</option>
+                    <option value={"number"}>Numeric</option>
+                  </select>
+                </label>
+              </div>
+          ))}
+          {state.specs.map((s, index) => (
+              <div key={`${s.key}_${index}`}>
+                <label>
+                  {" "}
+                  {index + 5}. nume:{" "}
+                  <input
+                      type={"text"}
+                      name={s.key}
+                      value={s.name}
+                      onChange={onSpecChangeValue}
+                      className={"spec"}
+                  />
+                </label>
+                <label>
+                  {" "}
+                  tip:
+                  <select
+                      name={s.key}
+                      value={s.type}
+                      className={"type"}
+                      onChange={onSpecChangeType}
+                  >
+                    <option value={"text"}>Text</option>
+                    <option value={"number"}>Numeric</option>
+                  </select>
+                </label>
+              </div>
+          ))}
+        </div>
 
-      {Object.keys(state.specs).length < 30 && (
-        <button onClick={addSpecInput}>Add spec</button>
-      )}
+        {Object.keys(state.specs).length < 30 && (
+            <button onClick={addSpecInput}>Add spec</button>
+        )}
 
-      <div>
-        <input type={"file"} accept={".jpeg,.jpg,.png"} id={"image-input"} />
-      </div>
-      <button onClick={onSubmit}>Submit</button>
-    </div>
+        <div>
+          <input type={"file"} accept={".jpeg,.jpg,.png"} {...register("file")} />
+        </div>
+        {/*<button onClick={onSubmit}>Submit</button>*/}
+      </FormCard>
+    </FormContainer>
   );
 };
 

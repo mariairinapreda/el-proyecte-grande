@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,13 +29,18 @@ public class Product {
     private Integer quantity;
 
     private Float price;
+    @JsonProperty("specs")
     @OneToMany(cascade = {CascadeType.ALL})
     private List<ProductSpec> productSpecList;
     @OneToMany(cascade = {CascadeType.ALL})
-    private List<ProductImage> images;
+    private List<ProductImage> images = new ArrayList<>();
 
     @ManyToOne(cascade = {CascadeType.ALL})
     private Producer producer;
+
+    @JsonProperty("category")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    private Category category;
 
 
 
@@ -44,5 +50,23 @@ public class Product {
             imageName.add(image.getImageUrl());
         }
         return imageName;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", productSpecList=" + productSpecList +
+                ", images=" + images +
+                ", producer=" + producer +
+                ", category=" + category +
+                '}';
+    }
+
+    public String getNameForImages() {
+        return String.format("product_%s_%s",id,name);
     }
 }

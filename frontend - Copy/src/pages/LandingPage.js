@@ -23,7 +23,7 @@ const LandingPage = ({ user }) => {
         {categories.map((category, index) => (
           <LandingPageCard
             key={`Category_${index}`}
-            url={category.url}
+            url={`/categorii/${category.name}`}
             imageUrl={category.imageUrl}
             name={category.name}
           />
