@@ -1,29 +1,25 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 
 
-class SpecInput extends Component{
-    constructor({count, value, onChange, type}) {
-        super({count, value, onChange, type});
-        this.state = {
-            count: count,
-            value: value,
-            onChange: onChange,
-            type: type
-        }
-    }
+const SpecInput = ({count, value, onChangeValue, onChangeType, type, inputName}) =>{
 
-    render() {
-        let {count} = this.state;
-        return <div>
-            <label>Spec {count} Name :<input type={"text"} className={"spec"}/></label>
-            <label>Spec {count} Type :
-                <select className={"type"}>
-                    <option value={"text"} selected>Text</option>
+    const [state, setState] = useState({
+        count: count,
+        value: value,
+        type: type
+    });
+
+    return(
+        <div>
+            <label> {state.count}. nume: <input type={"text"} name={inputName} value={value} onChange={onChangeValue} className={"spec"}/></label>
+            <label>  tip:
+                <select name={inputName} value={state.type} className={"type"} onChange={onChangeType}>
+                    <option value={"text"}>Text</option>
                     <option value={"number"}>Numeric</option>
                 </select>
             </label>
-        </div>;
-    }
+        </div>
+    );
 }
 
 

@@ -10,27 +10,58 @@ const AddCategory = () => {
     const [user, setUser] = useAtom(USER)
 
     const [state, setState] = useState({
-        specs: {
-            quantity: { name: "quantity", type: "number"}
-        },
-        count: 0
+        name: "",
+        specs: [
+            {key: "name", name: "nume", type: "text"},
+            {key: "quantity", name: "cantitate", type: "number"},
+            {key: "price", name: "pret", type: "number"}
+        ],
+        count: 3
     })
 
 
     const addSpecInput = () => {
-        let count = parseInt(state.count)+1;
-        let name = `spec${state.count}`;
-        setState({specs: {...state.specs, [name]: {name: "", type:"text"}}, count: count});
-        console.log(state)
+        let count = state.specs.length + 1;
+        let name = `spec${count}`;
+        const newSpecs = state.specs;
+        newSpecs.push({key: name, name: "", type: "text"},)
+        setState({...state,specs: newSpecs, count: count});
+    }
+
+    const onSpecChangeValue = (e) => {
+        const {name, value} = e.target;
+        console.log(e.target)
+        const newSpecs = state.specs.map(e => {
+            console.log(`element: ${e.key}    name: ${name}    value: ${value}`)
+            if(e.key === name){
+                return {...e, name:value}
+            }else return e;
+        })
+
+        setState({
+                ...state,
+                specs: newSpecs
+            }
+        )
+    }
+
+    const onSpecChangeType = (e) => {
+        const {name, value} = e.target;
+        const newSpecs = state.specs.map(e => {
+            if(e.key === name){
+                return {...e, type:value}
+            }else return e;
+        })
+        console.log(newSpecs)
+        setState({
+                ...state,
+                specs: newSpecs
+            }
+        )
     }
 
     const onSubmit = () => {
-        let specs = document.getElementsByClassName("spec");
-        let types = document.getElementsByClassName("type");
         let finalSpecs = [];
-        // for (let index = 0; index < specs.length; index++) {
-        //     finalSpecs.push({name: specs.item(index).value, type: types.item(index).value})
-        // }
         let category = {
             name: document.getElementById("category-name").value, categorySpecs: finalSpecs
         };
@@ -55,38 +86,32 @@ const AddCategory = () => {
             ).then(r => console.log(r))
         })
 
-        // fetch("https://localhost:8888/category-images", {
-        //     method: "POST",
-        //     headers: {
-        //         "Authorization": token,
-        //         "Content-Type": "multipart/form-data",
-        //         "Accept": "application/json"
-        //     }, body: {"image": document.getElementById("image-input").files[0]}
-        // }).then();
-
-
         console.log(category)
-
-
-        // fetch("https://localhost:8888/categories", {
-        //     method: "POST",
-        // 	headers: {
-        //         "Authorization": token,
-        //         "Content-Type": "application/json",
-        // 		"Accept": "application/json"
-        //     },
-        //     body: category
-        // })
     }
+
+    // console.log(state)
 
     return <div>
         <label>Category name: <input id={"category-name"} name={"category-name"}/></label>
         <h3>Specifications</h3>
         <div id={"specs"} className={"specs-container"}>
-            {Object.keys(state.specs).map((s, index) => <SpecInput key={state.specs[s].name} value={state.specs[s].name} count={index}/>)}
+            {/*{Object.keys(state.specs).map((s, index) => <SpecInput key={`${s}`} inputName={s} value={state.specs[s].name}*/}
+            {/*                                                       type={state.specs[s].type} count={index+1}*/}
+            {/*                                                       onChangeValue={onSpecChangeValue}*/}
+            {/*                                                       onChangeType={onSpecChangeType}/>)}*/}
+
+            {state.specs.map((s, index) => <div key={s.key}>
+                <label> {index+1}. nume: <input type={"text"} name={s.key} value={s.name} onChange={onSpecChangeValue} className={"spec"}/></label>
+                <label>  tip:
+                    <select name={s.key} value={s.type} className={"type"} onChange={onSpecChangeType}>
+                        <option value={"text"}>Text</option>
+                        <option value={"number"}>Numeric</option>
+                    </select>
+                </label>
+            </div>)}
         </div>
 
-        <button onClick={addSpecInput}>Add spec</button>
+        {Object.keys(state.specs).length<30 && <button onClick={addSpecInput}>Add spec</button>}
 
         <div>
             <input type={"file"} accept={".jpeg,.jpg,.png"} id={"image-input"}/>
