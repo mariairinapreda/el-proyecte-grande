@@ -1,7 +1,8 @@
-
+import {useAtom} from "jotai";
 import axios from "axios";
+import SpecInput from "../category-add/SpecInput";
 import {Component} from "react";
-import ProductSpecInput from "./ProductSpecInput";
+import {BASE_PATH} from "../../atoms/STORE";
 
 
 
@@ -18,15 +19,15 @@ class ProductAdd extends Component{
 
 onSubmit=()=>{}
     componentDidMount() {
-        axios.get(`http://localhost:8888/categories`)
+        axios.get(`${BASE_PATH}/categories`)
             .then(response=> console.log(response))
     }
 
     render() {
-        return <div>
-        {/*// <div id={"specs"} className={"specs-container"}>*/}
-        {/*//         {this.state.specs.map((s, index) => <ProductSpecInput key={s.id} count={index}/>)}*/}
-        {/*//     </div>*/}
+        return <div><div id={"specs"} className={"specs-container"}>
+                {this.state.specs.map((s, index) => <SpecInput key={s.id} count={index}/>)}
+            </div>
+
             <button onClick={this.addSpecInput}>Add spec</button>
 
             <div>
