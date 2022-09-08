@@ -2,12 +2,14 @@ package com.codecool.brightxchange.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -25,13 +27,16 @@ public class Producer {
     private Long id;
 
     @Column(
-            columnDefinition = "TEXT"
+            columnDefinition = "TEXT",
+            unique = true
     )
     private String name;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    private List<Category> categories;
-
-    @OneToMany(cascade = {CascadeType.ALL})
-    private List<Product> products;
+    @Override
+    public String toString() {
+        return "Producer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

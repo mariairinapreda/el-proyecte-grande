@@ -37,10 +37,12 @@ public class Product {
     private List<ProductImage> images = new ArrayList<>();
 
     @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn
     private Producer producer;
 
     @JsonProperty("category")
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
+    @JoinColumn
     private Category category;
 
 

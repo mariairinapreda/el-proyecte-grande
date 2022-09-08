@@ -1,4 +1,4 @@
-import classes from "./CaseDetails.module.scss";
+import classes from "../CaseDetails.module.scss";
 
 const CaseDetails = ({ numberOfHDD, numberOfSSD }) => (
   <table className={classes.customCardDetails}>

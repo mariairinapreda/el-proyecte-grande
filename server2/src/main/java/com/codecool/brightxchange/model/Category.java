@@ -1,10 +1,12 @@
 package com.codecool.brightxchange.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,7 +44,7 @@ public class Category {
 
     @OneToMany(cascade = {CascadeType.ALL})
     @JsonProperty("specs")
-    private List<CategorySpec> categorySpecs;
+    private List<CategorySpec> categorySpecs = new ArrayList<>();
 
     @OneToOne(cascade = {CascadeType.ALL})
     @JsonProperty("image")

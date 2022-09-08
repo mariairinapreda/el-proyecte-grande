@@ -27,5 +27,9 @@ public class CategorySpecService {
         return repository.saveAllAndFlush(categorySpecList);
     }
 
+    public CategorySpec getById(Long id){
+        return repository.getReferenceById(id);
+    }
+
 
 }

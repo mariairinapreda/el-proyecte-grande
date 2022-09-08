@@ -23,9 +23,6 @@ public class ProductImage {
     )
     private Long id;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    private Product product;
-
     @Column(
             columnDefinition = "TEXT"
     )

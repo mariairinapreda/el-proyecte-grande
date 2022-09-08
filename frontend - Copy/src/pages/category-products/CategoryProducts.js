@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Card from "../../wrappers/card/Card";
 import axios from "axios";
 import { BASE_PATH } from "../../atoms/STORE";
+import Details from "../../wrappers/card/details/Details";
+import Detail from "../../wrappers/card/details/Detail";
 
 const CategoryProducts = () => {
   const { categoryName } = useParams();
@@ -15,13 +17,37 @@ const CategoryProducts = () => {
       .get(`${BASE_PATH}/products/category/${categoryName}`)
       .then((r) => setProducts(r.data));
   }, [categoryName]);
+
   return (
     <>
       <Navigation />
       <h1 style={{ marginTop: 100 }}>{categoryName}</h1>
       <ProductsContainer>
         {products.map((p) => (
-          <Card key={`product_${p.id}`} />
+          <Card
+            key={`product_${p.id}`}
+            imageUrl={p.imageNames[0]}
+            title={p.name}
+            price={p.price}
+            details={
+              <Details
+                details={
+                  <>
+                    {p.specs.map((spec) => (
+                      <Detail
+                        name={spec.categorySpec.name}
+                        value={
+                          spec.categorySpec.type === "text"
+                            ? spec.stringValue
+                            : spec.numberValue
+                        }
+                      />
+                    ))}
+                  </>
+                }
+              />
+            }
+          />
         ))}
       </ProductsContainer>
     </>
