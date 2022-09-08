@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -43,9 +44,8 @@ public class Product {
     private Category category;
 
 
-
-    public List<String> getImageNames(){
-        List<String> imageName=new ArrayList<>();
+    public List<String> getImageNames() {
+        List<String> imageName = new ArrayList<>();
         for (ProductImage image : images) {
             imageName.add(image.getImageUrl());
         }
@@ -67,6 +67,6 @@ public class Product {
     }
 
     public String getNameForImages() {
-        return String.format("product_%s_%s",id,name);
+        return String.format("product_%s_%s", id, name);
     }
 }

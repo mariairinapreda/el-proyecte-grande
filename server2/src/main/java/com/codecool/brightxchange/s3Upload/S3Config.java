@@ -27,7 +27,7 @@ public class S3Config {
     }
 
     @Bean
-    public AmazonS3 getS3Client(){
+    public AmazonS3 getS3Client() {
         AWSCredentials credentials = new BasicAWSCredentials(id, key);
         AWSCredentialsProvider provider = new AWSStaticCredentialsProvider(credentials);
 

@@ -20,13 +20,16 @@ public class ProductService {
         repository.save(product);
 
     }
-public Product saveAProduct(Product product){
+
+    public Product saveAProduct(Product product) {
         return repository.saveAndFlush(product);
-}
-public List<Product> getAll(){
+    }
+
+    public List<Product> getAll() {
         return repository.findAll();
-}
-public Optional<Product> getProductById(Long id){
+    }
+
+    public Optional<Product> getProductById(Long id) {
         return repository.findById(id);
 }
 

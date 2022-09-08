@@ -1,6 +1,8 @@
 package com.codecool.brightxchange.controller.productController;
 
-import com.codecool.brightxchange.model.*;
+import com.codecool.brightxchange.model.Product;
+import com.codecool.brightxchange.model.ProductImage;
+import com.codecool.brightxchange.model.ProductSpec;
 import com.codecool.brightxchange.s3Upload.S3ImageUploader;
 import com.codecool.brightxchange.service.CategoryService;
 import com.codecool.brightxchange.service.ProductImageService;
@@ -30,8 +32,9 @@ public class AdminProductController {
         this.categoryService = categoryService;
         this.uploader = uploader;
     }
+
     @PostMapping
-    public Product save(@RequestBody Product product){
+    public Product save(@RequestBody Product product) {
         System.out.println(product);
         product.setCategory(categoryService.getOne(product.getCategory().getId()).get());
         // save product specs
@@ -41,7 +44,7 @@ public class AdminProductController {
         product = productService.saveAProduct(product);
         // upload Image
         System.out.println("start upload");
-        List<ProductImage> productImages= uploader.uploadProductImages(product.getNameForImages());
+        List<ProductImage> productImages = uploader.uploadProductImages(product.getNameForImages());
         product.setImages(productImageService.saveAndFlush(productImages));
 
         System.out.println("end upload");

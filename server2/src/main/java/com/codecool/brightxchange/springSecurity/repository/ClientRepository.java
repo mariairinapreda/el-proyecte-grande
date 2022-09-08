@@ -11,5 +11,5 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
     Client getClientById(Long id);
 
-    boolean existsClientsByEmail (String email);
+    boolean existsClientsByEmail(String email);
 }

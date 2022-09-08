@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@CrossOrigin(originPatterns="http://localhost:3000")
+@CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/admin/category-images")
 public class CategoryImageController {
@@ -21,14 +21,15 @@ public class CategoryImageController {
         this.categoryImageService = categoryImageService;
     }
 
-  @GetMapping
-    public List<CategoryImage> getAll(){
+    @GetMapping
+    public List<CategoryImage> getAll() {
         return categoryImageService.getAllImages();
-  }
-  @GetMapping("{id}")
-    public CategoryImage getOne(@PathVariable("id")Long id){
+    }
+
+    @GetMapping("{id}")
+    public CategoryImage getOne(@PathVariable("id") Long id) {
         return categoryImageService.getById(id).get();
-  }
+    }
 
     @PostMapping
     public void imageUploader(@RequestParam("image") MultipartFile image) {

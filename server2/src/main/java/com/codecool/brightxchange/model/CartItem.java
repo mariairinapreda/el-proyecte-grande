@@ -4,6 +4,7 @@ import com.codecool.brightxchange.springSecurity.entity.Client;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+
 import javax.persistence.*;
 
 @Getter
@@ -31,7 +32,6 @@ public class CartItem {
     @ManyToOne(cascade = {CascadeType.ALL})
     private Product product;
     private Integer quantity;
-
 
 
 }

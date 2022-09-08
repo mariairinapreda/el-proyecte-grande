@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.stream.Collectors;
 
 @Component
-public class CustomClientDetailsService implements UserDetailsService{
+public class CustomClientDetailsService implements UserDetailsService {
 
     private final ClientRepository clients;
 

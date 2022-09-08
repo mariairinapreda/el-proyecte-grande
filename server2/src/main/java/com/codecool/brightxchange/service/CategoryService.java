@@ -32,7 +32,7 @@ public class CategoryService {
         return repository.findTopByOrderByIdDesc();
     }
 
-    public Optional<Category> getOne(Long id){
+    public Optional<Category> getOne(Long id) {
         return repository.findById(id);
     }
 
