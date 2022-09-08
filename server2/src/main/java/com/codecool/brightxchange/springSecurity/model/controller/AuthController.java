@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -46,11 +48,13 @@ public class AuthController {
     public ResponseEntity<Object> signin(@RequestBody ClientCredentials data) {
         try {
             String email = data.getEmail();
+            Client client = clients.findByEmail(email).orElseThrow(() -> {
+                throw new UsernameNotFoundException("");
+            });
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, data.getPassword()));
             List<String> roles = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
 
             String token = jwtTokenServices.createToken(email, roles);
-            Client client = clients.findByEmail(email).get();
 
             Map<Object, Object> model = new HashMap<>();
             model.put("id", client.getId());
@@ -59,6 +63,10 @@ public class AuthController {
             model.put("token", token);
 //            model.put("status", 200);
             return ResponseEntity.ok(model);
+        } catch (UsernameNotFoundException e) {
+            return new ResponseEntity<>("Username does not exists", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+        } catch (BadCredentialsException e) {
+            return new ResponseEntity<>("Incorrect Password", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
         } catch (AuthenticationException e) {
             return new ResponseEntity<>("Incorrect credentials", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
         }
