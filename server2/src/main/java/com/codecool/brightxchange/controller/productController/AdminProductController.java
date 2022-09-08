@@ -38,7 +38,7 @@ public class AdminProductController {
         List<ProductSpec> productSpecs = productSpecService.addProduct(product.getProductSpecList());
         // save product
         product.setProductSpecList(productSpecs);
-        product = productService.saveAndFlush(product);
+        product = productService.saveAProduct(product);
         // upload Image
         System.out.println("start upload");
         List<ProductImage> productImages= uploader.uploadProductImages(product.getNameForImages());
@@ -47,7 +47,7 @@ public class AdminProductController {
         System.out.println("end upload");
 
         // add bound
-        productService.saveAndFlush(product);
+        productService.saveAProduct(product);
         System.out.println(product);
 
         return product;

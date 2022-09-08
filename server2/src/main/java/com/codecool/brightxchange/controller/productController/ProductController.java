@@ -5,9 +5,9 @@ import com.codecool.brightxchange.s3Upload.S3ImageUploader;
 import com.codecool.brightxchange.service.ProductImageService;
 import com.codecool.brightxchange.service.ProductService;
 import com.codecool.brightxchange.service.ProductSpecService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -26,7 +26,17 @@ public class ProductController {
         this.productService = productService;
     }
 
-    public void addProduct(Product product) {
-        productService.addProductService(product);
+//    public void addProduct(Product product) {
+//        productService.addProductService(product);
+//    }
+
+    @GetMapping
+    public List<Product> getAllProducts(){
+        return productService.getAll();
     }
+    @GetMapping("{id}")
+    public Product getOneProduct(@PathVariable("id") Long id){
+        return productService.getProductById(id).get();
+    }
+
 }
