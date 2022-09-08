@@ -48,8 +48,8 @@ public class S3ImageUploader {
         String imageName = String.format(fileName + ".jpg");
         PutObjectRequest request = new PutObjectRequest(config.getName(), imageName, categoryImage);
         s3Client.putObject(request);
-        categoryImage.delete();
         System.out.println("uploaded");
+        clearImages();
         return new CategoryImage(config.getUrl() + imageName.replace(" ", "%20"));
     }
 
@@ -58,9 +58,9 @@ public class S3ImageUploader {
         for (File productImage : productImages) {
             PutObjectRequest request = new PutObjectRequest(config.getName(), imageName, productImage);
             s3Client.putObject(request);
-            categoryImage.delete();
             System.out.println("uploaded");
         }
+        clearImages();
         return new ProductImage(config.getUrl() + imageName);
     }
 
@@ -93,7 +93,9 @@ public class S3ImageUploader {
     }
 
     public void clearImages() {
+        categoryImage.delete();
         categoryImage = null;
+        productImages.forEach(File::delete);
         productImages.clear();
     }
 }

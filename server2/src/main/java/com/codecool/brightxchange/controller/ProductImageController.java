@@ -18,4 +18,9 @@ public class ProductImageController {
     public void imageUploader(@RequestParam("image") MultipartFile image) {
         uploader.saveProductImages(image);
     }
+
+    @DeleteMapping
+    public void clear() {
+        uploader.clearImages();
+    }
 }

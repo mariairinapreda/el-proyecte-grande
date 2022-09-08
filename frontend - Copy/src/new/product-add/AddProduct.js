@@ -110,10 +110,12 @@ const AddProduct = () => {
     });
     navigate("/");
   };
-
+  const onCancel = () => {
+    axios.delete(`${ADMIN_PATH}/product-images`).then();
+  };
   return (
     <FormContainer>
-      <FormCard onSubmit={handleSubmit(onSubmit)}>
+      <FormCard onSubmit={handleSubmit(onSubmit)} onCancel={onCancel}>
         <h1>Adauga produs</h1>
         <div>
           {Object.keys(state).map((k) => {

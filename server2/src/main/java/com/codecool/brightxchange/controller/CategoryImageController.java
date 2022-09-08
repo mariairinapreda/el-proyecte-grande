@@ -1,12 +1,9 @@
 package com.codecool.brightxchange.controller;
 
-import com.codecool.brightxchange.model.CategoryImage;
 import com.codecool.brightxchange.s3Upload.S3ImageUploader;
 import com.codecool.brightxchange.service.CategoryImageService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 @CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
@@ -21,14 +18,9 @@ public class CategoryImageController {
         this.categoryImageService = categoryImageService;
     }
 
-    @GetMapping
-    public List<CategoryImage> getAll() {
-        return categoryImageService.getAllImages();
-    }
-
-    @GetMapping("{id}")
-    public CategoryImage getOne(@PathVariable("id") Long id) {
-        return categoryImageService.getById(id).get();
+    @DeleteMapping
+    public void clear() {
+        uploader.clearImages();
     }
 
     @PostMapping
