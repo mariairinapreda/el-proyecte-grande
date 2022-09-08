@@ -8,4 +8,5 @@ import java.beans.Transient;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     Category findTopByOrderByIdDesc();
+    Category findCategoryByNameEquals(String name);
 }

@@ -35,4 +35,8 @@ public class CategoryService {
     public Optional<Category> getOne(Long id){
         return repository.findById(id);
     }
+
+    public Category getByName(String categoryName) {
+        return repository.findCategoryByNameEquals(categoryName);
+    }
 }
