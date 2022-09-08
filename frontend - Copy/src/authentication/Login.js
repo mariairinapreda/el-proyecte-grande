@@ -51,11 +51,11 @@ const Login = () => {
 
     return (
         <FormContainer>
-            <FormCard onSubmit={handleSubmit(onSubmit)} title={"Logare"}>
+            <FormCard onSubmit={handleSubmit(onSubmit)} title={"Logare"} submitMessage={"Logare"}>
                 {errorMessage !== "" && <h5 style={{color:"red", textAlign:"center"}}>{errorMessage}</h5>}
                 <label>E-mail: <input name={"email"} value={credentials.email} onChange={onChange}
                                       type={"email"}/></label>
-                <label>Password: <input name={"password"} value={credentials.password} onChange={onChange}
+                <label>Parola: <input name={"password"} value={credentials.password} onChange={onChange}
                                         type={"password"}/></label>
             </FormCard>
         </FormContainer>

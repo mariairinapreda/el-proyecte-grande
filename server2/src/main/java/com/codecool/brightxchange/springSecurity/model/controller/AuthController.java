@@ -64,11 +64,11 @@ public class AuthController {
 //            model.put("status", 200);
             return ResponseEntity.ok(model);
         } catch (UsernameNotFoundException e) {
-            return new ResponseEntity<>("Username does not exists", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+            return new ResponseEntity<>("Acest e-mail nu exista!", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
         } catch (BadCredentialsException e) {
-            return new ResponseEntity<>("Incorrect Password", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+            return new ResponseEntity<>("Parola incorecta!", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
         } catch (AuthenticationException e) {
-            return new ResponseEntity<>("Incorrect credentials", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+            return new ResponseEntity<>("Informatii incorecte!", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
         }
     }
 
