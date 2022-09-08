@@ -25,12 +25,13 @@ public class CategoryImageService {
         return repository.saveAndFlush(categoryImage);
     }
 
-public List<CategoryImage> getAllImages(){
+    public List<CategoryImage> getAllImages() {
         return repository.findAll();
-}
-public Optional<CategoryImage> getById(Long id){
+    }
+
+    public Optional<CategoryImage> getById(Long id) {
         return repository.findById(id);
-}
+    }
 
 
 }

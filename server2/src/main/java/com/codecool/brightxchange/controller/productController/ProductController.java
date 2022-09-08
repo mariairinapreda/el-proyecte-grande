@@ -1,7 +1,6 @@
 package com.codecool.brightxchange.controller.productController;
 
 import com.codecool.brightxchange.model.Product;
-import com.codecool.brightxchange.s3Upload.S3ImageUploader;
 import com.codecool.brightxchange.service.ProductImageService;
 import com.codecool.brightxchange.service.ProductService;
 import com.codecool.brightxchange.service.ProductSpecService;
@@ -31,11 +30,12 @@ public class ProductController {
 //    }
 
     @GetMapping
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productService.getAll();
     }
+
     @GetMapping("{id}")
-    public Product getOneProduct(@PathVariable("id") Long id){
+    public Product getOneProduct(@PathVariable("id") Long id) {
         return productService.getProductById(id).get();
     }
 

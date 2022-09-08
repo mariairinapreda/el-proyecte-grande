@@ -3,6 +3,7 @@ package com.codecool.brightxchange.model;
 import lombok.*;
 
 import javax.persistence.*;
+
 @Getter
 @Setter
 @Builder

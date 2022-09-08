@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.persistence.Entity;
-import java.net.UnknownHostException;
-
 
 @RestController
 @RequestMapping("/api/client")
@@ -22,7 +19,7 @@ public class ClientController {
 
 
     @Autowired
-    public ClientController (ClientRepository clients) {
+    public ClientController(ClientRepository clients) {
         this.clients = clients;
     }
 
@@ -40,7 +37,7 @@ public class ClientController {
 //    }
 
     @GetMapping("/check/email/{email}")
-    public ResponseEntity<Object> isEmailAlreadyRegistered(@PathVariable String email ) {
+    public ResponseEntity<Object> isEmailAlreadyRegistered(@PathVariable String email) {
         if (clients.existsClientsByEmail(email))
             return new ResponseEntity<>("Already registered", HttpStatus.ALREADY_REPORTED);
 
