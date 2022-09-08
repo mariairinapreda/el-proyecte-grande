@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 
 const AddProduct = () => {
   // const [user] = useAtom(USER);
-  const defaultCategory = { id: 0, name: "Alegeti o categorie", specs: [] };
   const [state, setState] = useState({
     name: "",
     quantity: 1,
@@ -17,8 +16,14 @@ const AddProduct = () => {
     producer: { name: "" },
     specs: [],
   });
-  const [categories, setCategories] = useState([defaultCategory]);
-  const [activeCategory, setActiveCategory] = useState(defaultCategory);
+  const [categories, setCategories] = useState([
+    { id: 0, name: "Alegeti o categorie", specs: [] },
+  ]);
+  const [activeCategory, setActiveCategory] = useState({
+    id: 0,
+    name: "Alegeti o categorie",
+    specs: [],
+  });
   const [user] = useAtom(USER);
 
   const { register, handleSubmit } = useForm();
@@ -28,7 +33,12 @@ const AddProduct = () => {
   useEffect(() => {
     fetch(`${BASE_PATH}/categories`, { method: "GET" })
       .then((response) => response.json())
-      .then((re) => setCategories([defaultCategory, ...re]));
+      .then((re) =>
+        setCategories([
+          { id: 0, name: "Alegeti o categorie", specs: [] },
+          ...re,
+        ])
+      );
   }, []);
 
   const onChange = (e) => {
@@ -135,6 +145,8 @@ const AddProduct = () => {
                 value = state.price;
                 break;
               }
+              default:
+                break;
             }
             return k !== "specs" ? (
               <div key={`${k}`}>
