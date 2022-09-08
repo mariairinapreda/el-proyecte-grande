@@ -24,7 +24,7 @@ const LandingPage = ({ user }) => {
           <LandingPageCard
             key={`Category_${index}`}
             url={`/categorii/${category.name}`}
-            imageUrl={category.imageUrl}
+            imageUrl={category.image.imageUrl}
             name={category.name}
           />
         ))}

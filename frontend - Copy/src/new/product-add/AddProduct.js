@@ -98,7 +98,7 @@ const AddProduct = () => {
         Accept: "application/json",
       },
     });
-    navigate("");
+    navigate("/");
   };
 
   return (
