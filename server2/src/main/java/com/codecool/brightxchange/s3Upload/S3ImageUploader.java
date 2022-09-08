@@ -37,7 +37,7 @@ public class S3ImageUploader {
             s3Client.putObject(request);
 
             productImages.get(i).delete();
-            images.add(new ProductImage(config.getUrl() + imageName));
+            images.add(new ProductImage(config.getUrl() + imageName.replace(" ", "%20")));
         }
 
         productImages.clear();
