@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.service;
 
+import com.codecool.brightxchange.model.Category;
 import com.codecool.brightxchange.model.Product;
 import com.codecool.brightxchange.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,9 @@ public class ProductService {
 
     public Optional<Product> getProductById(Long id) {
         return repository.findById(id);
+}
+
+    public List<Product> getByCategory(Category category) {
+        return repository.getAllByCategoryEquals(category);
     }
-
-
 }
