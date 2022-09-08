@@ -5,18 +5,22 @@ $select-colors: $form-colors !default
   max-width: 100%
   position: relative
   vertical-align: top
+
   &:not(.is-multiple)
     height: $input-height
+
   &:not(.is-multiple):not(.is-loading)
     &::after
       @extend %arrow
       border-color: $input-arrow
       +ltr-position(1.125em)
       z-index: 4
+
   &.is-rounded
     select
       border-radius: $radius-rounded
       +ltr-property("padding", 1em, false)
+
   select
     @extend %input
     cursor: pointer
@@ -24,16 +28,21 @@ $select-colors: $form-colors !default
     font-size: 1em
     max-width: 100%
     outline: none
+
     &::-ms-expand
       display: none
+
     &[disabled]:hover,
     fieldset[disabled] &:hover
       border-color: $input-disabled-border-color
+
     &:not([multiple])
       +ltr-property("padding", 2.5em)
+
     &[multiple]
       height: auto
       padding: 0
+
       option
         padding: 0.5em 1em
   // States
@@ -46,11 +55,14 @@ $select-colors: $form-colors !default
     &.is-#{$name}
       &:not(:hover)::after
         border-color: $color
+
       select
         border-color: $color
+
         &:hover,
         &.is-hovered
           border-color: bulmaDarken($color, 5%)
+
         &:focus,
         &.is-focused,
         &:active,
@@ -59,8 +71,10 @@ $select-colors: $form-colors !default
   // Sizes
   &.is-small
     +control-small
+
   &.is-medium
     +control-medium
+
   &.is-large
     +control-large
   // Modifiers
@@ -68,10 +82,13 @@ $select-colors: $form-colors !default
     &::after
       border-color: $input-disabled-color !important
       opacity: 0.5
+
   &.is-fullwidth
     width: 100%
+
     select
       width: 100%
+
   &.is-loading
     &::after
       @extend %loader
@@ -80,9 +97,12 @@ $select-colors: $form-colors !default
       +ltr-position(0.625em)
       top: 0.625em
       transform: none
+
     &.is-small:after
       font-size: $size-small
+
     &.is-medium:after
       font-size: $size-medium
+
     &.is-large:after
       font-size: $size-large

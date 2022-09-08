@@ -19,12 +19,16 @@ $progress-colors: $colors !default
   overflow: hidden
   padding: 0
   width: 100%
+
   &::-webkit-progress-bar
     background-color: $progress-bar-background-color
+
   &::-webkit-progress-value
     background-color: $progress-value-background-color
+
   &::-moz-progress-bar
     background-color: $progress-value-background-color
+
   &::-ms-fill
     background-color: $progress-value-background-color
     border: none
@@ -34,10 +38,13 @@ $progress-colors: $colors !default
     &.is-#{$name}
       &::-webkit-progress-value
         background-color: $color
+
       &::-moz-progress-bar
         background-color: $color
+
       &::-ms-fill
         background-color: $color
+
       &:indeterminate
         background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%)
 
@@ -51,18 +58,23 @@ $progress-colors: $colors !default
     background-position: top left
     background-repeat: no-repeat
     background-size: 150% 150%
+
     &::-webkit-progress-bar
       background-color: transparent
+
     &::-moz-progress-bar
       background-color: transparent
+
     &::-ms-fill
       animation-name: none
 
   // Sizes
   &.is-small
     height: $size-small
+
   &.is-medium
     height: $size-medium
+
   &.is-large
     height: $size-large
 

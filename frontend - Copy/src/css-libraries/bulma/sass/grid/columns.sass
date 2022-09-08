@@ -8,57 +8,78 @@ $column-gap: 0.75rem !default
   flex-grow: 1
   flex-shrink: 1
   padding: $column-gap
+
   .columns.is-mobile > &.is-narrow
     flex: none
     width: unset
+
   .columns.is-mobile > &.is-full
     flex: none
     width: 100%
+
   .columns.is-mobile > &.is-three-quarters
     flex: none
     width: 75%
+
   .columns.is-mobile > &.is-two-thirds
     flex: none
     width: 66.6666%
+
   .columns.is-mobile > &.is-half
     flex: none
     width: 50%
+
   .columns.is-mobile > &.is-one-third
     flex: none
     width: 33.3333%
+
   .columns.is-mobile > &.is-one-quarter
     flex: none
     width: 25%
+
   .columns.is-mobile > &.is-one-fifth
     flex: none
     width: 20%
+
   .columns.is-mobile > &.is-two-fifths
     flex: none
     width: 40%
+
   .columns.is-mobile > &.is-three-fifths
     flex: none
     width: 60%
+
   .columns.is-mobile > &.is-four-fifths
     flex: none
     width: 80%
+
   .columns.is-mobile > &.is-offset-three-quarters
     +ltr-property("margin", 75%, false)
+
   .columns.is-mobile > &.is-offset-two-thirds
     +ltr-property("margin", 66.6666%, false)
+
   .columns.is-mobile > &.is-offset-half
     +ltr-property("margin", 50%, false)
+
   .columns.is-mobile > &.is-offset-one-third
     +ltr-property("margin", 33.3333%, false)
+
   .columns.is-mobile > &.is-offset-one-quarter
     +ltr-property("margin", 25%, false)
+
   .columns.is-mobile > &.is-offset-one-fifth
     +ltr-property("margin", 20%, false)
+
   .columns.is-mobile > &.is-offset-two-fifths
     +ltr-property("margin", 40%, false)
+
   .columns.is-mobile > &.is-offset-three-fifths
     +ltr-property("margin", 60%, false)
+
   .columns.is-mobile > &.is-offset-four-fifths
     +ltr-property("margin", 80%, false)
+
   @for $i from 0 through 12
     .columns.is-mobile > &.is-#{$i}
       flex: none
@@ -440,28 +461,37 @@ $column-gap: 0.75rem !default
   +ltr-property("margin", (-$column-gap), false)
   +ltr-property("margin", (-$column-gap))
   margin-top: (-$column-gap)
+
   &:last-child
     margin-bottom: (-$column-gap)
+
   &:not(:last-child)
     margin-bottom: calc(1.5rem - #{$column-gap})
   // Modifiers
   &.is-centered
     justify-content: center
+
   &.is-gapless
     +ltr-property("margin", 0, false)
     +ltr-property("margin", 0)
     margin-top: 0
+
     & > .column
       margin: 0
       padding: 0 !important
+
     &:not(:last-child)
       margin-bottom: 1.5rem
+
     &:last-child
       margin-bottom: 0
+
   &.is-mobile
     display: flex
+
   &.is-multiline
     flex-wrap: wrap
+
   &.is-vcentered
     align-items: center
   // Responsiveness
@@ -478,9 +508,11 @@ $column-gap: 0.75rem !default
     --columnGap: 0.75rem
     +ltr-property("margin", calc(-1 * var(--columnGap)), false)
     +ltr-property("margin", calc(-1 * var(--columnGap)))
+
     > .column
       padding-left: var(--columnGap)
       padding-right: var(--columnGap)
+
     @for $i from 0 through 8
       &.is-#{$i}
         --columnGap: #{$i * 0.25rem}

@@ -64,7 +64,7 @@
 @function colorLuminance($color)
   @if type-of($color) != 'color'
     @return 0.55
-  $color-rgb: ('red': red($color),'green': green($color),'blue': blue($color))
+  $color-rgb: ('red': red($color), 'green': green($color), 'blue': blue($color))
   @each $name, $value in $color-rgb
     $adjusted: 0
     $value: divide($value, 255)

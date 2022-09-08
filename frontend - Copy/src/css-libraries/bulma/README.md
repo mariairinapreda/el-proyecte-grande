@@ -1,6 +1,7 @@
 # [Bulma](https://bulma.io)
 
-Bulma is a **modern CSS framework** based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
+Bulma is a **modern CSS framework** based
+on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
 
 ![Github](https://img.shields.io/github/v/release/jgthms/bulma?logo=Bulma)
 [![npm](https://img.shields.io/npm/v/bulma.svg)][npm-link]
@@ -52,15 +53,20 @@ Feel free to raise an issue or submit a pull request.
 
 ## CSS only
 
-Bulma is a **CSS** framework. As such, the sole output is a single CSS file: [bulma.css](https://github.com/jgthms/bulma/blob/master/css/bulma.css)
+Bulma is a **CSS** framework. As such, the sole output is a single CSS
+file: [bulma.css](https://github.com/jgthms/bulma/blob/master/css/bulma.css)
 
-You can either use that file, "out of the box", or download the Sass source files to customize the [variables](https://bulma.io/documentation/overview/variables/).
+You can either use that file, "out of the box", or download the Sass source files to customize
+the [variables](https://bulma.io/documentation/overview/variables/).
 
-There is **no** JavaScript included. People generally want to use their own JS implementation (and usually already have one). Bulma can be considered "environment agnostic": it's just the style layer on top of the logic.
+There is **no** JavaScript included. People generally want to use their own JS implementation (and usually already have
+one). Bulma can be considered "environment agnostic": it's just the style layer on top of the logic.
 
 ## Browser Support
 
-Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with earlier browser versions. According to [Can I use](https://caniuse.com/#feat=flexbox), Bulma is compatible with **recent** versions of:
+Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with
+earlier browser versions. According to [Can I use](https://caniuse.com/#feat=flexbox), Bulma is compatible with **
+recent** versions of:
 
 - Chrome
 - Edge
@@ -72,7 +78,8 @@ Internet Explorer (10+) is only partially supported.
 
 ## Documentation
 
-The documentation resides in the [docs](docs) directory, and is built with the Ruby-based [Jekyll](https://jekyllrb.com/) tool.
+The documentation resides in the [docs](docs) directory, and is built with the
+Ruby-based [Jekyll](https://jekyllrb.com/) tool.
 
 Browse the [online documentation here.](https://bulma.io/documentation/overview/start/)
 
@@ -97,7 +104,8 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Bulma.styl (read-only)](https://github.com/log1x/bulma.styl)                       | 1:1 Stylus translation of Bulma 0.6.11                                                        |
 | [elm-bulma](https://github.com/surprisetalk/elm-bulma)                              | Bulma + Elm                                                                                   |
 | [elm-bulma-classes](https://github.com/ahstro/elm-bulma-classes)                    | Bulma classes prepared for usage with Elm                                                     |
-| [Bulma Customizer](https://bulma-customizer.bstash.io/)                             | Bulma Customizer &#8211; Create your own **bespoke** Bulma build                              |
+| [Bulma Customizer](https://bulma-customizer.bstash.io/)                             | Bulma Customizer &#8211; Create your own **
+bespoke** Bulma build                              |
 | [Fulma](https://fulma.github.io/Fulma/)                                             | Wrapper around Bulma for [fable-react](https://github.com/fable-compiler/fable-react)         |
 | [Laravel Enso](https://github.com/laravel-enso/enso)                                | SPA Admin Panel built with Bulma, VueJS and Laravel                                           |
 | [Django Bulma](https://github.com/timonweb/django-bulma)                            | Integrates Bulma with Django                                                                  |
@@ -132,8 +140,11 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
-Code copyright 2022 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
+Code copyright 2022 Jeremy Thomas. Code released
+under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
 
 [npm-link]: https://www.npmjs.com/package/bulma
+
 [awesome-link]: https://github.com/awesome-css-group/awesome-css
+
 [awesome-badge]: https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg

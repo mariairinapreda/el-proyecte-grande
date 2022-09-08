@@ -39,6 +39,7 @@ $tabs-toggle-link-active-color: $link-invert !default
   overflow: hidden
   overflow-x: auto
   white-space: nowrap
+
   a
     align-items: center
     border-bottom-color: $tabs-border-bottom-color
@@ -50,15 +51,19 @@ $tabs-toggle-link-active-color: $link-invert !default
     margin-bottom: -#{$tabs-border-bottom-width}
     padding: $tabs-link-padding
     vertical-align: top
+
     &:hover
       border-bottom-color: $tabs-link-hover-border-bottom-color
       color: $tabs-link-hover-color
+
   li
     display: block
+
     &.is-active
       a
         border-bottom-color: $tabs-link-active-border-bottom-color
         color: $tabs-link-active-color
+
   ul
     align-items: center
     border-bottom-color: $tabs-border-bottom-color
@@ -68,25 +73,31 @@ $tabs-toggle-link-active-color: $link-invert !default
     flex-grow: 1
     flex-shrink: 0
     justify-content: flex-start
+
     &.is-left
       padding-right: 0.75em
+
     &.is-center
       flex: none
       justify-content: center
       padding-left: 0.75em
       padding-right: 0.75em
+
     &.is-right
       justify-content: flex-end
       padding-left: 0.75em
+
   .icon
     &:first-child
       +ltr-property("margin", 0.5em)
+
     &:last-child
       +ltr-property("margin", 0.5em, false)
   // Alignment
   &.is-centered
     ul
       justify-content: center
+
   &.is-right
     ul
       justify-content: flex-end
@@ -98,19 +109,23 @@ $tabs-toggle-link-active-color: $link-invert !default
         border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0
       +rtl
         border-radius: 0 0 $tabs-boxed-link-radius $tabs-boxed-link-radius
+
       &:hover
         background-color: $tabs-boxed-link-hover-background-color
         border-bottom-color: $tabs-boxed-link-hover-border-bottom-color
+
     li
       &.is-active
         a
           background-color: $tabs-boxed-link-active-background-color
           border-color: $tabs-boxed-link-active-border-color
           border-bottom-color: $tabs-boxed-link-active-border-bottom-color !important
+
   &.is-fullwidth
     li
       flex-grow: 1
       flex-shrink: 0
+
   &.is-toggle
     a
       border-color: $tabs-toggle-link-border-color
@@ -118,13 +133,16 @@ $tabs-toggle-link-active-color: $link-invert !default
       border-width: $tabs-toggle-link-border-width
       margin-bottom: 0
       position: relative
+
       &:hover
         background-color: $tabs-toggle-link-hover-background-color
         border-color: $tabs-toggle-link-hover-border-color
         z-index: 2
+
     li
       & + li
         +ltr-property("margin", -#{$tabs-toggle-link-border-width}, false)
+
       &:first-child a
         +ltr
           border-top-left-radius: $tabs-toggle-link-radius
@@ -132,6 +150,7 @@ $tabs-toggle-link-active-color: $link-invert !default
         +rtl
           border-top-right-radius: $tabs-toggle-link-radius
           border-bottom-right-radius: $tabs-toggle-link-radius
+
       &:last-child a
         +ltr
           border-top-right-radius: $tabs-toggle-link-radius
@@ -139,14 +158,17 @@ $tabs-toggle-link-active-color: $link-invert !default
         +rtl
           border-top-left-radius: $tabs-toggle-link-radius
           border-bottom-left-radius: $tabs-toggle-link-radius
+
       &.is-active
         a
           background-color: $tabs-toggle-link-active-background-color
           border-color: $tabs-toggle-link-active-border-color
           color: $tabs-toggle-link-active-color
           z-index: 1
+
     ul
       border-bottom: none
+
     &.is-toggle-rounded
       li
         &:first-child a
@@ -158,6 +180,7 @@ $tabs-toggle-link-active-color: $link-invert !default
             border-bottom-right-radius: $radius-rounded
             border-top-right-radius: $radius-rounded
             padding-right: 1.25em
+
         &:last-child a
           +ltr
             border-bottom-right-radius: $radius-rounded
@@ -170,7 +193,9 @@ $tabs-toggle-link-active-color: $link-invert !default
   // Sizes
   &.is-small
     font-size: $size-small
+
   &.is-medium
     font-size: $size-medium
+
   &.is-large
     font-size: $size-large

@@ -42,9 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests() // restrict access based on the config below:
 //                .antMatchers("/**").permitAll() // test purposes
-                .antMatchers("/api/auth/**", "/**").permitAll()
                 .antMatchers("/api/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/api/user/**").hasAnyRole("USER")
+                .antMatchers("/api/auth/**", "/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // Here we define our custom filter that uses the JWT tokens for authentication.

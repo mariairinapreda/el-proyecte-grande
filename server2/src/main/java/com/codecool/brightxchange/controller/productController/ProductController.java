@@ -34,18 +34,19 @@ public class ProductController {
 //    }
 
     @GetMapping
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productService.getAll();
     }
+
     @GetMapping("{id}")
-    public Product getOneProduct(@PathVariable("id") Long id){
+    public Product getOneProduct(@PathVariable("id") Long id) {
         return productService.getProductById(id).get();
     }
 
 
     @GetMapping("/category/{categoryName}")
-    public List<Product> getByCategoryName(@PathVariable("categoryName")String categoryName){
-        Category category=categoryService.getByName(categoryName);
+    public List<Product> getByCategoryName(@PathVariable("categoryName") String categoryName) {
+        Category category = categoryService.getByName(categoryName);
         return productService.getByCategory(category);
     }
 

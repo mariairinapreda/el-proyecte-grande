@@ -8,11 +8,13 @@ $container-max-width: $fullhd !default
   margin: 0 auto
   position: relative
   width: auto
+
   &.is-fluid
     max-width: none !important
     padding-left: $gap
     padding-right: $gap
     width: 100%
+
   +desktop
     max-width: $desktop - $container-offset
   +until-widescreen

@@ -18,20 +18,26 @@ $notification-colors: $colors !default
     padding: $notification-padding-ltr
   +rtl
     padding: $notification-padding-rtl
+
   a:not(.button):not(.dropdown-item)
     color: currentColor
     text-decoration: underline
+
   strong
     color: currentColor
+
   code,
   pre
     background: $notification-code-background-color
+
   pre code
     background: transparent
+
   & > .delete
     +ltr-position(0.5rem)
     position: absolute
     top: 0.5rem
+
   .title,
   .subtitle,
   .content

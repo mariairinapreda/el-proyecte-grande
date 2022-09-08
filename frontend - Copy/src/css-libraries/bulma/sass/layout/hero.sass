@@ -14,8 +14,10 @@ $hero-colors: $colors !default
   display: flex
   flex-direction: column
   justify-content: space-between
+
   .navbar
     background: none
+
   .tabs
     ul
       border-bottom: none
@@ -26,44 +28,57 @@ $hero-colors: $colors !default
     &.is-#{$name}
       background-color: $color
       color: $color-invert
+
       a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
       strong
         color: inherit
+
       .title
         color: $color-invert
+
       .subtitle
         color: bulmaRgba($color-invert, 0.9)
+
         a:not(.button),
         strong
           color: $color-invert
+
       .navbar-menu
         +touch
           background-color: $color
+
       .navbar-item,
       .navbar-link
         color: bulmaRgba($color-invert, 0.7)
+
       a.navbar-item,
       .navbar-link
         &:hover,
         &.is-active
           background-color: bulmaDarken($color, 5%)
           color: $color-invert
+
       .tabs
         a
           color: $color-invert
           opacity: 0.9
+
           &:hover
             opacity: 1
+
         li
           &.is-active a
             color: $color !important
             opacity: 1
+
         &.is-boxed,
         &.is-toggle
           a
             color: $color-invert
+
             &:hover
               background-color: bulmaRgba($scheme-invert, 0.1)
+
           li.is-active a
             &,
             &:hover
@@ -83,25 +98,31 @@ $hero-colors: $colors !default
   &.is-small
     .hero-body
       padding: $hero-body-padding-small
+
   &.is-medium
     +tablet
       .hero-body
         padding: $hero-body-padding-medium
+
   &.is-large
     +tablet
       .hero-body
         padding: $hero-body-padding-large
+
   &.is-halfheight,
   &.is-fullheight,
   &.is-fullheight-with-navbar
     .hero-body
       align-items: center
       display: flex
+
       & > .container
         flex-grow: 1
         flex-shrink: 1
+
   &.is-halfheight
     min-height: 50vh
+
   &.is-fullheight
     min-height: 100vh
 
@@ -110,6 +131,7 @@ $hero-colors: $colors !default
 .hero-video
   @extend %overlay
   overflow: hidden
+
   video
     left: 50%
     min-height: 100%
@@ -130,6 +152,7 @@ $hero-colors: $colors !default
   +mobile
     .button
       display: flex
+
       &:not(:last-child)
         margin-bottom: 0.75rem
   +tablet

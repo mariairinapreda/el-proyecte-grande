@@ -26,16 +26,20 @@ $message-colors: $colors !default
   background-color: $message-background-color
   border-radius: $message-radius
   font-size: $size-normal
+
   strong
     color: currentColor
+
   a:not(.button):not(.tag):not(.dropdown-item)
     color: currentColor
     text-decoration: underline
   // Sizes
   &.is-small
     font-size: $size-small
+
   &.is-medium
     font-size: $size-medium
+
   &.is-large
     font-size: $size-large
   // Colors
@@ -60,9 +64,11 @@ $message-colors: $colors !default
 
     &.is-#{$name}
       background-color: $color-light
+
       .message-header
         background-color: $color
         color: $color-invert
+
       .message-body
         border-color: $color
         color: $color-dark
@@ -78,10 +84,12 @@ $message-colors: $colors !default
   line-height: 1.25
   padding: $message-header-padding
   position: relative
+
   .delete
     flex-grow: 0
     flex-shrink: 0
     +ltr-property("margin", 0.75em, false)
+
   & + .message-body
     border-width: $message-header-body-border-width
     border-top-left-radius: 0
@@ -94,8 +102,10 @@ $message-colors: $colors !default
   border-width: $message-body-border-width
   color: $message-body-color
   padding: $message-body-padding
+
   code,
   pre
     background-color: $message-body-pre-background-color
+
   pre code
     background-color: $message-body-pre-code-background-color

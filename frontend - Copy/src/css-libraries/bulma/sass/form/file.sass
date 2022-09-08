@@ -28,18 +28,21 @@ $file-colors: $form-colors !default
         background-color: $color
         border-color: transparent
         color: $color-invert
+
       &:hover,
       &.is-hovered
         .file-cta
           background-color: bulmaDarken($color, 2.5%)
           border-color: transparent
           color: $color-invert
+
       &:focus,
       &.is-focused
         .file-cta
           border-color: transparent
           box-shadow: 0 0 0.5em bulmaRgba($color, 0.25)
           color: $color-invert
+
       &:active,
       &.is-active
         .file-cta
@@ -49,15 +52,20 @@ $file-colors: $form-colors !default
   // Sizes
   &.is-small
     font-size: $size-small
+
   &.is-normal
     font-size: $size-normal
+
   &.is-medium
     font-size: $size-medium
+
     .file-icon
       .fa
         font-size: 21px
+
   &.is-large
     font-size: $size-large
+
     .file-icon
       .fa
         font-size: 28px
@@ -66,55 +74,74 @@ $file-colors: $form-colors !default
     .file-cta
       border-bottom-right-radius: 0
       border-top-right-radius: 0
+
     .file-name
       border-bottom-left-radius: 0
       border-top-left-radius: 0
+
     &.is-empty
       .file-cta
         border-radius: $file-radius
+
       .file-name
         display: none
+
   &.is-boxed
     .file-label
       flex-direction: column
+
     .file-cta
       flex-direction: column
       height: auto
       padding: 1em 3em
+
     .file-name
       border-width: 0 1px 1px
+
     .file-icon
       height: 1.5em
       width: 1.5em
+
       .fa
         font-size: 21px
+
     &.is-small
       .file-icon .fa
         font-size: 14px
+
     &.is-medium
       .file-icon .fa
         font-size: 28px
+
     &.is-large
       .file-icon .fa
         font-size: 35px
+
     &.has-name
       .file-cta
         border-radius: $file-radius $file-radius 0 0
+
       .file-name
         border-radius: 0 0 $file-radius $file-radius
         border-width: 0 1px 1px
+
   &.is-centered
     justify-content: center
+
   &.is-fullwidth
     .file-label
       width: 100%
+
     .file-name
       flex-grow: 1
       max-width: none
+
   &.is-right
     justify-content: flex-end
+
     .file-cta
       border-radius: 0 $file-radius $file-radius 0
+
     .file-name
       border-radius: $file-radius 0 0 $file-radius
       border-width: 1px 0 1px 1px
@@ -127,16 +154,20 @@ $file-colors: $form-colors !default
   justify-content: flex-start
   overflow: hidden
   position: relative
+
   &:hover
     .file-cta
       background-color: bulmaDarken($file-cta-background-color, 2.5%)
       color: $file-cta-hover-color
+
     .file-name
       border-color: bulmaDarken($file-name-border-color, 2.5%)
+
   &:active
     .file-cta
       background-color: bulmaDarken($file-cta-background-color, 5%)
       color: $file-cta-active-color
+
     .file-name
       border-color: bulmaDarken($file-name-border-color, 5%)
 
@@ -180,5 +211,6 @@ $file-colors: $form-colors !default
   justify-content: center
   +ltr-property("margin", 0.5em)
   width: 1em
+
   .fa
     font-size: 14px

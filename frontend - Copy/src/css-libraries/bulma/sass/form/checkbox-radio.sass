@@ -3,10 +3,13 @@
   display: inline-block
   line-height: 1.25
   position: relative
+
   input
     cursor: pointer
+
   &:hover
     color: $input-hover-color
+
   &[disabled],
   fieldset[disabled] &,
   input[disabled]
@@ -18,5 +21,6 @@
 
 .radio
   @extend %checkbox-radio
+
   & + .radio
     +ltr-property("margin", 0.5em, false)

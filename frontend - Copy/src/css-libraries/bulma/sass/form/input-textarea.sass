@@ -9,6 +9,7 @@ $textarea-colors: $form-colors !default
   box-shadow: $input-shadow
   max-width: 100%
   width: 100%
+
   &[readonly]
     box-shadow: none
   // Colors
@@ -16,6 +17,7 @@ $textarea-colors: $form-colors !default
     $color: nth($pair, 1)
     &.is-#{$name}
       border-color: $color
+
       &:focus,
       &.is-focused,
       &:active,
@@ -24,24 +26,29 @@ $textarea-colors: $form-colors !default
   // Sizes
   &.is-small
     +control-small
+
   &.is-medium
     +control-medium
+
   &.is-large
     +control-large
   // Modifiers
   &.is-fullwidth
     display: block
     width: 100%
+
   &.is-inline
     display: inline
     width: auto
 
 .input
   @extend %input-textarea
+
   &.is-rounded
     border-radius: $radius-rounded
     padding-left: calc(#{$control-padding-horizontal} + 0.375em)
     padding-right: calc(#{$control-padding-horizontal} + 0.375em)
+
   &.is-static
     background-color: transparent
     border-color: transparent
@@ -56,9 +63,11 @@ $textarea-colors: $form-colors !default
   min-width: 100%
   padding: $textarea-padding
   resize: vertical
+
   &:not([rows])
     max-height: $textarea-max-height
     min-height: $textarea-min-height
+
   &[rows]
     height: initial
   // Modifiers

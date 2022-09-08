@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 import TextInput from "../components/inputs/TextInput";
 
 const defaultFormFields = {
-    firstName: "linda", lastName: "linda", email: "asd@asd.com", password: "password", confirmPassword: "password"
+    firstName: "", lastName: "", email: "", password: "", confirmPassword: ""
 };
 
 const errors = {
@@ -27,7 +27,7 @@ const errors = {
 
 const Register = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const [error, setError] = useState(errors);
+    const [error] = useState(errors);
     const navigate = useNavigate();
 
     let path = `${BASE_PATH}/api/auth/register`
@@ -49,24 +49,24 @@ const Register = () => {
 
     const onChange = (e) => {
         setFormFields({...formFields, [e.target.name]: e.target.value});
-        switch (e.target.name){
-            case "lastName":{
+        switch (e.target.name) {
+            case "lastName": {
 
                 break
             }
-            case "firstName":{
+            case "firstName": {
 
                 break
             }
-            case "password":{
+            case "password": {
 
                 break
             }
-            case "confirmPassword":{
+            case "confirmPassword": {
 
                 break
             }
-            case "email":{
+            case "email": {
 
                 break
             }

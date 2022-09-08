@@ -31,7 +31,7 @@ public class ProductService {
 
     public Optional<Product> getProductById(Long id) {
         return repository.findById(id);
-}
+    }
 
     public List<Product> getByCategory(Category category) {
         return repository.getAllByCategoryEquals(category);

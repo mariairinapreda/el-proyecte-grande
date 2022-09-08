@@ -42,16 +42,20 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
   // Sizes
   &.is-small
     font-size: $size-small
+
   &.is-medium
     font-size: $size-medium
+
   &.is-large
     font-size: $size-large
+
   &.is-rounded
     .pagination-previous,
     .pagination-next
       padding-left: 1em
       padding-right: 1em
       border-radius: $radius-rounded
+
     .pagination-link
       border-radius: $radius-rounded
 
@@ -81,13 +85,17 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
   border-color: $pagination-border-color
   color: $pagination-color
   min-width: $pagination-min-width
+
   &:hover
     border-color: $pagination-hover-border-color
     color: $pagination-hover-color
+
   &:focus
     border-color: $pagination-focus-border-color
+
   &:active
     box-shadow: $pagination-shadow-inset
+
   &[disabled],
   &.is-disabled
     background-color: $pagination-disabled-background-color
@@ -114,6 +122,7 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
 
 .pagination-list
   flex-wrap: wrap
+
   li
     list-style: none
 
@@ -149,19 +158,25 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
     justify-content: space-between
     margin-bottom: 0
     margin-top: 0
+
     &.is-centered
       .pagination-previous
         order: 1
+
       .pagination-list
         justify-content: center
         order: 2
+
       .pagination-next
         order: 3
+
     &.is-right
       .pagination-previous
         order: 1
+
       .pagination-next
         order: 2
+
       .pagination-list
         justify-content: flex-end
         order: 3
