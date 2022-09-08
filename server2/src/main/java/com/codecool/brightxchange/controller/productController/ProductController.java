@@ -43,7 +43,7 @@ public class ProductController {
     }
 
 
-    @GetMapping("{categoryName}")
+    @GetMapping("/category/{categoryName}")
     public List<Product> getByCategoryName(@PathVariable("categoryName")String categoryName){
         Category category=categoryService.getByName(categoryName);
         return productService.getByCategory(category);

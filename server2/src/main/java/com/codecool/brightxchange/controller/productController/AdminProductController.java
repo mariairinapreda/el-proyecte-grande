@@ -35,23 +35,7 @@ public class AdminProductController {
 
     @PostMapping
     public Product save(@RequestBody Product product) {
-        System.out.println(product);
-        product.setCategory(categoryService.getOne(product.getCategory().getId()).get());
-        // save product specs
-        List<ProductSpec> productSpecs = productSpecService.addProduct(product.getProductSpecList());
-        // save product
-        product.setProductSpecList(productSpecs);
-        product = productService.saveAProduct(product);
-        // upload Image
-        System.out.println("start upload");
-        List<ProductImage> productImages = uploader.uploadProductImages(product.getNameForImages());
-        product.setImages(productImageService.saveAndFlush(productImages));
 
-        System.out.println("end upload");
-
-        // add bound
-        productService.saveAProduct(product);
-        System.out.println(product);
 
         return product;
 

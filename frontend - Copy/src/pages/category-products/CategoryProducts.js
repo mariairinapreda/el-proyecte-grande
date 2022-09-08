@@ -12,16 +12,16 @@ const CategoryProducts = () => {
   console.log(categoryName);
   useEffect(() => {
     axios
-      .get(`${BASE_PATH}/products/${categoryName}`)
+      .get(`${BASE_PATH}/products/category/${categoryName}`)
       .then((r) => setProducts(r.data));
   }, [categoryName]);
   return (
     <>
       <Navigation />
+      <h1 style={{ marginTop: 100 }}>{categoryName}</h1>
       <ProductsContainer>
-        <h1>{categoryName}</h1>
         {products.map((p) => (
-          <Card />
+          <Card key={`product_${p.id}`} />
         ))}
       </ProductsContainer>
     </>
