@@ -1,5 +1,6 @@
 package com.codecool.brightxchange.springSecurity.entity;
 
+import com.codecool.brightxchange.model.Address;
 import com.codecool.brightxchange.model.CartItem;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +41,9 @@ public class Client {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
 
+    @OneToMany
+    private List<Address> addresses =  new ArrayList<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,4 +56,7 @@ public class Client {
     public int hashCode() {
         return getClass().hashCode();
     }
+
+
+
 }
