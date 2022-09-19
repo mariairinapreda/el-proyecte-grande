@@ -27,7 +27,6 @@ const Login = () => {
         },
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           const { token, id, name, roles } = response.data;
           setUser({
@@ -44,8 +43,6 @@ const Login = () => {
         } else {
           setErrorMessage(response.data);
         }
-
-        console.log(response.data);
       });
   };
 
