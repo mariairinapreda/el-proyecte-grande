@@ -1,6 +1,13 @@
-import {atom} from "jotai";
+import { atom } from "jotai";
 
-export const USER = atom({token: undefined, id: undefined, name: undefined, roles: []})
+export const USER = atom({
+  token: undefined,
+  id: undefined,
+  name: undefined,
+  roles: [],
+});
+
+export const CART_PRODUCTS = atom([]);
 
 export const BASE_PATH = "http://localhost:8888";
 export const USER_PATH = "http://localhost:8888/api/user";

@@ -4,19 +4,50 @@ import ProductsContainer from "../../wrappers/products-container/ProductsContain
 import { useEffect, useState } from "react";
 import Card from "../../wrappers/card/Card";
 import axios from "axios";
-import { BASE_PATH } from "../../atoms/STORE";
+import { BASE_PATH, CART_PRODUCTS, USER, USER_PATH } from "../../atoms/STORE";
 import Details from "../../wrappers/card/details/Details";
 import Detail from "../../wrappers/card/details/Detail";
+import { useAtom } from "jotai";
 
 const CategoryProducts = () => {
+  const [user] = useAtom(USER);
+  const [cartItems, setCartItems] = useAtom(CART_PRODUCTS);
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
+  const url = `${USER_PATH}/cart-item`;
   console.log(categoryName);
   useEffect(() => {
     axios
       .get(`${BASE_PATH}/products/category/${categoryName}`)
       .then((r) => setProducts(r.data));
   }, [categoryName]);
+
+  const addToCart = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        url,
+        {
+          product: { id: e.target.id },
+          client: { id: user.id },
+          quantity: 1,
+        },
+        {
+          Authorization: user.token,
+        }
+      )
+      .then((r) => {
+        if (r.status === 200) {
+          axios
+            .get(`${url}/${user.id}`, {
+              headers: {
+                Authorization: user.token,
+              },
+            })
+            .then((r) => setCartItems(r.data));
+        } else console.log(r.data);
+      });
+  };
 
   return (
     <>
@@ -28,6 +59,7 @@ const CategoryProducts = () => {
             key={`product_${p.id}`}
             imageUrl={p.imageNames[0]}
             title={p.name}
+            onAdd={addToCart}
             price={p.price}
             details={
               <Details
