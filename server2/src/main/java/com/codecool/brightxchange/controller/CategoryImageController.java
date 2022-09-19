@@ -5,7 +5,6 @@ import com.codecool.brightxchange.service.CategoryImageService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/admin/category-images")
 public class CategoryImageController {

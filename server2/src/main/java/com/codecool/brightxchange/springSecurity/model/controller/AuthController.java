@@ -55,12 +55,12 @@ public class AuthController {
             List<String> roles = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
 
             String token = jwtTokenServices.createToken(email, roles);
-
+            System.out.println(token);
             Map<Object, Object> model = new HashMap<>();
             model.put("id", client.getId());
             model.put("name", String.format("%s %s", client.getFirstName(), client.getLastName()));
             model.put("roles", roles);
-            model.put("token", token);
+            model.put("token", String.format("Bearer %s", token));
 //            model.put("status", 200);
             return ResponseEntity.ok(model);
         } catch (UsernameNotFoundException e) {

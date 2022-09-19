@@ -34,6 +34,7 @@ public class Product {
     @OneToMany(cascade = {CascadeType.ALL})
     private List<ProductSpec> productSpecList;
     @OneToMany(cascade = {CascadeType.ALL})
+    @Builder.Default
     private List<ProductImage> images = new ArrayList<>();
 
     @ManyToOne(cascade = {CascadeType.ALL})

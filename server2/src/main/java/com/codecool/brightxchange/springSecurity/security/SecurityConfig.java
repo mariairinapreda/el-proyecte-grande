@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors().and()
                 .httpBasic().disable() // By default, Spring Security uses HTTP Basic authentication, we disable this filter.
                 .csrf().disable() // Disable CSRF. Leaving it enabled would ignore GET, HEAD, TRACE, OPTIONS
                 // Disable Tomcat's session management. This causes HttpSession to be null and no session cookie to be created
@@ -42,8 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests() // restrict access based on the config below:
 //                .antMatchers("/**").permitAll() // test purposes
-                .antMatchers("/api/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/api/user/**").hasAnyRole("USER")
+                .antMatchers("/api/admin/**").hasRole("ADMIN")
+                .antMatchers("/api/user/**").hasRole("USER")
                 .antMatchers("/api/auth/**", "/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

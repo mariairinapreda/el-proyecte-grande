@@ -43,6 +43,7 @@ public class Category {
 
     @OneToMany(cascade = {CascadeType.ALL})
     @JsonProperty("specs")
+    @Builder.Default
     private List<CategorySpec> categorySpecs = new ArrayList<>();
 
     @OneToOne(cascade = {CascadeType.ALL})

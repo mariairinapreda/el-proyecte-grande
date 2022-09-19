@@ -49,7 +49,8 @@ public class JwtTokenServices {
     }
 
     String getTokenFromRequest(HttpServletRequest req) {
-        String bearerToken = req.getHeader("authorization");
+        String bearerToken =req.getHeader("authorization");
+        System.out.println(bearerToken);
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
@@ -76,10 +77,12 @@ public class JwtTokenServices {
         Claims body = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
         String username = body.getSubject();
         List<String> roles = (List<String>) body.get(rolesFieldName);
+        System.out.println(roles);
         List<SimpleGrantedAuthority> authorities = new LinkedList<>();
         for (String role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role));
+            authorities.add(new SimpleGrantedAuthority(String.format("ROLE_%s",role)));
         }
+        System.out.println(authorities);
         return new UsernamePasswordAuthenticationToken(username, "", authorities);
     }
 }

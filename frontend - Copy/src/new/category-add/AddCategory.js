@@ -79,9 +79,9 @@ const AddCategory = () => {
             .post(`${ADMIN_PATH}/category-images`, formData, {
                 method: "POST",
                 headers: {
-                    Authorization: user.token,
+                    "authorization": user.token,
                     "Content-Type": "multipart/form-data",
-                    Accept: "application/json",
+                    Accept: "application/json"
                 },
             })
             .then(() => {
@@ -89,9 +89,9 @@ const AddCategory = () => {
                     .post(`${ADMIN_PATH}/categories`, state, {
                         method: "POST",
                         headers: {
-                            Authorization: user.token,
+                            "authorization": user.token,
                             "Content-Type": "application/json",
-                            Accept: "application/json",
+                            Accept: "application/json"
                         },
                     })
                     .then(() => navigate("/"));

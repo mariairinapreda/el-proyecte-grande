@@ -4,7 +4,6 @@ import com.codecool.brightxchange.s3Upload.S3ImageUploader;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/admin/product-images")
 public class ProductImageController {
