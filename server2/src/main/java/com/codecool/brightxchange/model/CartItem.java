@@ -27,11 +27,8 @@ public class CartItem {
     @JsonProperty("id")
     private Long id;
     @ManyToOne
-    @JsonIgnore
     private Client client;
     @ManyToOne(cascade = {CascadeType.ALL})
     private Product product;
     private Integer quantity;
-
-
 }

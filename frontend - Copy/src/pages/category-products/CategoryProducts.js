@@ -24,16 +24,20 @@ const CategoryProducts = () => {
 
   const addToCart = (e) => {
     e.preventDefault();
+    let data = {
+        product: { id: parseInt(e.target.id) },
+        client: { id: parseInt(user.id) },
+        quantity: 1,
+    }
+    console.log(data)
     axios
       .post(
         url,
+        data,
         {
-          product: { id: e.target.id },
-          client: { id: user.id },
-          quantity: 1,
-        },
-        {
-          Authorization: user.token,
+            headers: {
+                authorization: user.token,
+            }
         }
       )
       .then((r) => {
@@ -41,7 +45,7 @@ const CategoryProducts = () => {
           axios
             .get(`${url}/${user.id}`, {
               headers: {
-                Authorization: user.token,
+                authorization: user.token,
               },
             })
             .then((r) => setCartItems(r.data));
@@ -61,6 +65,7 @@ const CategoryProducts = () => {
             title={p.name}
             onAdd={addToCart}
             price={p.price}
+            productId={p.id}
             details={
               <Details
                 details={
