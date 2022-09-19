@@ -1,9 +1,13 @@
 package com.codecool.brightxchange.service;
 
 import com.codecool.brightxchange.model.Producer;
+import com.codecool.brightxchange.model.ProductSpec;
 import com.codecool.brightxchange.repositories.ProducerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,4 +23,5 @@ public class ProducerService {
         Optional<Producer> optionalProducer = repository.findByName(producer.getName());
         return optionalProducer.orElseGet(() -> repository.saveAndFlush(producer));
     }
+
 }
