@@ -32,4 +32,6 @@ public class Order {
     private Client client;
     @OneToMany
     private List<CartItem> products;
+    @ManyToOne
+    private Address address;
 }
