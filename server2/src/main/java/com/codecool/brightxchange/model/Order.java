@@ -35,4 +35,6 @@ public class Order {
     private List<CartItem> products;
     @ManyToOne
     private Address address;
-}
+    private double price;
+    private String currency;
+private String method;}
