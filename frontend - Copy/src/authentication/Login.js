@@ -5,7 +5,6 @@ import axios from "axios";
 import FormContainer from "../wrappers/form/container/FormContainer";
 import FormCard from "../wrappers/form/card/FormCard";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -14,8 +13,7 @@ const Login = () => {
   });
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-  const [user, setUser] = useAtom(USER);
-  const { handleSubmit } = useForm();
+  const [, setUser] = useAtom(USER);
 
   const onSubmit = (e) => {
     // e.preventDefault();

@@ -17,7 +17,7 @@ public class CategoryImageController {
         this.categoryImageService = categoryImageService;
     }
 
-    @DeleteMapping
+    @GetMapping("delete")
     public void clear() {
         uploader.clearImages();
     }

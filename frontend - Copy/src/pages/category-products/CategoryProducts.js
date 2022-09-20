@@ -17,8 +17,8 @@ import { useAtom } from "jotai";
 
 const CategoryProducts = () => {
   const [user] = useAtom(USER);
-  const [cartItems, setCartItems] = useAtom(CART_PRODUCTS);
-  const [cartItemsCount, setCartItemsCount] = useAtom(CART_PRODUCTS_NUMBER);
+  const [, setCartItems] = useAtom(CART_PRODUCTS);
+  const [, setCartItemsCount] = useAtom(CART_PRODUCTS_NUMBER);
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
   const url = `${USER_PATH}/cart-item`;

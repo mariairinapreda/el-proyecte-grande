@@ -4,10 +4,45 @@ import "font-awesome/css/font-awesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useAtom } from "jotai";
-import { USER } from "../../atoms/STORE";
+import {
+  CART_PRODUCTS,
+  CART_PRODUCTS_NUMBER,
+  USER,
+  USER_PATH,
+} from "../../atoms/STORE";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Navigation = () => {
   const [actualUser, setUser] = useAtom(USER);
+  const [, setCartItems] = useAtom(CART_PRODUCTS);
+  const [cartItemsCount, setCartItemsCount] = useAtom(CART_PRODUCTS_NUMBER);
+
+  useEffect(() => {
+    if (actualUser.roles.indexOf("USER") !== -1) {
+      axios
+        .get(`${USER_PATH}/cart-item/${actualUser.id}`, {
+          headers: {
+            authorization: actualUser.token,
+          },
+        })
+        .then((r) => {
+          setCartItems(r.data);
+          let count = 0;
+          for (let item of r.data) {
+            count += item.quantity;
+          }
+          setCartItemsCount(count);
+        });
+    }
+  }, [
+    actualUser.id,
+    actualUser.roles,
+    actualUser.token,
+    setCartItems,
+    setCartItemsCount,
+  ]);
+
   const logout = (e) => {
     e.preventDefault();
     setUser({ token: undefined, id: undefined, name: undefined, roles: [] });
@@ -57,13 +92,15 @@ const Navigation = () => {
           <li className={classes.link}>
             <Link to="/about-us">Despre noi</Link>
           </li>
-          <li className={classes.link}>
-            <Link to="/cos-cumparaturi" className={classes.cart}>
-              {/*COS*/}
-              <i className="fa-solid fa-cart-shopping"></i>
-              <span className={classes.cartQuantity}>0</span>
-            </Link>
-          </li>
+          {actualUser.roles.indexOf("USER") !== -1 && (
+            <li className={classes.link}>
+              <Link to="/cos-cumparaturi" className={classes.cart}>
+                {/*COS*/}
+                <i className="fa-solid fa-cart-shopping"></i>
+                <span className={classes.cartQuantity}>{cartItemsCount}</span>
+              </Link>
+            </li>
+          )}
         </ul>
         <label htmlFor="menu-btn" className={classes.showMenuLabel}>
           <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
