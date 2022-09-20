@@ -29,15 +29,14 @@ public class Order {
     @JsonProperty("id")
     private Long id;
     @ManyToOne
-    @JsonIgnore
     private Client client;
     @OneToMany
     private List<CartItem> products;
     @ManyToOne
     private Address address;
     private double price;
-    private String currency;
-    private String method;
+    private String currency = "EUR";
+    private String method = "paypal";
     @Builder.Default
     private Boolean finished=Boolean.FALSE;
 

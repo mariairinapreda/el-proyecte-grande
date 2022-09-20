@@ -20,22 +20,27 @@ import java.util.List;
 @RestController
 public class PaypalController {
     private final PaypalService paypalService;
-    private ProductService productService;
-    private OrderService orderService;
-    private CartItemService cartItemService;
+    private final ProductService productService;
+    private final OrderService orderService;
+    private final CartItemService cartItemService;
     public static final String SUCCESS_URL = "/plata/efectuata";
     public static final String CANCEL_URL = "/plata/nereusita";
 
-    public PaypalController(PaypalService paypalService) {
+    public PaypalController(PaypalService paypalService, ProductService productService, OrderService orderService, CartItemService cartItemService) {
         this.paypalService = paypalService;
+        this.productService = productService;
+        this.orderService = orderService;
+        this.cartItemService = cartItemService;
     }
 
 
-    @PostMapping("/pay")
-    public ResponseEntity<String> payment(@RequestBody Order order) throws PayPalRESTException {
+    @PostMapping("/pay/{clientId}")
+    public ResponseEntity<String> payment(@PathVariable Long clientId) throws PayPalRESTException {
         try {
+            Order order = orderService.getUnfinishedOrderByClientId(clientId);
             Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
                     SUCCESS_URL, CANCEL_URL);
+            System.out.println(payment);
             for (Links link : payment.getLinks()) {
                 if (link.getRel().equals("approval_url")) {
                     return new ResponseEntity<>(link.getHref(), HttpStatus.OK);

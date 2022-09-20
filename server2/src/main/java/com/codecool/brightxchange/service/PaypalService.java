@@ -12,7 +12,11 @@ import java.util.List;
 
 @Service
 public class PaypalService {
-    private APIContext apiContext;
+    private final APIContext apiContext;
+
+    public PaypalService(APIContext apiContext) {
+        this.apiContext = apiContext;
+    }
 
     public Payment createPayment(
             Double total,
@@ -35,12 +39,12 @@ public class PaypalService {
 
         Payment payment=new Payment();
         payment.setPayer(payer);
-
+        payment.setIntent("SALE");
         payment.setTransactions(transactions);
         RedirectUrls redirectUrls=new RedirectUrls();
         redirectUrls.setCancelUrl(cancelUrl);
         redirectUrls.setReturnUrl(successUrl);
-
+        payment.setRedirectUrls(redirectUrls);
 
         return payment.create(apiContext);
     }

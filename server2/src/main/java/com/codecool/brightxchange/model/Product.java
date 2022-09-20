@@ -29,7 +29,7 @@ public class Product {
 
     private Integer quantity;
 
-    private Float price;
+    private Double price;
     @JsonProperty("specs")
     @OneToMany(cascade = {CascadeType.ALL})
     private List<ProductSpec> productSpecList;

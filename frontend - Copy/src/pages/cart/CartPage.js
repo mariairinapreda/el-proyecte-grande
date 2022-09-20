@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import { CART_PRODUCTS, USER, USER_PATH } from "../../atoms/STORE";
+import { BASE_PATH, CART_PRODUCTS, USER, USER_PATH } from "../../atoms/STORE";
 import Navigation from "../../components/navigation/Navigation";
 import axios from "axios";
 
@@ -32,7 +32,11 @@ const CartPage = () => {
           });
       });
   };
-
+  const payment = () => {
+    axios.post(`${BASE_PATH}/pay/${user.id}`).then((r) => {
+      console.log(r);
+    });
+  };
   return (
     <>
       <Navigation />
@@ -78,6 +82,15 @@ const CartPage = () => {
             <td></td>
             <td></td>
             <td>{totalCost} RON</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button onClick={payment}>PAY</button>
+            </td>
           </tr>
         </tbody>
       </table>
