@@ -30,4 +30,8 @@ public class CartItemService {
     public List<CartItem> getAllByClientId(Long clientId){
         return cartItemRepository.findAllByClientId(clientId);
     }
+
+    public void saveAll(List<CartItem> cartItems){
+        cartItemRepository.saveAll(cartItems);
+    }
 }

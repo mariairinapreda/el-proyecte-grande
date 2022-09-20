@@ -31,4 +31,6 @@ public class CartItem {
     @ManyToOne(cascade = {CascadeType.ALL})
     private Product product;
     private Integer quantity;
+    @Builder.Default
+    private Boolean ordered=Boolean.FALSE;
 }

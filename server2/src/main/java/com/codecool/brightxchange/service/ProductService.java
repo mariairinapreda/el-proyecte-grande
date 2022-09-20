@@ -36,4 +36,9 @@ public class ProductService {
     public List<Product> getByCategory(Category category) {
         return repository.getAllByCategoryEquals(category);
     }
+
+    public void saveAll(List<Product> products){
+        repository.saveAll(products);
+    }
+
 }

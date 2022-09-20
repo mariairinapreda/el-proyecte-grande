@@ -37,4 +37,8 @@ public class Order {
     private Address address;
     private double price;
     private String currency;
-private String method;}
+    private String method;
+    @Builder.Default
+    private Boolean finished=Boolean.FALSE;
+
+}
