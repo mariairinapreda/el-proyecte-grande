@@ -42,7 +42,7 @@ public class CartItemController {
         Client clientById = clientRepository.getClientById(cartItem.getClient().getId());
         cartItem.setProduct(product);
         cartItem.setClient(clientById);
-        cartItemService.updateCartItem(cartItem);
+        cartItemService.updateCartItemForAddButton(cartItem);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

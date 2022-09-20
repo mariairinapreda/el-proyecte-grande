@@ -16,10 +16,13 @@ public class CartItemService {
     }
 
 
-    public void updateCartItem(CartItem cartItem){
+    public void updateCartItemForAddButton(CartItem cartItem){
         Optional<CartItem> cartItemOptional = cartItemRepository.findByClientIdAndProductId(cartItem.getProduct().getId(), cartItem.getClient().getId());
         if (cartItemOptional.isPresent()){
-            cartItemRepository.updateCartItem(cartItem.getProduct().getId(), cartItem.getClient().getId(), cartItem.getQuantity());
+            if(cartItemOptional.get().getProduct().getQuantity() >= cartItemOptional.get().getQuantity()+1)
+                cartItemRepository.updateCartItem(cartItem.getProduct().getId(), cartItem.getClient().getId(), cartItemOptional.get().getQuantity()+1);
+            else
+                cartItemRepository.updateCartItem(cartItem.getProduct().getId(), cartItem.getClient().getId(), cartItemOptional.get().getProduct().getQuantity() );
         }
         else cartItemRepository.save(cartItem);
     }
