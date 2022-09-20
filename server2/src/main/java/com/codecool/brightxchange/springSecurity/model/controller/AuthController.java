@@ -55,7 +55,6 @@ public class AuthController {
             List<String> roles = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
 
             String token = jwtTokenServices.createToken(email, roles);
-            System.out.println(token);
             Map<Object, Object> model = new HashMap<>();
             model.put("id", client.getId());
             model.put("name", String.format("%s %s", client.getFirstName(), client.getLastName()));

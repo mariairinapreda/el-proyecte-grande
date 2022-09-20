@@ -4,7 +4,13 @@ import ProductsContainer from "../../wrappers/products-container/ProductsContain
 import { useEffect, useState } from "react";
 import Card from "../../wrappers/card/Card";
 import axios from "axios";
-import { BASE_PATH, CART_PRODUCTS, USER, USER_PATH } from "../../atoms/STORE";
+import {
+  BASE_PATH,
+  CART_PRODUCTS,
+  CART_PRODUCTS_NUMBER,
+  USER,
+  USER_PATH,
+} from "../../atoms/STORE";
 import Details from "../../wrappers/card/details/Details";
 import Detail from "../../wrappers/card/details/Detail";
 import { useAtom } from "jotai";
@@ -12,6 +18,7 @@ import { useAtom } from "jotai";
 const CategoryProducts = () => {
   const [user] = useAtom(USER);
   const [cartItems, setCartItems] = useAtom(CART_PRODUCTS);
+  const [cartItemsCount, setCartItemsCount] = useAtom(CART_PRODUCTS_NUMBER);
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
   const url = `${USER_PATH}/cart-item`;
@@ -25,21 +32,17 @@ const CategoryProducts = () => {
   const addToCart = (e) => {
     e.preventDefault();
     let data = {
-        product: { id: parseInt(e.target.id) },
-        client: { id: parseInt(user.id) },
-        quantity: 1,
-    }
-    console.log(data)
+      product: { id: parseInt(e.target.id) },
+      client: { id: parseInt(user.id) },
+      quantity: 1,
+    };
+    console.log(data);
     axios
-      .post(
-        url,
-        data,
-        {
-            headers: {
-                authorization: user.token,
-            }
-        }
-      )
+      .post(url, data, {
+        headers: {
+          authorization: user.token,
+        },
+      })
       .then((r) => {
         if (r.status === 200) {
           axios
@@ -48,7 +51,14 @@ const CategoryProducts = () => {
                 authorization: user.token,
               },
             })
-            .then((r) => setCartItems(r.data));
+            .then((r) => {
+              setCartItems(r.data);
+              let count = 0;
+              for (let item of r.data) {
+                count += item.quantity;
+              }
+              setCartItemsCount(count);
+            });
         } else console.log(r.data);
       });
   };
