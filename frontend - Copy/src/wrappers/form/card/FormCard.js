@@ -7,8 +7,23 @@ const FormCard = (props) => {
     navigate("/");
   };
 
+  const onEnter = (e) => {
+    if (e.keyCode === 13) props.onSubmit();
+    switch (e.keyCode) {
+      case 13:
+        props.onSubmit();
+        break;
+      case 27:
+        if (props.onCancel !== undefined) props.onCancel();
+        onCancel();
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
-    <div className={classes.form}>
+    <div className={classes.form} onKeyUp={onEnter} autoFocus={true}>
       <h1>{props.title}</h1>
 
       <div className={classes.content}>{props.children}</div>

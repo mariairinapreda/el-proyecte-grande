@@ -18,7 +18,7 @@ public class ProductImageController {
         uploader.saveProductImages(image);
     }
 
-    @DeleteMapping
+    @GetMapping("delete")
     public void clear() {
         uploader.clearImages();
     }

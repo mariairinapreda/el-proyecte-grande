@@ -80,6 +80,8 @@ const Register = () => {
       case "email": {
         break;
       }
+      default:
+        break;
     }
   };
   return (

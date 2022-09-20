@@ -93,8 +93,10 @@ public class S3ImageUploader {
     }
 
     public void clearImages() {
-        categoryImage.delete();
-        categoryImage = null;
+        if(categoryImage != null) {
+            categoryImage.delete();
+            categoryImage = null;
+        }
         productImages.forEach(File::delete);
         productImages.clear();
     }
