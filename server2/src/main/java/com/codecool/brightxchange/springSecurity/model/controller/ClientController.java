@@ -28,14 +28,6 @@ public class ClientController {
         return new ResponseEntity<>(clients.getClientById(clientId), HttpStatus.OK);
     }
 
-//    @GetMapping("/check/username/{username}")
-//    public ResponseEntity<Object> isUserNameAlreadyRegistered(@PathVariable String username ) throws UnknownHostException {
-//        if (clients.existsClientsByEmail(username))
-//            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-//
-//        return new ResponseEntity<>("Accepted", HttpStatus.OK);
-//    }
-
     @GetMapping("/check/email/{email}")
     public ResponseEntity<Object> isEmailAlreadyRegistered(@PathVariable String email) {
         if (clients.existsClientsByEmail(email))

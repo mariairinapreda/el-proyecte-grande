@@ -50,15 +50,6 @@ public class Category {
     @JsonProperty("image")
     private CategoryImage image;
 
-//    @ManyToMany(cascade = {CascadeType.ALL})
-//    @JsonProperty("producers")
-//    private List<Producer> producers;
-//
-//    @OneToMany(cascade = {CascadeType.ALL})
-//    @JsonProperty("products")
-//    private List<Product> products;
-
-
     @Override
     public String toString() {
         return "Category{" +

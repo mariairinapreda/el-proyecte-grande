@@ -35,7 +35,7 @@ public class PaypalController {
 
 
     @PostMapping("/pay/{clientId}")
-    public ResponseEntity<String> payment(@PathVariable Long clientId) throws PayPalRESTException {
+    public ResponseEntity<String> payment(@PathVariable Long clientId) {
         try {
             Order order = orderService.getUnfinishedOrderByClientId(clientId);
             Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
@@ -60,7 +60,7 @@ public class PaypalController {
             Payment payment = paypalService.executePayment(paymentId, payerId);
             System.out.println(payment.toJSON());
             if (payment.getState().equals("approved")) {
-                Order order = orderService.getById(orderId).get();
+                Order order = orderService.getById(orderId).orElse(null);
                 List<CartItem> items= order.getProducts();
                 List<Product> products=new ArrayList<>();
                 for (CartItem item : items) {

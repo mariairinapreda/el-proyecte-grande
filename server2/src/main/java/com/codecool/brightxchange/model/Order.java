@@ -1,7 +1,6 @@
 package com.codecool.brightxchange.model;
 
 import com.codecool.brightxchange.springSecurity.entity.Client;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 

@@ -23,6 +23,6 @@ public class CategoryController {
 
     @GetMapping("{id}")
     public Category getById(@PathVariable("id") Long id) {
-        return service.getOne(id).get();
+        return service.getOne(id).orElse(null);
     }
 }
