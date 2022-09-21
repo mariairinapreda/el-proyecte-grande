@@ -35,6 +35,7 @@ const CartPage = () => {
   const payment = () => {
     axios.post(`${BASE_PATH}/pay/${user.id}`).then((r) => {
       console.log(r);
+      window.location.href = r.data;
     });
   };
   return (

@@ -23,8 +23,8 @@ public class PaypalController {
     private final ProductService productService;
     private final OrderService orderService;
     private final CartItemService cartItemService;
-    public static final String SUCCESS_URL = "/plata/efectuata";
-    public static final String CANCEL_URL = "/plata/nereusita";
+    public static final String SUCCESS_URL = "http://localhost:3000/plata/efectuata";
+    public static final String CANCEL_URL = "http://localhost:3000/plata/NEefectuata";
 
     public PaypalController(PaypalService paypalService, ProductService productService, OrderService orderService, CartItemService cartItemService) {
         this.paypalService = paypalService;
@@ -39,7 +39,7 @@ public class PaypalController {
         try {
             Order order = orderService.getUnfinishedOrderByClientId(clientId);
             Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-                    SUCCESS_URL, CANCEL_URL);
+                    CANCEL_URL,SUCCESS_URL);
             System.out.println(payment);
             for (Links link : payment.getLinks()) {
                 if (link.getRel().equals("approval_url")) {

@@ -23,8 +23,8 @@ public class JwtTokenServices {
     private final String rolesFieldName = "roles";
     @Value("${security.jwt.token.secret-key:secretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecret}")
     private String secretKey = "secretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecret";
-    @Value("${security.jwt.token.expire-length:36000000}")
-    private long validityInMilliseconds = 36000000; // 10h
+    @Value("${security.jwt.token.expire-length:86400000}")
+    private long validityInMilliseconds = 86400000; // 24h
 
     @PostConstruct
     protected void init() {

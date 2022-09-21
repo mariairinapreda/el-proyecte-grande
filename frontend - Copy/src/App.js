@@ -13,6 +13,7 @@ import { useAtom } from "jotai";
 import { USER } from "./atoms/STORE";
 import "./main.scss";
 import CartPage from "./pages/cart/CartPage";
+import SuccessPayment from "./pages/payment/success/SuccessPayment";
 
 const App = () => {
   const [user, setUser] = useAtom(USER);
@@ -57,6 +58,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cos-cumparaturi" element={<CartPage />} />
+          <Route path="/plata/efectuata" element={<SuccessPayment />} />
           <Route
             path={"/categorii/:categoryName"}
             element={<CategoryProducts />}

@@ -11,12 +11,21 @@ import {
   USER_PATH,
 } from "../../atoms/STORE";
 import axios from "axios";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
-const Navigation = () => {
+const Navigation = (callback, deps) => {
   const [actualUser, setUser] = useAtom(USER);
   const [, setCartItems] = useAtom(CART_PRODUCTS);
   const [cartItemsCount, setCartItemsCount] = useAtom(CART_PRODUCTS_NUMBER);
+
+  const logout = useCallback(
+    (e) => {
+      e.preventDefault();
+      setUser({ token: undefined, id: undefined, name: undefined, roles: [] });
+      localStorage.clear();
+    },
+    [setUser]
+  );
 
   useEffect(() => {
     if (actualUser.roles.indexOf("USER") !== -1) {
@@ -33,21 +42,19 @@ const Navigation = () => {
             count += item.quantity;
           }
           setCartItemsCount(count);
+        })
+        .catch(() => {
+          logout(new MouseEvent("LMB"));
         });
     }
   }, [
     actualUser.id,
     actualUser.roles,
     actualUser.token,
+    logout,
     setCartItems,
     setCartItemsCount,
   ]);
-
-  const logout = (e) => {
-    e.preventDefault();
-    setUser({ token: undefined, id: undefined, name: undefined, roles: [] });
-    localStorage.clear();
-  };
   return (
     <nav className={classes.nav}>
       <div className={classes.wrapper}>
