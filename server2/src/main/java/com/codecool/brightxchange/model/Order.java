@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -30,7 +31,8 @@ public class Order {
     @ManyToOne
     private Client client;
     @OneToMany
-    private List<CartItem> products;
+    @Builder.Default
+    private List<CartItem> products = new ArrayList<>();
     @ManyToOne
     private Address address;
     private double price;
