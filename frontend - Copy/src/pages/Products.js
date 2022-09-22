@@ -16,6 +16,13 @@ import Card from "../wrappers/card/Card";
 import Details from "../wrappers/card/details/Details";
 import Detail from "../wrappers/card/details/Detail";
 
+const defaultFilter = {
+  minPrice: 0,
+  maxPrice: 0,
+  producers: [],
+  categories: [],
+};
+
 const Products = () => {
   const [user] = useAtom(USER);
   const [, setCartItems] = useAtom(CART_PRODUCTS);
@@ -29,11 +36,39 @@ const Products = () => {
     producers: [],
     categories: [],
   });
-  const [availableFilter, setAvailableFilter] = useState({
-    minPrice: 0,
-    maxPrice: 0,
-    producers: [],
-    categories: [],
+  const [availableFilter, setAvailableFilter] = useState(() => {
+    let { minPrice, maxPrice, producers, categories } = defaultFilter;
+    products.forEach((p) => {
+      if (minPrice > p.price || minPrice === 0) {
+        minPrice = p.price;
+      }
+      if (maxPrice < p.price || maxPrice === 0) {
+        maxPrice = p.price;
+      }
+      if (producers.indexOf(p.producer.name) === -1) {
+        producers.push(p.producer.name);
+      }
+      if (categories.indexOf(p.category.name) === -1) {
+        categories.push(p.category.name);
+      }
+    });
+
+    let filterMinPrice = simpleFilter.minPrice;
+    let filterMaxPrice = simpleFilter.maxPrice;
+    if (minPrice > filterMinPrice) filterMinPrice = minPrice;
+    if (maxPrice < filterMaxPrice || filterMaxPrice === 0)
+      filterMaxPrice = maxPrice;
+    setSimpleFilter({
+      ...simpleFilter,
+      minPrice: filterMinPrice,
+      maxPrice: filterMaxPrice,
+    });
+    return {
+      minPrice: minPrice,
+      maxPrice: maxPrice,
+      producers: producers,
+      categories: categories,
+    };
   });
   const url = `${USER_PATH}/cart-item`;
 

@@ -31,10 +31,13 @@ const LandingPage = ({ user }) => {
   };
 
   return (
-    <>
+    <div className={"mainDiv"}>
       <Navigation actualUser={user} />
-      <div style={{ float: "left" }}>
-        <input onChange={searchChange} value={state.name} />
+      <div className={"searchDiv"}>
+        <label>
+          Cautati categoria dorita:
+          <input onChange={searchChange} value={state.name} />
+        </label>
       </div>
       <ProductsContainer key={"categories"}>
         {categories.map((category, index) => (
@@ -46,7 +49,7 @@ const LandingPage = ({ user }) => {
           />
         ))}
       </ProductsContainer>
-    </>
+    </div>
   );
 };
 

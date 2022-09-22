@@ -22,7 +22,6 @@ const CategoryProducts = () => {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
   const url = `${USER_PATH}/cart-item`;
-  console.log(categoryName);
   useEffect(() => {
     axios
       .get(`${BASE_PATH}/products/category/${categoryName}`)
