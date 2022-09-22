@@ -15,7 +15,6 @@ import Details from "../../wrappers/card/details/Details";
 import Detail from "../../wrappers/card/details/Detail";
 import { useAtom } from "jotai";
 
-
 const CategoryProducts = () => {
   const [user] = useAtom(USER);
   const [, setCartItems] = useAtom(CART_PRODUCTS);
@@ -29,8 +28,6 @@ const CategoryProducts = () => {
       .get(`${BASE_PATH}/products/category/${categoryName}`)
       .then((r) => setProducts(r.data));
   }, [categoryName]);
-
-
 
   const addToCart = (e) => {
     e.preventDefault();

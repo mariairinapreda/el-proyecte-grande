@@ -15,6 +15,7 @@ import "./main.scss";
 import CartPage from "./pages/cart/CartPage";
 import Products from "./pages/Products";
 import SuccessPayment from "./pages/payment/success/SuccessPayment";
+import FailedPayment from "./pages/payment/fail/FailedPayment";
 
 const App = () => {
   const [user, setUser] = useAtom(USER);
@@ -60,6 +61,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/cos-cumparaturi" element={<CartPage />} />
           <Route path="/plata/efectuata" element={<SuccessPayment />} />
+          <Route path="/plata/neefectuata" element={<FailedPayment />} />
           <Route
             path={"/categorii/:categoryName"}
             element={<CategoryProducts />}

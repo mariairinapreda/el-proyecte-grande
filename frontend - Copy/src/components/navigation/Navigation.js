@@ -13,7 +13,7 @@ import {
 import axios from "axios";
 import { useCallback, useEffect } from "react";
 
-const Navigation = (callback, deps) => {
+const Navigation = () => {
   const [actualUser, setUser] = useAtom(USER);
   const [, setCartItems] = useAtom(CART_PRODUCTS);
   const [cartItemsCount, setCartItemsCount] = useAtom(CART_PRODUCTS_NUMBER);
@@ -80,12 +80,12 @@ const Navigation = (callback, deps) => {
             <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
           </label>
           <li className={classes.link}>
-            <Link to="/">Home</Link>
+            <Link to="/">Acasa</Link>
           </li>
           {actualUser.roles.indexOf("ADMIN") !== -1 && (
             <>
               <li className={classes.link}>
-                <Link to="/adauga-produs">Adauga produs</Link>
+                <Link to="/adauga-produs">Adauga Produs</Link>
               </li>
               <li className={classes.link}>
                 <Link to="/adauga-categorie">Adauga Categorie</Link>
@@ -93,6 +93,9 @@ const Navigation = (callback, deps) => {
             </>
           )}
 
+          <li className={classes.link}>
+            <Link to="/produse">Produse</Link>
+          </li>
           <li className={classes.link}>
             <Link to="/contact">Contact</Link>
           </li>

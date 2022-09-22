@@ -25,4 +25,13 @@ public class Address {
     @JsonProperty("id")
     private Long id;
 
+    private String recipientName;
+
+    private String city;
+
+    private String countryCode;
+
+    private String postalCode;
+
+    private String state;
 }
