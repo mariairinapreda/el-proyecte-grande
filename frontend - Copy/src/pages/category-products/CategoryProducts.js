@@ -36,7 +36,6 @@ const CategoryProducts = () => {
       client: { id: parseInt(user.id) },
       quantity: 1,
     };
-    console.log(data);
     axios
       .post(url, data, {
         headers: {
