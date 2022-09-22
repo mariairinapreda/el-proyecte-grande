@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProducerService {
@@ -22,6 +23,13 @@ public class ProducerService {
     public Producer addProducerService(Producer producer) {
         Optional<Producer> optionalProducer = repository.findByName(producer.getName());
         return optionalProducer.orElseGet(() -> repository.saveAndFlush(producer));
+    }
+
+    public List<Producer> getAll(){
+        return repository.findAll();
+    }
+    public List<String> getAllNames(){
+        return repository.findAll().stream().map(Producer::getName).collect(Collectors.toList());
     }
 
 }

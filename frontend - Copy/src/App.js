@@ -13,6 +13,7 @@ import { useAtom } from "jotai";
 import { USER } from "./atoms/STORE";
 import "./main.scss";
 import CartPage from "./pages/cart/CartPage";
+import Products from "./pages/Products";
 
 const App = () => {
   const [user, setUser] = useAtom(USER);
@@ -62,6 +63,7 @@ const App = () => {
             element={<CategoryProducts />}
           />
           <Route path={"/produse/:productName"} element={<Product />} />
+          <Route path={"/produse"} element={<Products />} />
           <Route path="*" element={<div>404</div>}></Route>
         </Routes>
       </BrowserRouter>

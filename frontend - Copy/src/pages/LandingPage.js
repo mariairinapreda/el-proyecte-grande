@@ -6,16 +6,34 @@ import Navigation from "../components/navigation/Navigation";
 
 const LandingPage = ({user}) => {
     const [categories, setCategories] = useState([]);
-
+    const [state, setState] = useState({name:""});
     useEffect(() => {
-        fetch("http://localhost:8888/categories", {method: "GET"})
-            .then((response) => response.json())
-            .then((re) => setCategories(re));
-    }, []);
+        if(state.name.trim() === ""){
+            fetch("http://localhost:8888/categories", {method: "GET"})
+                .then((response) => response.json())
+                .then((re) => setCategories(re));
+        }
+        else{
+            fetch(`http://localhost:8888/categories/search/${state.name}`, {method: "GET"})
+                .then((response) => response.json())
+                .then((re) => {console.log(re)
+                    setCategories(re)
+                });
+        }
+    }, [state]);
+
+    const searchChange = event =>{
+        setState({
+            name: event.target.value
+        });
+    };
 
     return (
         <>
             <Navigation actualUser={user}/>
+            <div style={{"float": "left"}}>
+                <input onChange={searchChange} value={state.name} />
+            </div>
             <ProductsContainer key={"categories"}>
                 {categories.map((category, index) => (
                     <LandingPageCard

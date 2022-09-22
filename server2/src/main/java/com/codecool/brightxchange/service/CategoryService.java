@@ -2,10 +2,13 @@ package com.codecool.brightxchange.service;
 
 import com.codecool.brightxchange.model.Category;
 import com.codecool.brightxchange.repositories.CategoryRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
@@ -38,5 +41,13 @@ public class CategoryService {
 
     public Category getByName(String categoryName) {
         return repository.findCategoryByNameEquals(categoryName);
+    }
+
+    public List<Category>  findAll(String searchText){
+        return repository.findAll("%"+searchText+"%");
+    }
+
+    public List<String> getAllNames() {
+        return repository.findAll().stream().map(Category::getName).collect(Collectors.toList());
     }
 }

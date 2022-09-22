@@ -2,10 +2,10 @@ package com.codecool.brightxchange.controller.productController;
 
 import com.codecool.brightxchange.model.Category;
 import com.codecool.brightxchange.model.Product;
-import com.codecool.brightxchange.service.CategoryService;
-import com.codecool.brightxchange.service.ProductImageService;
-import com.codecool.brightxchange.service.ProductService;
-import com.codecool.brightxchange.service.ProductSpecService;
+import com.codecool.brightxchange.model.SimpleFilter;
+import com.codecool.brightxchange.service.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,15 +18,17 @@ public class ProductController {
     private final ProductSpecService productSpecService;
     private final ProductService productService;
     private final CategoryService categoryService;
+    private final ProducerService producerService;
 
 
     public ProductController(ProductImageService productImageService,
                              ProductSpecService productSpecService,
-                             ProductService productService, CategoryService categoryService) {
+                             ProductService productService, CategoryService categoryService, ProducerService producerService) {
         this.productImageService = productImageService;
         this.productSpecService = productSpecService;
         this.productService = productService;
         this.categoryService = categoryService;
+        this.producerService = producerService;
     }
 
 //    public void addProduct(Product product) {
@@ -48,6 +50,24 @@ public class ProductController {
     public List<Product> getByCategoryName(@PathVariable("categoryName") String categoryName) {
         Category category = categoryService.getByName(categoryName);
         return productService.getByCategory(category);
+    }
+
+
+    @GetMapping("/search/{searchText}")
+    public ResponseEntity<List<Product>> getALLProductsByName(@PathVariable String searchText){
+        return new ResponseEntity<>(productService.findAllProductsByName(searchText), HttpStatus.OK);
+    }
+
+
+    @PostMapping("/search")
+    public List<Product> findAllSimpleFiltered(@RequestBody SimpleFilter simpleFilter){
+        if (simpleFilter.getProducers().isEmpty()) simpleFilter.setProducers(producerService.getAllNames());
+        if (simpleFilter.getCategories().isEmpty()) simpleFilter.setCategories(categoryService.getAllNames());
+        return productService.findAllSimpleFiltered(simpleFilter.getSearchText(),
+                simpleFilter.getMinPrice(),
+                simpleFilter.getMaxPrice(),
+                simpleFilter.getProducers(),
+                simpleFilter.getCategories());
     }
 
 

@@ -10,6 +10,7 @@ export const USER = atom({
 export const CART_PRODUCTS = atom([]);
 export const CART_PRODUCTS_NUMBER = atom(0);
 export const ORDERS = atom([]);
+export const SEARCH_TEXT = atom("");
 
 export const BASE_PATH = "http://localhost:8888";
 export const USER_PATH = "http://localhost:8888/api/user";

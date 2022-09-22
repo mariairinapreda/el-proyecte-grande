@@ -41,4 +41,20 @@ public class ProductService {
         repository.saveAll(products);
     }
 
+    public  List<Product> findAllProductsByName(String searchText){
+        return repository
+            .findAllProductsByName("%"+searchText+"%");}
+
+    public List<Product> findAllSimpleFiltered(String searchText,
+                                               Integer minPrice,
+                                               Integer maxPrice,
+                                               List<String> producers,
+                                               List<String> categories){
+        return repository.findAllSimpleFiltered(searchText,
+                minPrice,
+                maxPrice,
+                producers,
+                categories);
+    }
+
 }
