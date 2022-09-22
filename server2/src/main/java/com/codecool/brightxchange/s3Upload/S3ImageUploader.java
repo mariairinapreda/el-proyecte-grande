@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 @Service
 public class S3ImageUploader {
     private final AmazonS3 s3Client;
@@ -48,30 +49,15 @@ public class S3ImageUploader {
         String imageName = String.format(fileName + ".jpg");
         PutObjectRequest request = new PutObjectRequest(config.getName(), imageName, categoryImage);
         s3Client.putObject(request);
-        System.out.println("uploaded");
         clearImages();
-        return new CategoryImage(config.getUrl() + imageName.replace(" ", "%20"));
+        return new CategoryImage(config.getUrl() + imageName.replace(" ","%20"));
     }
-
-    public ProductImage uploadProductImage(String fileName) {
-        String imageName = String.format(fileName + ".jpg");
-        for (File productImage : productImages) {
-            PutObjectRequest request = new PutObjectRequest(config.getName(), imageName, productImage);
-            s3Client.putObject(request);
-            System.out.println("uploaded");
-        }
-        clearImages();
-        return new ProductImage(config.getUrl() + imageName);
-    }
-
 
     public void saveCategoryImage(MultipartFile image) {
         File file1 = new File("img.jpg");
-        try {
-            FileOutputStream out = new FileOutputStream(file1);
+        try(FileOutputStream out = new FileOutputStream(file1)) {
             out.write(image.getInputStream().readAllBytes());
             file1.createNewFile();
-            System.out.println(file1.getAbsolutePath());
             categoryImage = file1;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -80,11 +66,9 @@ public class S3ImageUploader {
 
     public void saveProductImages(MultipartFile image) {
         File file1 = new File(String.format("img%s.jpg", productImages.size()));
-        try {
-            FileOutputStream out = new FileOutputStream(file1);
+        try(FileOutputStream out = new FileOutputStream(file1)) {
             out.write(image.getInputStream().readAllBytes());
             file1.createNewFile();
-            System.out.println(file1.getAbsolutePath());
             productImages.add(file1);
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -1,10 +1,12 @@
 import { useAtom } from "jotai";
-import { BASE_PATH, CART_PRODUCTS, USER, USER_PATH } from "../../atoms/STORE";
+import {CART_PRODUCTS, CART_PRODUCTS_NUMBER, USER, USER_PATH} from "../../atoms/STORE";
 import Navigation from "../../components/navigation/Navigation";
 import axios from "axios";
+import {useState} from "react";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useAtom(CART_PRODUCTS);
+  const [, setCountCartItems] = useAtom(CART_PRODUCTS_NUMBER);
   const [user] = useAtom(USER);
   let totalCost = 0;
 
@@ -29,12 +31,20 @@ const CartPage = () => {
           })
           .then((r) => {
             setCartItems(r.data);
+            let sum = 0;
+            for (const item of r.data) {
+              sum+= item.quantity;
+            }
+            setCountCartItems(sum);
           });
       });
   };
   const payment = () => {
-    axios.post(`${BASE_PATH}/pay/${user.id}`).then((r) => {
+    axios.get(`${USER_PATH}/payment/${user.id}`,{headers:{
+      authorization: user.token
+      }}).then((r) => {
       console.log(r);
+      window.location.href = r.data;
     });
   };
   return (

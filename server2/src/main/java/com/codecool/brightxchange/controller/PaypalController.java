@@ -18,13 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("api/user/payment")
 public class PaypalController {
     private final PaypalService paypalService;
     private final ProductService productService;
     private final OrderService orderService;
     private final CartItemService cartItemService;
-    public static final String SUCCESS_URL = "/plata/efectuata";
-    public static final String CANCEL_URL = "/plata/nereusita";
+    public static final String SUCCESS_URL = "http://localhost:3000/plata/efectuata";
+    public static final String CANCEL_URL = "http://localhost:3000/plata/NEefectuata";
 
     public PaypalController(PaypalService paypalService, ProductService productService, OrderService orderService, CartItemService cartItemService) {
         this.paypalService = paypalService;
@@ -34,12 +35,12 @@ public class PaypalController {
     }
 
 
-    @PostMapping("/pay/{clientId}")
-    public ResponseEntity<String> payment(@PathVariable Long clientId) throws PayPalRESTException {
+    @GetMapping("{clientId}")
+    public ResponseEntity<String> payment(@PathVariable Long clientId) {
         try {
             Order order = orderService.getUnfinishedOrderByClientId(clientId);
             Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-                    SUCCESS_URL, CANCEL_URL);
+                    CANCEL_URL,SUCCESS_URL);
             System.out.println(payment);
             for (Links link : payment.getLinks()) {
                 if (link.getRel().equals("approval_url")) {
@@ -54,13 +55,13 @@ public class PaypalController {
     }
 
 
-    @GetMapping(value = SUCCESS_URL+"/{paymentId}/{payerId}/{orderId}")
-    public String successPay(@PathVariable String paymentId, @PathVariable String payerId, @PathVariable Long orderId) {
+    @GetMapping(value = "{userId}/{payerId}/{paymentId}")
+    public ResponseEntity<String> successPay(@PathVariable Long userId,@PathVariable String paymentId, @PathVariable String payerId) {
         try {
             Payment payment = paypalService.executePayment(paymentId, payerId);
             System.out.println(payment.toJSON());
             if (payment.getState().equals("approved")) {
-                Order order = orderService.getById(orderId).get();
+                Order order = orderService.getUnfinishedOrderByClientId(userId);
                 List<CartItem> items= order.getProducts();
                 List<Product> products=new ArrayList<>();
                 for (CartItem item : items) {
@@ -72,16 +73,16 @@ public class PaypalController {
                 cartItemService.saveAll(items);
                 order.setFinished(Boolean.TRUE);
                 orderService.saveOrder(order);
-                return "success";
+                return new ResponseEntity<>("Plata a fost un succes",HttpStatus.ACCEPTED);
             }
             else{
 
-                return "redirect:/";
+                return new ResponseEntity<>("Plata", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
             }
         } catch (PayPalRESTException e) {
             System.out.println(e.getMessage());
         }
-        return "redirect:/";
+        return new ResponseEntity<>("A aparut o eroare!", HttpStatus.NON_AUTHORITATIVE_INFORMATION);
     }
 
 }

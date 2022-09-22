@@ -46,8 +46,14 @@ public class CartItemController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<String> updateCartItem(@RequestBody CartItem cartItem){
+        cartItemService.updateCartItem(cartItem);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @GetMapping("{id}")
-    private List<CartItem> getAll(@PathVariable Long id){
+    public List<CartItem> getAll(@PathVariable Long id){
         return cartItemService.getAllByClientId(id);
     }
 }

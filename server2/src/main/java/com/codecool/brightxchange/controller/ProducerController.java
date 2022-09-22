@@ -2,7 +2,6 @@ package com.codecool.brightxchange.controller;
 
 import com.codecool.brightxchange.model.Producer;
 import com.codecool.brightxchange.service.ProducerService;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

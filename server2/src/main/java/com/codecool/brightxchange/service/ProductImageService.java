@@ -1,11 +1,8 @@
 package com.codecool.brightxchange.service;
 
 import com.codecool.brightxchange.model.ProductImage;
-import com.codecool.brightxchange.model.ProductSpec;
 import com.codecool.brightxchange.repositories.ProductImageRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 import java.util.List;
 import java.util.Optional;

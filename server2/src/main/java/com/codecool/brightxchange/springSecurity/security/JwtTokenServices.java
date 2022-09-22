@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 @Component
 @Slf4j
 public class JwtTokenServices {
@@ -23,8 +24,8 @@ public class JwtTokenServices {
     private final String rolesFieldName = "roles";
     @Value("${security.jwt.token.secret-key:secretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecret}")
     private String secretKey = "secretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecret";
-    @Value("${security.jwt.token.expire-length:36000000}")
-    private long validityInMilliseconds = 36000000; // 10h
+    @Value("${security.jwt.token.expire-length:86400000}")
+    private final long validityInMilliseconds = 86400000; // 24h
 
     @PostConstruct
     protected void init() {
@@ -75,7 +76,7 @@ public class JwtTokenServices {
     Authentication parseUserFromTokenInfo(String token) throws UsernameNotFoundException {
         Claims body = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
         String username = body.getSubject();
-        List<String> roles = (List<String>) body.get(rolesFieldName);
+        @SuppressWarnings("unchecked") List<String> roles = (List<String>) body.get(rolesFieldName);
         List<SimpleGrantedAuthority> authorities = new LinkedList<>();
         for (String role : roles) {
             authorities.add(new SimpleGrantedAuthority(String.format("ROLE_%s",role)));

@@ -27,6 +27,16 @@ public class CartItemService {
         else cartItemRepository.save(cartItem);
     }
 
+    public void updateCartItem(CartItem cartItem){
+        Optional<CartItem> cartItemOptional = cartItemRepository.findById(cartItem.getId());
+        if (cartItemOptional.isPresent()){
+            if(cartItemOptional.get().getProduct().getQuantity() >= cartItem.getQuantity())
+                cartItemRepository.updateCartItem(cartItemOptional.get().getProduct().getId(), cartItemOptional.get().getClient().getId(), cartItem.getQuantity());
+            else
+                cartItemRepository.updateCartItem(cartItemOptional.get().getProduct().getId(), cartItemOptional.get().getClient().getId(), cartItemOptional.get().getProduct().getQuantity() );
+        }
+    }
+
     public List<CartItem> getAllByClientId(Long clientId){
         return cartItemRepository.findAllByClientId(clientId);
     }
