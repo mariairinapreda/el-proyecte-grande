@@ -15,6 +15,7 @@
   }
   @include fullhd {
     margin: 40px 20% 80px;
+    width: 25%;
   }
   @include tablet {
     min-width: 320px;
@@ -22,13 +23,11 @@
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 7px 2px black;
-  font-family: 'Zilla Slab', serif;
 
   & .content {
     display: flex;
     flex-direction: column;
     min-width: 100%;
-    font-size: 25px;
 
     & label {
       margin-bottom: 20px;
@@ -61,7 +60,7 @@
 
     & button {
       font-size: 30px;
-      color: #00b89c;
+      color: rgb(46, 124, 51);
       border-radius: 10px;
       cursor: pointer;
       transition: 0.5s;
@@ -79,7 +78,7 @@
 
       & span {
         font-size: 30px;
-        color: #00b89c;
+        color: rgb(46, 124, 51);
         border-radius: 10px;
         @include mobile {
           font-size: 15px;

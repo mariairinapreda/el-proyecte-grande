@@ -7,15 +7,17 @@ import {
   SEARCH_TEXT,
   USER,
   USER_PATH,
-} from "../atoms/STORE";
+} from "../../atoms/STORE";
 import { useAtom } from "jotai";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
-import Navigation from "../components/navigation/Navigation";
-import ProductsContainer from "../wrappers/products-container/ProductsContainer";
-import Card from "../wrappers/card/Card";
-import Details from "../wrappers/card/details/Details";
-import Detail from "../wrappers/card/details/Detail";
+import Navigation from "../../components/navigation/Navigation";
+import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
+import Card from "../../wrappers/card/Card";
+import Details from "../../wrappers/card/details/Details";
+import Detail from "../../wrappers/card/details/Detail";
+import TextField from "@mui/material/TextField";
+import classes2 from "../../scss/Mui.module.scss";
 
 const defaultFilter = {
   minPrice: 0,
@@ -73,6 +75,13 @@ const Products = () => {
   });
   const url = `${USER_PATH}/cart-item`;
 
+  useEffect(() => {
+    axios.get(`${BASE_PATH}/products`).then((r) => {
+      setProducts(r.data)
+      setProductsList(r.data)
+    });
+  },[])
+
   const onChange = (e) => {
     switch (e.target.name) {
       case "searchText":
@@ -82,6 +91,17 @@ const Products = () => {
         return;
       case "producers":
       case "categories":
+        let temp = [];
+        if(simpleFilter[e.target.name].indexOf(e.target.value) !== -1){
+          for (const p of simpleFilter[e.target.name]) {
+            if(p !== e.target.value) temp.push(p);
+          }
+
+        }else {
+          temp = simpleFilter[e.target.name];
+          temp.push(e.target.value);
+        }
+        setSimpleFilter({...simpleFilter, [e.target.name]: temp})
         break;
       default:
         break;
@@ -196,64 +216,47 @@ const Products = () => {
           {isDefault() ? "Toate produsele" : "Produse filtrate"}
         </h1>
         <div className={classes.filterDiv}>
-          <label>
-            Nume produs:
-            <input
-              onChange={onChange}
-              name={"searchText"}
-              value={simpleFilter.searchText}
-            />
-          </label>
-          <label>
-            Pret minim:
-            <input
-              type={"number"}
-              onChange={onChange}
-              min={availableFilter.minPrice}
-              max={simpleFilter.maxPrice}
-              name={"minPrice"}
-              value={simpleFilter.minPrice}
-            />
-          </label>
-          <label>
-            Pret maxim:
-            <input
-              type={"number"}
-              onChange={onChange}
-              min={simpleFilter.minPrice}
-              max={availableFilter.maxPrice}
-              name={"maxPrice"}
-              value={simpleFilter.maxPrice}
-            />
-          </label>
-          <div>
-            Producatori:
+          <TextField className={"textField"} id={"outlined-basic"} label={"Nume produs"} name={"searchText"} variant={"outlined"} value={simpleFilter.searchText} onChange={onChange} color={"success"} InputProps={{classes: {
+              input: classes2.inputProps
+            }}}/>
+          <TextField className={"textField"} type={"number"} id={"outlined-basic"} label={"Pret minim"} min={availableFilter.minPrice}
+                     max={simpleFilter.maxPrice}
+                     name={"minPrice"} variant={"outlined"} value={simpleFilter.minPrice} onChange={onChange} color={"success"} InputProps={{classes: {
+              input: classes2.inputProps
+            }}}/>
+          <TextField className={"textField"} type={"number"} id={"outlined-basic"} label={"Pret maxim"} min={simpleFilter.minPrice}
+                     max={availableFilter.maxPrice}
+                     name={"maxPrice"} variant={"outlined"} value={simpleFilter.maxPrice} onChange={onChange} color={"success"} InputProps={{classes: {
+              input: classes2.inputProps
+            }}}/>
+          <div className={classes.panel}>
+            <p>Producatori</p>
             {availableFilter.producers.map((p) => (
-              <label key={`producator_${p}`}>
-                <input
-                  name={"producers"}
-                  type={"checkbox"}
-                  value={p}
-                  checked={simpleFilter.producers.indexOf(p) !== -1}
-                  onChange={onChange}
-                />
-                {p}
-              </label>
+                <label key={`producator_${p}`}>
+                  <input
+                      name={"producers"}
+                      type={"checkbox"}
+                      value={p}
+                      checked={simpleFilter.producers.indexOf(p) !== -1}
+                      onChange={onChange}
+                  />
+                  {p}
+                </label>
             ))}
           </div>
-          <div>
-            Categori:
+          <div className={classes.panel}>
+            <p>Categorii</p>
             {availableFilter.categories.map((c) => (
-              <label key={`categorie_${c}`}>
-                <input
-                  name={"categories"}
-                  type={"checkbox"}
-                  value={c}
-                  checked={simpleFilter.categories.indexOf(c) !== -1}
-                  onChange={onChange}
-                />
-                {c}
-              </label>
+                <label key={`categorie_${c}`}>
+                  <input
+                      name={"categories"}
+                      type={"checkbox"}
+                      value={c}
+                      checked={simpleFilter.categories.indexOf(c) !== -1}
+                      onChange={onChange}
+                  />
+                  {c}
+                </label>
             ))}
           </div>
           <button onClick={onFilter}>FILTREAZA</button>

@@ -1,5 +1,4 @@
 import { atom } from "jotai";
-import axios from "axios";
 
 export const BASE_PATH = "http://localhost:8888";
 export const USER_PATH = "http://localhost:8888/api/user";
@@ -12,9 +11,7 @@ export const USER = atom({
   roles: [],
 });
 export const CART_PRODUCTS = atom([]);
-export const PRODUCTS = atom(
-  axios.get(`${BASE_PATH}/products`).then((r) => r.data)
-);
+export const PRODUCTS = atom([]);
 export const AVAILABLE_FILTERS = atom({
   minPrice: 0,
   maxPrice: 0,

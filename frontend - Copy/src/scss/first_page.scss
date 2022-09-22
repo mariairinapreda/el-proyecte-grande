@@ -5,14 +5,12 @@
   flex-direction: column;
   margin-top: 80px;
 
-  & .searchDiv {
-    display: flex;
-    justify-content: center;
-
-    & label {
-      font-size: 30px;
-    }
+& .searchDiv{
+  display: flex;
+  justify-content: center;
+  & .textField{
   }
+}
 
   & .container {
     display: grid;

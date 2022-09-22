@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import classes from "./Navigation.module.scss";
 import "font-awesome/css/font-awesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useAtom } from "jotai";
 import {
+  BASE_PATH,
   CART_PRODUCTS,
-  CART_PRODUCTS_NUMBER,
+  CART_PRODUCTS_NUMBER, PRODUCTS,
   USER,
   USER_PATH,
 } from "../../atoms/STORE";
@@ -16,7 +17,9 @@ import { useCallback, useEffect } from "react";
 const Navigation = () => {
   const [actualUser, setUser] = useAtom(USER);
   const [, setCartItems] = useAtom(CART_PRODUCTS);
+  const [, setProducts] = useAtom(PRODUCTS);
   const [cartItemsCount, setCartItemsCount] = useAtom(CART_PRODUCTS_NUMBER);
+  const navigate = useNavigate();
 
   const logout = useCallback(
     (e) => {
@@ -26,6 +29,14 @@ const Navigation = () => {
     },
     [setUser]
   );
+
+  const goToProducts = (e) => {
+    e.preventDefault()
+    axios.get(`${BASE_PATH}/products`).then((r) => {
+      setProducts(r.data)
+      navigate("/produse")
+    });
+  }
 
   useEffect(() => {
     if (actualUser.roles.indexOf("USER") !== -1) {
@@ -60,8 +71,8 @@ const Navigation = () => {
       <div className={classes.wrapper}>
         {actualUser.name === undefined || actualUser.name === null ? (
           <div className={classes.logo}>
-            <Link to="/login">Logare</Link>
-            <Link to="/register">Inregistrare</Link>
+            <Link to="/logare">Logare</Link>
+            <Link to="/inregistrare">Inregistrare</Link>
           </div>
         ) : (
           <div className={classes.logo}>
@@ -94,18 +105,17 @@ const Navigation = () => {
           )}
 
           <li className={classes.link}>
-            <Link to="/produse">Produse</Link>
+            <Link to="/produse" onClick={goToProducts}>Produse</Link>
           </li>
-          <li className={classes.link}>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li className={classes.link}>
-            <Link to="/about-us">Despre noi</Link>
-          </li>
+          {/*<li className={classes.link}>*/}
+          {/*  <Link to="/contact">Contact</Link>*/}
+          {/*</li>*/}
+          {/*<li className={classes.link}>*/}
+          {/*  <Link to="/despre-noi">Despre noi</Link>*/}
+          {/*</li>*/}
           {actualUser.roles.indexOf("USER") !== -1 && (
             <li className={classes.link}>
               <Link to="/cos-cumparaturi" className={classes.cart}>
-                {/*COS*/}
                 <i className="fa-solid fa-cart-shopping"></i>
                 <span className={classes.cartQuantity}>{cartItemsCount}</span>
               </Link>

@@ -1,10 +1,22 @@
 import classes from "./LandingPageCard.module.scss";
-import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {useAtom} from "jotai";
+import {BASE_PATH, PRODUCTS} from "../../atoms/STORE";
+import axios from "axios";
 
 const LandingPageCard = ({ url, imageUrl, name }) => {
+  const navigate = useNavigate()
+  const [,setProducts] = useAtom(PRODUCTS)
+  const onClick = () => {
+    axios
+        .get(`${BASE_PATH}/products/category/${name}`)
+        .then((r) => {
+          setProducts(r.data)
+          navigate(url)
+        })
+  }
   return (
-    <div className={classes.categoryCard}>
-      <Link to={url}>
+    <div className={classes.categoryCard} onClick={onClick}>
         <div
           className={classes.backgroundImage}
           style={{ backgroundImage: `url(${imageUrl})` }}
@@ -14,7 +26,6 @@ const LandingPageCard = ({ url, imageUrl, name }) => {
             <p className={classes.subtitle}>Vezi produse</p>
           </div>
         </div>
-      </Link>
     </div>
   );
 };

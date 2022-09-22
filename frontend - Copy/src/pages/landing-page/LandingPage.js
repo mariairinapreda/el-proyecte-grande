@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import "../scss/first_page.scss";
-import ProductsContainer from "../wrappers/products-container/ProductsContainer";
-import LandingPageCard from "../wrappers/landing-page-card/LandingPageCard";
-import Navigation from "../components/navigation/Navigation";
+import "../../scss/first_page.scss";
+import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
+import LandingPageCard from "../../wrappers/landing-page-card/LandingPageCard";
+import Navigation from "../../components/navigation/Navigation";
+import TextField from '@mui/material/TextField'
+import classes from "../../scss/Mui.module.scss";
 
 const LandingPage = ({ user }) => {
   const [categories, setCategories] = useState([]);
@@ -34,10 +36,9 @@ const LandingPage = ({ user }) => {
     <div className={"mainDiv"}>
       <Navigation actualUser={user} />
       <div className={"searchDiv"}>
-        <label>
-          Cautati categoria dorita:
-          <input onChange={searchChange} value={state.name} />
-        </label>
+          <TextField className={"textField"} id={"outlined-basic"} label={"Cautati categoria dorita"} variant={"outlined"} value={state.name} onChange={searchChange} color={"success"} InputProps={{classes: {
+                  input: classes.inputProps
+              }}}/>
       </div>
       <ProductsContainer key={"categories"}>
         {categories.map((category, index) => (

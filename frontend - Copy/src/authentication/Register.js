@@ -4,7 +4,8 @@ import { BASE_PATH } from "../atoms/STORE";
 import FormContainer from "../wrappers/form/container/FormContainer";
 import FormCard from "../wrappers/form/card/FormCard";
 import { useNavigate } from "react-router-dom";
-import TextInput from "../components/inputs/TextInput";
+import classes from "../scss/Mui.module.scss";
+import TextField from "@mui/material/TextField";
 
 const defaultFormFields = {
   firstName: "",
@@ -14,38 +15,35 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
-const errors = {
-  password: {
-    value: false,
-    message: "Numele ar trebui sa contina cel putin 4 litere",
-  },
-  confirmPassword: {
-    value: false,
-    message: "Numele ar trebui sa contina cel putin 4 litere",
-  },
-  firstName: {
-    value: false,
-    message: "Numele ar trebui sa contina cel putin 4 litere",
-  },
-  lastName: {
-    value: false,
-    message: "Numele ar trebui sa contina cel putin 4 litere",
-  },
-  email: {
-    value: false,
-    message: "Numele ar trebui sa contina cel putin 4 litere",
-  },
-};
+// const errors = {
+//   password: {
+//     value: false,
+//     message: "Numele ar trebui sa contina cel putin 4 litere",
+//   },
+//   confirmPassword: {
+//     value: false,
+//     message: "Numele ar trebui sa contina cel putin 4 litere",
+//   },
+//   firstName: {
+//     value: false,
+//     message: "Numele ar trebui sa contina cel putin 4 litere",
+//   },
+//   lastName: {
+//     value: false,
+//     message: "Numele ar trebui sa contina cel putin 4 litere",
+//   },
+//   email: {
+//     value: false,
+//     message: "Numele ar trebui sa contina cel putin 4 litere",
+//   },
+// };
 
 const Register = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const [error] = useState(errors);
   const navigate = useNavigate();
 
   let path = `${BASE_PATH}/api/auth/register`;
   const onSubmit = (e) => {
-    // e.preventDefault()
-    // Object.keys(formFields).forEach((k) => console.log(`key: ${k} ---- value: ${formFields[k]}`));
     if (formFields.password === formFields.confirmPassword) {
       axios
         .post(path, formFields, {
@@ -56,7 +54,7 @@ const Register = () => {
         })
         .then((response) => {
           console.log(response);
-          if (response.data === "Created") navigate("/login");
+          if (response.data === "Created") navigate("/logare");
         });
     } else {
     }
@@ -91,46 +89,72 @@ const Register = () => {
         title={"Inregistrare"}
         submitMessage={"Inregistrare"}
       >
-        <TextInput
-          name={"lastName"}
-          type={"text"}
-          value={formFields.lastName}
-          onChange={onChange}
-          title={"Nume"}
-          error={error.lastName}
+        <TextField
+            fullWidth
+            required
+            id="outlined-required"
+            label="Nume"
+            name={"lastName"}
+            value={formFields.lastName}
+            onChange={onChange}
+            color={"success"}
+            InputProps={{classes: {
+                input: classes.inputProps
+              }}}
         />
-        <TextInput
-          name={"firstName"}
-          type={"text"}
-          value={formFields.firstName}
-          onChange={onChange}
-          title={"Prenume"}
-          error={error.firstName}
+        <TextField
+            fullWidth
+            required
+            id="outlined-required"
+            label="Prenume"
+            name={"firstName"}
+            value={formFields.firstName}
+            onChange={onChange}
+            color={"success"}
+            InputProps={{classes: {
+                input: classes.inputProps
+              }}}
         />
-        <TextInput
-          name={"email"}
-          type={"email"}
-          value={formFields.email}
-          onChange={onChange}
-          title={"E-mail"}
-          error={error.email}
+        <TextField
+            fullWidth
+            required
+            id="outlined-required"
+            label="E-mail"
+            name={"email"}
+            value={formFields.email}
+            onChange={onChange}
+            type={"email"}
+            color={"success"}
+            InputProps={{classes: {
+                input: classes.inputProps
+              }}}
         />
-        <TextInput
-          name={"password"}
-          type={"password"}
+        <TextField
+            fullWidth
+            id="outlined-password-input"
+            label="Parola"
+            type="password"
+            name={"password"}
+            value={formFields.password}
+            onChange={onChange}
+            color={"success"}
+            InputProps={{classes: {
+                input: classes.inputProps
+              }}}
+        />
+        <TextField
+          fullWidth
+          id="outlined-password-input"
+          label="Confirmare parola"
+          type="password"
+          name={"confirmPassword"}
           value={formFields.password}
           onChange={onChange}
-          title={"Parola"}
-          error={error.password}
-        />
-        <TextInput
-          name={"confirmPassword"}
-          type={"password"}
-          value={formFields.confirmPassword}
-          onChange={onChange}
-          title={"Confirmare parola"}
-          error={error.confirmPassword}
-        />
+          color={"success"}
+          InputProps={{classes: {
+              input: classes.inputProps
+            }}}
+      />
       </FormCard>
     </FormContainer>
   );

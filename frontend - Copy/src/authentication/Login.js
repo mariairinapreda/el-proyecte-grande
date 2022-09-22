@@ -5,6 +5,8 @@ import axios from "axios";
 import FormContainer from "../wrappers/form/container/FormContainer";
 import FormCard from "../wrappers/form/card/FormCard";
 import { useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import classes from "../scss/Mui.module.scss";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -55,24 +57,34 @@ const Login = () => {
         {errorMessage !== "" && (
           <h5 style={{ color: "red", textAlign: "center" }}>{errorMessage}</h5>
         )}
-        <label>
-          E-mail:{" "}
-          <input
+        <TextField
+            fullWidth
+            required
+            id="outlined-required"
+            label="E-mail"
             name={"email"}
             value={credentials.email}
             onChange={onChange}
-            type={"email"}
-          />
-        </label>
-        <label>
-          Parola:{" "}
-          <input
+            color={errorMessage === "Acest e-mail nu exista!" ? "warning" :"success"}
+            error={errorMessage === "Acest e-mail nu exista!"}
+            InputProps={{classes: {
+              input: classes.inputProps
+              }}}
+        />
+        <TextField
+            fullWidth
+            id="outlined-password-input"
+            label="Parola"
+            type="password"
             name={"password"}
             value={credentials.password}
             onChange={onChange}
-            type={"password"}
-          />
-        </label>
+            color={errorMessage === "Parola incorecta!" ? "warning" :"success"}
+            error={errorMessage === "Parola incorecta!"}
+            InputProps={{classes: {
+                input: classes.inputProps
+              }}}
+        />
       </FormCard>
     </FormContainer>
   );
