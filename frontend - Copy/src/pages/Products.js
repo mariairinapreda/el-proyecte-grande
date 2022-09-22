@@ -1,3 +1,4 @@
+import classes from "./Products.module.scss";
 import {
   BASE_PATH,
   CART_PRODUCTS,
@@ -177,104 +178,118 @@ const Products = () => {
       });
   };
 
+  const isDefault = () => {
+    return (
+      simpleFilter.searchText === "" &&
+      simpleFilter.minPrice === availableFilter.minPrice &&
+      simpleFilter.maxPrice === availableFilter.maxPrice &&
+      simpleFilter.producers.length === 0 &&
+      simpleFilter.categories.length === 0
+    );
+  };
+
   return (
     <>
       <Navigation />
-      <h1 style={{ marginTop: 100, textAlign: "center" }}>
-        {"toate produsele"}
-      </h1>
-      <label>
-        Nume produs:
-        <input
-          onChange={onChange}
-          name={"searchText"}
-          value={simpleFilter.searchText}
-        />
-      </label>
-      <label>
-        Pret minim:
-        <input
-          type={"number"}
-          onChange={onChange}
-          min={availableFilter.minPrice}
-          max={simpleFilter.maxPrice}
-          name={"minPrice"}
-          value={simpleFilter.minPrice}
-        />
-      </label>
-      <label>
-        Pret maxim:
-        <input
-          type={"number"}
-          onChange={onChange}
-          min={simpleFilter.minPrice}
-          max={availableFilter.maxPrice}
-          name={"maxPrice"}
-          value={simpleFilter.maxPrice}
-        />
-      </label>
-      <div>
-        Producatori:
-        {availableFilter.producers.map((p) => (
-          <label key={`producator_${p}`}>
+      <div className={classes.mainDiv}>
+        <h1 className={classes.title}>
+          {isDefault() ? "Toate produsele" : "Produse filtrate"}
+        </h1>
+        <div className={classes.filterDiv}>
+          <label>
+            Nume produs:
             <input
-              name={"producers"}
-              type={"checkbox"}
-              value={p}
-              checked={simpleFilter.producers.indexOf(p) !== -1}
               onChange={onChange}
+              name={"searchText"}
+              value={simpleFilter.searchText}
             />
-            {p}
           </label>
-        ))}
-      </div>
-      <div>
-        Categori:
-        {availableFilter.categories.map((c) => (
-          <label key={`categorie_${c}`}>
+          <label>
+            Pret minim:
             <input
-              name={"categories"}
-              type={"checkbox"}
-              value={c}
-              checked={simpleFilter.categories.indexOf(c) !== -1}
+              type={"number"}
               onChange={onChange}
+              min={availableFilter.minPrice}
+              max={simpleFilter.maxPrice}
+              name={"minPrice"}
+              value={simpleFilter.minPrice}
             />
-            {c}
           </label>
-        ))}
+          <label>
+            Pret maxim:
+            <input
+              type={"number"}
+              onChange={onChange}
+              min={simpleFilter.minPrice}
+              max={availableFilter.maxPrice}
+              name={"maxPrice"}
+              value={simpleFilter.maxPrice}
+            />
+          </label>
+          <div>
+            Producatori:
+            {availableFilter.producers.map((p) => (
+              <label key={`producator_${p}`}>
+                <input
+                  name={"producers"}
+                  type={"checkbox"}
+                  value={p}
+                  checked={simpleFilter.producers.indexOf(p) !== -1}
+                  onChange={onChange}
+                />
+                {p}
+              </label>
+            ))}
+          </div>
+          <div>
+            Categori:
+            {availableFilter.categories.map((c) => (
+              <label key={`categorie_${c}`}>
+                <input
+                  name={"categories"}
+                  type={"checkbox"}
+                  value={c}
+                  checked={simpleFilter.categories.indexOf(c) !== -1}
+                  onChange={onChange}
+                />
+                {c}
+              </label>
+            ))}
+          </div>
+          <button onClick={onFilter}>FILTREAZA</button>
+        </div>
+        <ProductsContainer>
+          {products.map((p) => (
+            <Card
+              key={`product_${p.id}`}
+              imageUrl={p.imageNames[0]}
+              title={p.name}
+              onAdd={addToCart}
+              price={p.price}
+              productId={p.id}
+              details={
+                <Details
+                  details={
+                    <>
+                      {p.specs.map((spec, index) => (
+                        <Detail
+                          key={`spec_${spec.id}_${index}`}
+                          name={spec.categorySpec.name}
+                          value={
+                            spec.categorySpec.type === "text"
+                              ? spec.stringValue
+                              : spec.numberValue
+                          }
+                        />
+                      ))}
+                    </>
+                  }
+                />
+              }
+            />
+          ))}
+        </ProductsContainer>
       </div>
-      <button onClick={onFilter}>FILTREAZA</button>
-      <ProductsContainer>
-        {products.map((p) => (
-          <Card
-            key={`product_${p.id}`}
-            imageUrl={p.imageNames[0]}
-            title={p.name}
-            onAdd={addToCart}
-            price={p.price}
-            productId={p.id}
-            details={
-              <Details
-                details={
-                  <>
-                    {p.specs.map((spec, index) => (
-                      <Detail
-                        key={`spec_${spec.id}_${index}`}
-                        name={spec.categorySpec.name}
-                        value={
-                          spec.categorySpec.type === "text"
-                            ? spec.stringValue
-                            : spec.numberValue
-                        }
-                      />
-                    ))}
-                  </>
-                }
-              />
-            }
-          />
-        ))}
-      </ProductsContainer>
     </>
   );
 };
