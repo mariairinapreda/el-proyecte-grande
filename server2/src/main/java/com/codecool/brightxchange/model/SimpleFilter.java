@@ -1,18 +1,19 @@
 package com.codecool.brightxchange.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class SimpleFilter {
     private String searchText;
-    private Integer minPrice;
-    private Integer maxPrice;
+    private Double minPrice;
+    private Double maxPrice;
     private List<String> producers;
     private List<String> categories;
 }

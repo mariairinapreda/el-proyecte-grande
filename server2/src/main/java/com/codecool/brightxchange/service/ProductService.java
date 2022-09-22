@@ -46,11 +46,12 @@ public class ProductService {
             .findAllProductsByName("%"+searchText+"%");}
 
     public List<Product> findAllSimpleFiltered(String searchText,
-                                               Integer minPrice,
-                                               Integer maxPrice,
+                                               Double minPrice,
+                                               Double maxPrice,
                                                List<String> producers,
                                                List<String> categories){
-        return repository.findAllSimpleFiltered(searchText,
+        return repository.findAllSimpleFiltered(
+                "%"+searchText+"%",
                 minPrice,
                 maxPrice,
                 producers,

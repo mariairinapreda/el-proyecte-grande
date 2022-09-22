@@ -1,7 +1,7 @@
 import {
   BASE_PATH,
   CART_PRODUCTS,
-  CART_PRODUCTS_NUMBER,
+  CART_PRODUCTS_NUMBER, PRODUCTS,
   SEARCH_TEXT,
   USER,
   USER_PATH,
@@ -23,11 +23,12 @@ const defaultFilter = {
   categories: [],
 };
 
+
 const Products = () => {
   const [user] = useAtom(USER);
   const [, setCartItems] = useAtom(CART_PRODUCTS);
   const [, setCartItemsCount] = useAtom(CART_PRODUCTS_NUMBER);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useAtom(PRODUCTS)
   const [atomSearchText] = useAtom(SEARCH_TEXT);
   const [simpleFilter, setSimpleFilter] = useState({
     searchText: atomSearchText,
@@ -44,7 +45,22 @@ const Products = () => {
   });
   const url = `${USER_PATH}/cart-item`;
 
-  useEffect(() => {
+  const onChange = (e) => {
+    switch (e.target.name){
+      case "searchText":
+      case "minPrice":
+      case "maxPrice":
+        setSimpleFilter({...simpleFilter, [e.target.name]:e.target.value})
+        return;
+      case "producers":
+      case "categories":
+        break;
+      default:
+        break;
+    }
+
+  }
+  const onFilter = (e) => {
     let { minPrice, maxPrice, producers, categories } = availableFilter;
     if (simpleFilter.searchText === "") {
       axios.get(`${BASE_PATH}/products`).then((r) => {
@@ -80,17 +96,81 @@ const Products = () => {
         });
         setProducts(r.data);
       });
-    } else if (simpleFilter === defaultFilter) {
+    } else if (simpleFilter.minPrice === availableFilter.minPrice && simpleFilter.maxPrice === availableFilter.maxPrice && simpleFilter.producers.length ===0 && simpleFilter.categories.length === 0) {
       axios
-        .get(`${BASE_PATH}/products/search/${simpleFilter.searchText}`)
-        .then((r) => setProducts(r.data));
+          .get(`${BASE_PATH}/products/search/${simpleFilter.searchText}`)
+          .then((r) => {
+            r.data.forEach((p) => {
+              if (minPrice > p.price || minPrice === 0) {
+                minPrice = p.price;
+              }
+              if (maxPrice < p.price || maxPrice === 0) {
+                maxPrice = p.price;
+              }
+              if (producers.indexOf(p.producer.name) === -1) {
+                producers.push(p.producer.name);
+              }
+              if (categories.indexOf(p.category.name) === -1) {
+                categories.push(p.category.name);
+              }
+            });
+            setAvailableFilter({
+              minPrice: minPrice,
+              maxPrice: maxPrice,
+              producers: producers,
+              categories: categories,
+            });
+            let filterMinPrice = simpleFilter.minPrice;
+            let filterMaxPrice = simpleFilter.maxPrice;
+            if (minPrice > filterMinPrice) filterMinPrice = minPrice;
+            if (maxPrice < filterMaxPrice || filterMaxPrice === 0)
+              filterMaxPrice = maxPrice;
+            setSimpleFilter({
+              ...simpleFilter,
+              minPrice: filterMinPrice,
+              maxPrice: filterMaxPrice,
+            });
+            setProducts(r.data);
+          });
+
     } else {
       axios
-        .post(`${BASE_PATH}/products/search`, simpleFilter)
-        .then((r) => setProducts(r.data));
+          .post(`${BASE_PATH}/products/search`, simpleFilter)
+          .then((r) => {
+            r.data.forEach((p) => {
+              if (minPrice > p.price || minPrice === 0) {
+                minPrice = p.price;
+              }
+              if (maxPrice < p.price || maxPrice === 0) {
+                maxPrice = p.price;
+              }
+              if (producers.indexOf(p.producer.name) === -1) {
+                producers.push(p.producer.name);
+              }
+              if (categories.indexOf(p.category.name) === -1) {
+                categories.push(p.category.name);
+              }
+            });
+            setAvailableFilter({
+              minPrice: minPrice,
+              maxPrice: maxPrice,
+              producers: producers,
+              categories: categories,
+            });
+            let filterMinPrice = simpleFilter.minPrice;
+            let filterMaxPrice = simpleFilter.maxPrice;
+            if (minPrice > filterMinPrice) filterMinPrice = minPrice;
+            if (maxPrice < filterMaxPrice || filterMaxPrice === 0)
+              filterMaxPrice = maxPrice;
+            setSimpleFilter({
+              ...simpleFilter,
+              minPrice: filterMinPrice,
+              maxPrice: filterMaxPrice,
+            });
+            setProducts(r.data);
+          })
     }
-  }, [availableFilter, simpleFilter]);
-
+  }
   const addToCart = (e) => {
     e.preventDefault();
     let data = {
@@ -131,7 +211,37 @@ const Products = () => {
       <h1 style={{ marginTop: 100, textAlign: "center" }}>
         {"toate produsele"}
       </h1>
-
+      <label>
+        Nume produs:
+        <input onChange={onChange} name={"searchText"} value={simpleFilter.searchText} />
+      </label>
+      <label>
+        Pret minim:
+        <input type={"number"} onChange={onChange} min={availableFilter.minPrice} max={simpleFilter.maxPrice}  name={"minPrice"} value={simpleFilter.minPrice} />
+      </label>
+      <label>
+        Pret maxim:
+        <input type={"number"} onChange={onChange} min={simpleFilter.minPrice} max={availableFilter.maxPrice}  name={"maxPrice"} value={simpleFilter.maxPrice} />
+      </label>
+      <div>
+        Producatori:
+        {availableFilter.producers.map(p => (
+            <label key={`producator_${p}`} >
+              <input name={"producers"} type={"checkbox"} value={p} checked={simpleFilter.producers.indexOf(p) !== -1} onChange={onChange}/>
+              {p}
+            </label>
+        ))}
+      </div>
+      <div>
+        Categori:
+        {availableFilter.categories.map(c => (
+            <label key={`categorie_${c}`}>
+              <input name={"categories"} type={"checkbox"} value={c} checked={simpleFilter.categories.indexOf(c) !== -1} onChange={onChange}/>
+              {c}
+            </label>
+        ))}
+      </div>
+      <button onClick={onFilter}>FILTREAZA</button>
       <ProductsContainer>
         {products.map((p) => (
           <Card
