@@ -13,7 +13,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @Entity
 @Table(name = "clients")
