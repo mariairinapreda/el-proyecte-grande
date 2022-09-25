@@ -21,8 +21,8 @@ public class ProductService {
 
     }
 
-    public Product saveAProduct(Product product) {
-        return repository.saveAndFlush(product);
+    public void saveAProduct(Product product) {
+        repository.save(product);
     }
 
     public List<Product> getAll() {

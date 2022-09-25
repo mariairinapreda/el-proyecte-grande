@@ -1,4 +1,4 @@
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navigation from "../../components/navigation/Navigation";
 import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
 import { useEffect, useState } from "react";
@@ -7,7 +7,9 @@ import axios from "axios";
 import {
   BASE_PATH,
   CART_PRODUCTS,
-  CART_PRODUCTS_NUMBER, PRODUCTS, SEARCH_TEXT,
+  CART_PRODUCTS_NUMBER,
+  PRODUCTS,
+  SEARCH_TEXT,
   USER,
   USER_PATH,
 } from "../../atoms/STORE";
@@ -17,7 +19,6 @@ import { useAtom } from "jotai";
 import classes from "../products/Products.module.scss";
 import TextField from "@mui/material/TextField";
 import classes2 from "../../scss/Mui.module.scss";
-
 
 const defaultFilter = {
   minPrice: 0,
@@ -31,7 +32,7 @@ const CategoryProducts = () => {
   const [, setCartItems] = useAtom(CART_PRODUCTS);
   const [, setCartItemsCount] = useAtom(CART_PRODUCTS_NUMBER);
   const { categoryName } = useParams();
-  const [products, setProducts] = useAtom(PRODUCTS)
+  const [products, setProducts] = useAtom(PRODUCTS);
   const [atomSearchText] = useAtom(SEARCH_TEXT);
   const [simpleFilter, setSimpleFilter] = useState({
     searchText: atomSearchText,
@@ -42,7 +43,7 @@ const CategoryProducts = () => {
   });
   const navigate = useNavigate();
   const [availableFilter, setAvailableFilter] = useState(() => {
-    let { minPrice, maxPrice, producers} = defaultFilter;
+    let { minPrice, maxPrice, producers } = defaultFilter;
     products.forEach((p) => {
       if (minPrice > p.price || minPrice === 0) {
         minPrice = p.price;
@@ -74,7 +75,7 @@ const CategoryProducts = () => {
   });
   const url = `${USER_PATH}/cart-item`;
   useEffect(() => {
-    onFilter()
+    onFilter();
   }, [categoryName]);
 
   const addToCart = (e) => {
@@ -146,20 +147,28 @@ const CategoryProducts = () => {
   };
 
   const onFilter = () => {
-    if (simpleFilter.searchText === "") {
+    console.log(simpleFilter);
+    if (
+      simpleFilter.searchText === "" &&
+      simpleFilter.minPrice === availableFilter.minPrice &&
+      simpleFilter.maxPrice === availableFilter.maxPrice &&
+      simpleFilter.producers.length === 0 &&
+      simpleFilter.categories.length === 0
+    ) {
       axios.get(`${BASE_PATH}/products`).then((r) => {
         setProductsList(r.data);
       });
     } else if (
-        simpleFilter.minPrice === availableFilter.minPrice &&
-        simpleFilter.maxPrice === availableFilter.maxPrice &&
-        simpleFilter.producers.length === 0
+      simpleFilter.minPrice === availableFilter.minPrice &&
+      simpleFilter.maxPrice === availableFilter.maxPrice &&
+      simpleFilter.producers.length === 0 &&
+      simpleFilter.categories.length === 0
     ) {
       axios
-          .get(`${BASE_PATH}/products/search/${simpleFilter.searchText}`)
-          .then((r) => {
-            setProductsList(r.data);
-          });
+        .get(`${BASE_PATH}/products/search/${simpleFilter.searchText}`)
+        .then((r) => {
+          setProductsList(r.data);
+        });
     } else {
       axios.post(`${BASE_PATH}/products/search`, simpleFilter).then((r) => {
         setProductsList(r.data);
@@ -176,16 +185,15 @@ const CategoryProducts = () => {
         return;
       case "producers":
         let temp = [];
-        if(simpleFilter.producers.indexOf(e.target.value) !== -1){
+        if (simpleFilter.producers.indexOf(e.target.value) !== -1) {
           for (const p of simpleFilter.producers) {
-            if(p !== e.target.value) temp.push(p);
+            if (p !== e.target.value) temp.push(p);
           }
-
-        }else {
+        } else {
           temp = simpleFilter.producers;
           temp.push(e.target.value);
         }
-        setSimpleFilter({...simpleFilter, producers: temp})
+        setSimpleFilter({ ...simpleFilter, producers: temp });
         break;
       default:
         break;
@@ -193,76 +201,112 @@ const CategoryProducts = () => {
   };
 
   return (
-      <>
-        <Navigation />
-        <div className={classes.mainDiv}>
-          <h1 className={classes.title}>
-            {categoryName}
-          </h1>
-          <div className={classes.filterDiv}>
-            <TextField className={"textField"} id={"outlined-basic"} label={"Nume produs"} name={"searchText"} variant={"outlined"} value={simpleFilter.searchText} onChange={onChange} color={"success"} InputProps={{classes: {
-                input: classes2.inputProps + classes.limitedInput
-              }}}/>
-            <TextField className={"textField"} type={"number"} id={"outlined-basic"} label={"Pret minim"} min={availableFilter.minPrice}
-                       max={simpleFilter.maxPrice}
-                       name={"minPrice"} variant={"outlined"} value={simpleFilter.minPrice} onChange={onChange} color={"success"} InputProps={{classes: {
-                input: classes2.inputProps + classes.numberInput
-              }}}/>
-            <TextField className={"textField"} type={"number"} id={"outlined-basic"} label={"Pret maxim"} min={simpleFilter.minPrice}
-                       max={availableFilter.maxPrice}
-                       name={"maxPrice"} variant={"outlined"} value={simpleFilter.maxPrice} onChange={onChange} color={"success"} InputProps={{classes: {
-                input: classes2.inputProps + classes.numberInput
-              }}}/>
-            <div className={classes.panel}>
-              <p>Producatori</p>
-              {availableFilter.producers.map((p) => (
-                  <label key={`producator_${p}`}>
-                    <input
-                        name={"producers"}
-                        type={"checkbox"}
-                        value={p}
-                        checked={simpleFilter.producers.indexOf(p) !== -1}
-                        onChange={onChange}
-                    />
-                    {p}
-                  </label>
-              ))}
-            </div>
-            <button onClick={onFilter}>FILTREAZA</button>
-          </div>
-          <ProductsContainer>
-            {products.map((p) => (
-                <Card
-                    key={`product_${p.id}`}
-                    imageUrl={p.imageNames[0]}
-                    title={p.name}
-                    onAdd={addToCart}
-                    price={p.price}
-                    productId={p.id}
-                    details={
-                      <Details
-                          details={
-                            <>
-                              {p.specs.map((spec, index) => (
-                                  <Detail
-                                      key={`spec_${spec.id}_${index}`}
-                                      name={spec.categorySpec.name}
-                                      value={
-                                        spec.categorySpec.type === "text"
-                                            ? spec.stringValue
-                                            : spec.numberValue
-                                      }
-                                  />
-                              ))}
-                            </>
-                          }
-                      />
-                    }
+    <>
+      <Navigation />
+      <div className={classes.mainDiv}>
+        <h1 className={classes.title}>{categoryName}</h1>
+        <div className={classes.filterDiv}>
+          <TextField
+            className={"textField"}
+            id={"outlined-basic"}
+            label={"Nume produs"}
+            name={"searchText"}
+            variant={"outlined"}
+            value={simpleFilter.searchText}
+            onChange={onChange}
+            color={"success"}
+            InputProps={{
+              classes: {
+                input: classes2.inputProps + classes.limitedInput,
+              },
+            }}
+          />
+          <TextField
+            className={"textField"}
+            type={"number"}
+            id={"outlined-basic"}
+            label={"Pret minim"}
+            min={availableFilter.minPrice}
+            max={simpleFilter.maxPrice}
+            name={"minPrice"}
+            variant={"outlined"}
+            value={simpleFilter.minPrice}
+            onChange={onChange}
+            color={"success"}
+            InputProps={{
+              classes: {
+                input: classes2.inputProps + classes.numberInput,
+              },
+            }}
+          />
+          <TextField
+            className={"textField"}
+            type={"number"}
+            id={"outlined-basic"}
+            label={"Pret maxim"}
+            min={simpleFilter.minPrice}
+            max={availableFilter.maxPrice}
+            name={"maxPrice"}
+            variant={"outlined"}
+            value={simpleFilter.maxPrice}
+            onChange={onChange}
+            color={"success"}
+            InputProps={{
+              classes: {
+                input: classes2.inputProps + classes.numberInput,
+              },
+            }}
+          />
+          <div className={classes.panel}>
+            <p>Producatori</p>
+            {availableFilter.producers.map((p) => (
+              <label key={`producator_${p}`}>
+                <input
+                  name={"producers"}
+                  type={"checkbox"}
+                  value={p}
+                  checked={simpleFilter.producers.indexOf(p) !== -1}
+                  onChange={onChange}
                 />
+                {p}
+              </label>
             ))}
-          </ProductsContainer>
+          </div>
+          <button onClick={onFilter}>FILTREAZA</button>
         </div>
-      </>
+        <ProductsContainer>
+          {products.map((p) => (
+            <Card
+              key={`product_${p.id}`}
+              imageUrl={p.imageNames[0]}
+              title={p.name}
+              onAdd={addToCart}
+              price={p.price}
+              productId={p.id}
+              details={
+                <Details
+                  details={
+                    <>
+                      {p.specs.map((spec, index) => (
+                        <Detail
+                          key={`spec_${spec.id}_${index}`}
+                          name={spec.categorySpec.name}
+                          value={
+                            spec.categorySpec.type === "text"
+                              ? spec.stringValue
+                              : spec.numberValue
+                          }
+                        />
+                      ))}
+                    </>
+                  }
+                />
+              }
+            />
+          ))}
+        </ProductsContainer>
+      </div>
+    </>
   );
 };
 

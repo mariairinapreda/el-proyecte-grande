@@ -52,6 +52,7 @@ public class ProductController {
 
     @PostMapping("/search")
     public List<Product> findAllSimpleFiltered(@RequestBody SimpleFilter simpleFilter){
+        System.out.println(simpleFilter);
         if (simpleFilter.getProducers().isEmpty()) simpleFilter.setProducers(producerService.getAllNames());
         if (simpleFilter.getCategories().isEmpty()) simpleFilter.setCategories(categoryService.getAllNames());
         return productService.findAllSimpleFiltered(simpleFilter.getSearchText(),

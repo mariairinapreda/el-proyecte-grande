@@ -7,6 +7,7 @@ import {
 } from "../../atoms/STORE";
 import Navigation from "../../components/navigation/Navigation";
 import axios from "axios";
+import classes from "./CartPage.module.scss";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useAtom(CART_PRODUCTS);
@@ -58,60 +59,62 @@ const CartPage = () => {
   return (
     <>
       <Navigation />
-      <table style={{ marginTop: "120px" }}>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Nume Produs</th>
-            <th>Pret</th>
-            <th>Cantitate</th>
-            <th>Pret total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cartItems.map((item, index) => {
-            let cost = item.quantity * item.product.price;
-            totalCost += cost;
-            return (
-              <tr key={`item_${index}`}>
-                <td>{index}</td>
-                <td>{item.product.name}</td>
-                <td>{item.product.price} RON</td>
-                <td>
-                  <input
-                    id={item.id}
-                    onChange={onChange}
-                    type={"number"}
-                    min={0}
-                    minLength={1}
-                    value={item.quantity}
-                  />
-                </td>
-                <td>{cost} RON</td>
-              </tr>
-            );
-          })}
-          <tr>
-            <td style={{ height: "20px" }}></td>
-          </tr>
-          <tr>
-            <td>TOTAL:</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>{totalCost} RON</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <button onClick={payment}>PAY</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className={classes.container}>
+        <table style={{ marginTop: "120px" }}>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Nume Produs</th>
+              <th>Pret</th>
+              <th>Cantitate</th>
+              <th>Pret total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cartItems.map((item, index) => {
+              let cost = item.quantity * item.product.price;
+              totalCost += cost;
+              return (
+                <tr key={`item_${index}`}>
+                  <td>{index + 1}</td>
+                  <td>{item.product.name}</td>
+                  <td>{item.product.price} RON</td>
+                  <td>
+                    <input
+                      id={item.id}
+                      onChange={onChange}
+                      type={"number"}
+                      min={0}
+                      minLength={1}
+                      value={item.quantity}
+                    />
+                  </td>
+                  <td>{cost} RON</td>
+                </tr>
+              );
+            })}
+            <tr>
+              <td style={{ height: "20px" }}></td>
+            </tr>
+            <tr>
+              <td>TOTAL:</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{totalCost} RON</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <button onClick={payment}>Plateste</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

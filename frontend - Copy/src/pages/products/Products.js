@@ -9,7 +9,7 @@ import {
   USER_PATH,
 } from "../../atoms/STORE";
 import { useAtom } from "jotai";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Navigation from "../../components/navigation/Navigation";
 import ProductsContainer from "../../wrappers/products-container/ProductsContainer";
@@ -77,10 +77,10 @@ const Products = () => {
 
   useEffect(() => {
     axios.get(`${BASE_PATH}/products`).then((r) => {
-      setProducts(r.data)
-      setProductsList(r.data)
+      setProducts(r.data);
+      setProductsList(r.data);
     });
-  },[])
+  }, []);
 
   const onChange = (e) => {
     switch (e.target.name) {
@@ -92,16 +92,15 @@ const Products = () => {
       case "producers":
       case "categories":
         let temp = [];
-        if(simpleFilter[e.target.name].indexOf(e.target.value) !== -1){
+        if (simpleFilter[e.target.name].indexOf(e.target.value) !== -1) {
           for (const p of simpleFilter[e.target.name]) {
-            if(p !== e.target.value) temp.push(p);
+            if (p !== e.target.value) temp.push(p);
           }
-
-        }else {
+        } else {
           temp = simpleFilter[e.target.name];
           temp.push(e.target.value);
         }
-        setSimpleFilter({...simpleFilter, [e.target.name]: temp})
+        setSimpleFilter({ ...simpleFilter, [e.target.name]: temp });
         break;
       default:
         break;
@@ -144,7 +143,14 @@ const Products = () => {
   };
 
   const onFilter = () => {
-    if (simpleFilter.searchText === "") {
+    console.log(simpleFilter);
+    if (
+      simpleFilter.searchText === "" &&
+      simpleFilter.minPrice === availableFilter.minPrice &&
+      simpleFilter.maxPrice === availableFilter.maxPrice &&
+      simpleFilter.producers.length === 0 &&
+      simpleFilter.categories.length === 0
+    ) {
       axios.get(`${BASE_PATH}/products`).then((r) => {
         setProductsList(r.data);
       });
@@ -216,47 +222,85 @@ const Products = () => {
           {isDefault() ? "Toate produsele" : "Produse filtrate"}
         </h1>
         <div className={classes.filterDiv}>
-          <TextField className={"textField"} id={"outlined-basic"} label={"Nume produs"} name={"searchText"} variant={"outlined"} value={simpleFilter.searchText} onChange={onChange} color={"success"} InputProps={{classes: {
-              input: classes2.inputProps
-            }}}/>
-          <TextField className={"textField"} type={"number"} id={"outlined-basic"} label={"Pret minim"} min={availableFilter.minPrice}
-                     max={simpleFilter.maxPrice}
-                     name={"minPrice"} variant={"outlined"} value={simpleFilter.minPrice} onChange={onChange} color={"success"} InputProps={{classes: {
-              input: classes2.inputProps
-            }}}/>
-          <TextField className={"textField"} type={"number"} id={"outlined-basic"} label={"Pret maxim"} min={simpleFilter.minPrice}
-                     max={availableFilter.maxPrice}
-                     name={"maxPrice"} variant={"outlined"} value={simpleFilter.maxPrice} onChange={onChange} color={"success"} InputProps={{classes: {
-              input: classes2.inputProps
-            }}}/>
+          <TextField
+            className={"textField"}
+            id={"outlined-basic"}
+            label={"Nume produs"}
+            name={"searchText"}
+            variant={"outlined"}
+            value={simpleFilter.searchText}
+            onChange={onChange}
+            color={"success"}
+            InputProps={{
+              classes: {
+                input: classes2.inputProps,
+              },
+            }}
+          />
+          <TextField
+            className={"textField"}
+            type={"number"}
+            id={"outlined-basic"}
+            label={"Pret minim"}
+            min={availableFilter.minPrice}
+            max={simpleFilter.maxPrice}
+            name={"minPrice"}
+            variant={"outlined"}
+            value={simpleFilter.minPrice}
+            onChange={onChange}
+            color={"success"}
+            InputProps={{
+              classes: {
+                input: classes2.inputProps,
+              },
+            }}
+          />
+          <TextField
+            className={"textField"}
+            type={"number"}
+            id={"outlined-basic"}
+            label={"Pret maxim"}
+            min={simpleFilter.minPrice}
+            max={availableFilter.maxPrice}
+            name={"maxPrice"}
+            variant={"outlined"}
+            value={simpleFilter.maxPrice}
+            onChange={onChange}
+            color={"success"}
+            InputProps={{
+              classes: {
+                input: classes2.inputProps,
+              },
+            }}
+          />
           <div className={classes.panel}>
             <p>Producatori</p>
             {availableFilter.producers.map((p) => (
-                <label key={`producator_${p}`}>
-                  <input
-                      name={"producers"}
-                      type={"checkbox"}
-                      value={p}
-                      checked={simpleFilter.producers.indexOf(p) !== -1}
-                      onChange={onChange}
-                  />
-                  {p}
-                </label>
+              <label key={`producator_${p}`}>
+                <input
+                  name={"producers"}
+                  type={"checkbox"}
+                  value={p}
+                  checked={simpleFilter.producers.indexOf(p) !== -1}
+                  onChange={onChange}
+                />
+                {p}
+              </label>
             ))}
           </div>
           <div className={classes.panel}>
             <p>Categorii</p>
             {availableFilter.categories.map((c) => (
-                <label key={`categorie_${c}`}>
-                  <input
-                      name={"categories"}
-                      type={"checkbox"}
-                      value={c}
-                      checked={simpleFilter.categories.indexOf(c) !== -1}
-                      onChange={onChange}
-                  />
-                  {c}
-                </label>
+              <label key={`categorie_${c}`}>
+                <input
+                  name={"categories"}
+                  type={"checkbox"}
+                  value={c}
+                  checked={simpleFilter.categories.indexOf(c) !== -1}
+                  onChange={onChange}
+                />
+                {c}
+              </label>
             ))}
           </div>
           <button onClick={onFilter}>FILTREAZA</button>
