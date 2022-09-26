@@ -151,6 +151,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>jar/spring-boot-docker</finalName>
     </build>
 
 </project>

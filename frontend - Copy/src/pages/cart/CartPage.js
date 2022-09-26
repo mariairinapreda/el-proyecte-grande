@@ -21,8 +21,8 @@ const CartPage = () => {
       e.target.value = 0;
     }
     axios
-      .put(
-        `${USER_PATH}/cart-item`,
+      .post(
+        `${USER_PATH}/cart-item/update`,
         {
           id: e.target.id,
           quantity: e.target.value,

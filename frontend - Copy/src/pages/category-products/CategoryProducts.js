@@ -41,7 +41,7 @@ const CategoryProducts = () => {
     producers: [],
     categories: [categoryName],
   });
-  const navigate = useNavigate();
+  useNavigate();
   const [availableFilter, setAvailableFilter] = useState(() => {
     let { minPrice, maxPrice, producers } = defaultFilter;
     products.forEach((p) => {
@@ -73,6 +73,37 @@ const CategoryProducts = () => {
       categories: [categoryName],
     };
   });
+
+  const onFilter = () => {
+    console.log(simpleFilter);
+    if (
+        simpleFilter.searchText === "" &&
+        simpleFilter.minPrice === availableFilter.minPrice &&
+        simpleFilter.maxPrice === availableFilter.maxPrice &&
+        simpleFilter.producers.length === 0 &&
+        simpleFilter.categories.length === 0
+    ) {
+      axios.get(`${BASE_PATH}/products`).then((r) => {
+        setProductsList(r.data);
+      });
+    } else if (
+        simpleFilter.minPrice === availableFilter.minPrice &&
+        simpleFilter.maxPrice === availableFilter.maxPrice &&
+        simpleFilter.producers.length === 0 &&
+        simpleFilter.categories.length === 0
+    ) {
+      axios
+          .get(`${BASE_PATH}/products/search/${simpleFilter.searchText}`)
+          .then((r) => {
+            setProductsList(r.data);
+          });
+    } else {
+      axios.post(`${BASE_PATH}/products/search`, simpleFilter).then((r) => {
+        setProductsList(r.data);
+      });
+    }
+  };
+
   const url = `${USER_PATH}/cart-item`;
   useEffect(() => {
     onFilter();
@@ -144,36 +175,6 @@ const CategoryProducts = () => {
       maxPrice: filterMaxPrice,
     });
     setProducts(products);
-  };
-
-  const onFilter = () => {
-    console.log(simpleFilter);
-    if (
-      simpleFilter.searchText === "" &&
-      simpleFilter.minPrice === availableFilter.minPrice &&
-      simpleFilter.maxPrice === availableFilter.maxPrice &&
-      simpleFilter.producers.length === 0 &&
-      simpleFilter.categories.length === 0
-    ) {
-      axios.get(`${BASE_PATH}/products`).then((r) => {
-        setProductsList(r.data);
-      });
-    } else if (
-      simpleFilter.minPrice === availableFilter.minPrice &&
-      simpleFilter.maxPrice === availableFilter.maxPrice &&
-      simpleFilter.producers.length === 0 &&
-      simpleFilter.categories.length === 0
-    ) {
-      axios
-        .get(`${BASE_PATH}/products/search/${simpleFilter.searchText}`)
-        .then((r) => {
-          setProductsList(r.data);
-        });
-    } else {
-      axios.post(`${BASE_PATH}/products/search`, simpleFilter).then((r) => {
-        setProductsList(r.data);
-      });
-    }
   };
 
   const onChange = (e) => {

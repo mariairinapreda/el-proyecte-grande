@@ -45,7 +45,7 @@ public class CartItemController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping
+    @PostMapping("/update")
     public ResponseEntity<String> updateCartItem(@RequestBody CartItem cartItem){
         cartItemService.updateCartItem(cartItem);
         return new ResponseEntity<>(HttpStatus.OK);

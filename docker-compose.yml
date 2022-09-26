@@ -1,0 +1,17 @@
+version: '1'
+services:
+  frontend:
+    container_name: front-end
+    build: ./frontend - Copy
+    volumes:
+      - ./frontend - Copy/src:/app/src
+      - ./frontend - Copy/public:/app/public
+    ports:
+      - 3000:3000
+  server:
+    container_name: server
+    build: ./server2
+    volumes:
+      - ./server2/target/jar:/app
+    ports:
+      - 8888:8888
